@@ -10,6 +10,10 @@
     -fx-background-radius: 100;
 }
 
+.saw-border {
+    -fx-background-radius: 0;
+}
+
 .text-color {
     -fx-text-fill: #F3F3F3;
 }

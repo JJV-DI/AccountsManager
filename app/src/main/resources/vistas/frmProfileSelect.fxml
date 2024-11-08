@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -8,36 +9,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="450.0" styleClass="primary-color" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileSelectController">
-  <columnConstraints>
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" valignment="BOTTOM" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-  </rowConstraints>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileSelectController">
    <children>
+      <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" stylesheets="@styles/darkMode.css">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" valignment="BOTTOM" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
       <VBox alignment="BOTTOM_CENTER">
-         <children>
-            <Label styleClass="text-color" text="Choose a user">
-               <font>
-                  <Font name="Roboto Condensed Regular" size="32.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblUsersCounter" styleClass="text-color" text="0/12">
-               <font>
-                  <Font name="Roboto Condensed Light" size="18.0" />
-               </font>
-            </Label>
-         </children>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
          <padding>
             <Insets top="25.0" />
          </padding>
       </VBox>
-      <GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 16;" styleClass="secondary-color" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label styleClass="text-color" text="Choose a user">
+         <font>
+            <Font name="Roboto Condensed Regular" size="32.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 16;" styleClass="secondary-color">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
@@ -49,12 +46,9 @@
           <RowConstraints minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </GridPane>
    </children>
-</GridPane>
+</VBox>
