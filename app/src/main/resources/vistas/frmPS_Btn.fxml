@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+
+<Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnUserPressed" styleClass="secondary-color" stylesheets="@styles/darkMode.css" text="Example69" textAlignment="CENTER" textFill="#f3f3f3" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PS_BtnController">
+   <graphic>
+      <Pane>
+         <children>
+            <Circle fx:id="cirUserImage" centerX="25.0" centerY="25.0" fill="#282828" radius="25.0" stroke="#282828" strokeType="INSIDE" />
+         </children>
+      </Pane>
+   </graphic>
+   <contextMenu>
+      <ContextMenu fx:id="ctxtMenu">
+        <items>
+          <MenuItem fx:id="ctxtEdit" mnemonicParsing="false" onAction="#ctxtEditPressed" text="Edit" />
+            <MenuItem fx:id="ctxtMoveFor" mnemonicParsing="false" onAction="#ctxtMoveForPressed" text="Move forward" />
+            <MenuItem fx:id="ctxtMoveBack" mnemonicParsing="false" onAction="#ctxtMoveBackPressed" text="Move backward" />
+            <MenuItem fx:id="ctxtRemove" mnemonicParsing="false" onAction="#ctxtRemovePressed" text="Remove" />
+        </items>
+      </ContextMenu>
+   </contextMenu>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</Button>

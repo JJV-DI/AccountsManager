@@ -1,0 +1,35 @@
+.primary-color {
+    -fx-background-color: #383838;
+}
+
+.secondary-color {
+    -fx-background-color: #282828;
+}
+
+.round-border {
+    -fx-background-radius: 100;
+}
+
+.text-color {
+    -fx-text-fill: #F3F3F3;
+}
+
+.white-color {
+    -fx-background-color: #F3F3F3;
+}
+
+.golden-color {
+    -fx-background-color: #EFB810;
+}
+
+.silver-color {
+    -fx-background-color: #BEBEBE;
+}
+
+.red-color {
+    -fx-background-color: #BB271A;
+}
+
+.green-color {
+    -fx-background-color: #78A75A;
+}
