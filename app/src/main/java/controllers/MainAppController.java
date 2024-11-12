@@ -19,11 +19,14 @@ public class MainAppController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         try {
             vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmProfileSelect.fxml")));
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
+            System.err.println(e.getMessage());
         }
+        
         viewStatus = ViewStatus.PROFILES;
     }
     

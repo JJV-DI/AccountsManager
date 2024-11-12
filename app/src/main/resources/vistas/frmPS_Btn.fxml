@@ -6,13 +6,11 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
 
 <Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnUserPressed" styleClass="secondary-color" stylesheets="@styles/darkMode.css" text="Example69" textAlignment="CENTER" textFill="#f3f3f3" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PS_BtnController">
    <graphic>
       <Pane>
          <children>
-            <Circle centerX="25.0" centerY="25.0" fill="#282828" radius="25.0" stroke="#282828" strokeType="INSIDE" />
             <ImageView fx:id="imgUserImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>

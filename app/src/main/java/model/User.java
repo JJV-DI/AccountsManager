@@ -4,9 +4,7 @@
  */
 package model;
 
-import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  *
@@ -17,9 +15,9 @@ public class User {
     private String userName;
     private String userPass;
     private boolean privacity;
-    private BufferedImage imgUser;
+    private Image imgUser;
 
-    public User(String email, String userName, String userPass, String privacity, BufferedImage imgUser) {
+    public User(String email, String userName, String userPass, String privacity, Image imgUser) {
         this.email = email;
         this.userName = userName;
         this.privacity = privacity.equals("Y");
@@ -43,7 +41,7 @@ public class User {
         return privacity;
     }
 
-    public BufferedImage getImgUser() {
+    public Image getImgUser() {
         return imgUser;
     }
 }

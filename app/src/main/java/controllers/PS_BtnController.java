@@ -21,7 +21,7 @@ public class PS_BtnController implements Initializable{
 
     @FXML
     private Button btnUser;
-    
+
     @FXML
     private ImageView imgUserImage;
 
@@ -30,10 +30,8 @@ public class PS_BtnController implements Initializable{
     
      @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btnUser.setText(userOwner.getUserName());
         Circle circleShape = new Circle(25, 25, 25);
         imgUserImage.setClip(circleShape);
-        setImage();
     }
     
     public void setUserOwner(User userOwner) {
@@ -43,6 +41,10 @@ public class PS_BtnController implements Initializable{
     public void setImage(){
         imgUserImage.setPreserveRatio(true);
         imgUserImage.setImage(userOwner.getImgUser());
+    }
+    
+    public void setText(){
+        btnUser.setText(userOwner.getUserName());
     }
 
     @FXML
@@ -69,4 +71,5 @@ public class PS_BtnController implements Initializable{
     void ctxtRemovePressed() {
 
     }
+
 }

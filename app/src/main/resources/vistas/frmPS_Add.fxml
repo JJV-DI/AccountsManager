@@ -5,7 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<Button id="btnNewUser" fx:id="btnNewUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnNewUserPressed" styleClass="secondary-color" stylesheets="@styles/darkMode.css" text="NEW USER" textAlignment="CENTER" textFill="#f3f3f3" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PS_AddController">
+<Button id="btnNewUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnNewUserPressed" styleClass="secondary-color" stylesheets="@styles/darkMode.css" text="NEW USER" textAlignment="CENTER" textFill="#f3f3f3" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PS_AddController">
    <graphic>
       <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
