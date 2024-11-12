@@ -10,6 +10,6 @@ import javafx.collections.ObservableList;
  *
  * @author pepej
  */
-public interface DAO {
+public interface U_DAO {
     public ObservableList<User> loadUsersFromDB();
 }

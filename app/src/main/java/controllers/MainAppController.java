@@ -53,13 +53,11 @@ public class MainAppController implements Initializable{
             viewStatus = ViewStatus.SOCIAL;
             /*CAMBIAR COLOR FONDO -> GRIS CLARO*/
             vbBody.getChildren().clear();
-            /*
             try {
-                vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmProfileSelect.fxml")));
+                vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmSocialNetworks.fxml")));
             } catch (IOException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
             }
-            */
             System.out.println("Social selected");
         }
     }
