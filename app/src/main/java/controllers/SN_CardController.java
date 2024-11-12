@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,8 +32,9 @@ public class SN_CardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Circle circleShape = new Circle(25, 25, 25);
+        Circle circleShape = new Circle(22.5,22.5,22.5);
         imgSocialNetwork.setClip(circleShape);
+        
     }
     
     public void setSocialNetworkOwner(SocialNetwork socialNetwork) {

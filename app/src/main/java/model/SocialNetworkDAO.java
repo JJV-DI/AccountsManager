@@ -19,7 +19,7 @@ public class SocialNetworkDAO implements SN_DAO {
             try {
                 ResultSet result = connection.createStatement().executeQuery("SELECT * FROM red_social");
                 while (result.next()) {                
-                    socialNetworks.add(new SocialNetwork(result.getInt("idRed"), result.getString("nombreRed"), Tools.loadImgFromX64(result.getString("iconoRed"))));
+                    socialNetworks.add(new SocialNetwork(result.getInt("idRed"), result.getString("nombreRed"), Tools.clipImageToSquare(Tools.loadImgFromX64(result.getString("iconoRed")))));
                 }
             } catch (SQLException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " requesting data from data base");

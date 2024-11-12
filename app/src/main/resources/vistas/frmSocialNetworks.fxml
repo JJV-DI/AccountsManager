@@ -55,7 +55,7 @@
             <Line endX="225.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
          </children>
       </VBox>
-      <ScrollPane maxHeight="710.0" styleClass="primary-color" VBox.vgrow="ALWAYS">
+      <ScrollPane maxHeight="680.0" styleClass="primary-color" VBox.vgrow="ALWAYS">
          <content>
             <VBox fx:id="vBoxScrollBody" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="460.0" spacing="10.0" styleClass="primary-color" />
          </content>
