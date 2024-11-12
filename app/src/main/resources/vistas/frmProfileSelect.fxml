@@ -11,11 +11,6 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" spacing="15.0" styleClass="primary-color" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileSelectController">
    <children>
-      <VBox alignment="BOTTOM_CENTER">
-         <padding>
-            <Insets top="25.0" />
-         </padding>
-      </VBox>
       <Label styleClass="text-color" text="Choose a user">
          <font>
             <Font name="Roboto Condensed Regular" size="32.0" />
@@ -33,12 +28,13 @@
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="-Infinity" prefHeight="75.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </GridPane>
    </children>
+   <padding>
+      <Insets bottom="25.0" top="25.0" />
+   </padding>
 </VBox>
