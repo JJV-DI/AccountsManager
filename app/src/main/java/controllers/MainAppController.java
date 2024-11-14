@@ -3,7 +3,6 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,15 +18,7 @@ public class MainAppController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        try {
-            vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmProfileSelect.fxml")));
-        } catch (IOException e) {
-            System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
-            System.err.println(e.getMessage());
-        }
-        
-        viewStatus = ViewStatus.PROFILES;
+        profilesPressed();
     }
     
     @FXML
@@ -38,7 +29,11 @@ public class MainAppController implements Initializable{
             /*CAMBIAR COLOR FONDO -> GRIS CLARO*/
             vbBody.getChildren().clear();
             try {
-                vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmProfileSelect.fxml")));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmProfileSelect.fxml"));
+                vbBody.getChildren().add(fxmlLoader.load());
+                ProfileSelectController profileSelectController = fxmlLoader.getController();
+                profileSelectController.setVboxBody(vbBody);
+                profileSelectController.showUsers();
             } catch (IOException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
             }
@@ -69,13 +64,11 @@ public class MainAppController implements Initializable{
             viewStatus = ViewStatus.SETTINGS;
             /*CAMBIAR COLOR FONDO -> GRIS CLARO*/
             vbBody.getChildren().clear();
-            /*
             try {
-                vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmProfileSelect.fxml")));
+                vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmSettings.fxml")));
             } catch (IOException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
             }
-            */
             System.out.println("Settings selected");
         }
     }

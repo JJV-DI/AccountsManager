@@ -13,7 +13,7 @@
    <children>
       <Label styleClass="text-color" text="Choose a user">
          <font>
-            <Font name="Roboto Condensed Regular" size="32.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

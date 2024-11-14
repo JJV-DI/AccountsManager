@@ -16,10 +16,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gridPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileCreatorController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileCreatorController">
   <columnConstraints>
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -28,18 +27,21 @@
       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="1.0" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="145.0" minHeight="-Infinity" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="1.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="525.0">
          <children>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 14;" styleClass="secondary-color">
                <children>
-                  <Circle fx:id="cirUserImage" fill="#282828" radius="40.0" stroke="#282828" strokeType="INSIDE">
+                  <ImageView fx:id="imgUserImage" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
-                  </Circle>
+                     <image>
+                        <Image url="@media/user/userDefaultIcon_darkMode.png" />
+                     </image>
+                  </ImageView>
                   <VBox alignment="CENTER_LEFT" prefWidth="25.0" spacing="10.0">
                      <children>
                         <Button fx:id="btnEditImage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnEditImagePressed" prefHeight="30.0" prefWidth="30.0" styleClass="primary-color">
@@ -89,27 +91,29 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtNick" promptText="User name *" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="txtNick" promptText="User name" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Roboto Condensed Regular" size="14.0" />
+                        <Font size="14.0" />
                      </font>
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="text-color" />
-                     </styleClass></TextField>
+                     </styleClass>
+                  </TextField>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                      <image>
                         <Image url="@media/user/userDefaultIcon_darkMode.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txtEmail" promptText="Email / Reference" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="txtEmail" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Roboto Condensed Regular" size="14.0" />
+                        <Font size="14.0" />
                      </font>
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="text-color" />
-                     </styleClass></TextField>
+                     </styleClass>
+                  </TextField>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                      <image>
                         <Image url="@media/icon/email_darkMode.png" />
@@ -150,7 +154,7 @@
                   </Label>
                   <Label alignment="TOP_LEFT" text="PRIVACITY STATUS" textFill="#f3f3f3">
                      <font>
-                        <Font name="Roboto Condensed Regular" size="14.0" />
+                        <Font size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -175,7 +179,7 @@
                   </Button>
                   <Label fx:id="lblPrivStatus" text="PUBLIC" textFill="#f3f3f3">
                      <font>
-                        <Font name="Roboto Condensed Regular" size="14.0" />
+                        <Font size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -197,7 +201,8 @@
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="text-color" />
-                     </styleClass></TextField>
+                     </styleClass>
+                  </TextField>
                   <Button fx:id="btnTogglePass" alignment="CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnTogglePassPressed" prefHeight="25.0" prefWidth="25.0" textAlignment="CENTER">
                      <graphic>
                         <ImageView fx:id="imgPassVisEye" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -219,18 +224,14 @@
                   <Insets />
                </GridPane.margin>
             </HBox>
-            <HBox fx:id="hboxPassWarn" alignment="CENTER_LEFT" spacing="5.0" visible="false" GridPane.columnIndex="1">
+            <HBox fx:id="hboxPassWarn" alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1">
                <children>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@media/icon/warning.png" />
                      </image>
                   </ImageView>
-                  <Label text="The password is not editable because it is not visible." textFill="#eac452">
-                     <font>
-                        <Font name="Roboto Condensed Regular" size="12.0" />
-                     </font>
-                  </Label>
+                  <Label text="The password is not editable" textFill="#eac452" />
                </children>
             </HBox>
          </children>
@@ -249,31 +250,50 @@
       </Pane>
       <VBox GridPane.rowIndex="4">
          <children>
-            <Label text="ACCOUNTS" textFill="#f3f3f3">
-               <font>
-                  <Font name="Roboto Condensed Black" size="14.0" />
-               </font>
-               <padding>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label text="ACCOUNTS:" textFill="#f3f3f3">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAccountsCount" layoutX="10.0" layoutY="10.0" text="0" textFill="#f3f3f3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAddAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddAccountPressed" prefHeight="20.0" prefWidth="20.0" styleClass="primary-color">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@media/icon/add_selected.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <VBox.margin>
                   <Insets bottom="10.0" />
-               </padding>
-            </Label>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="primary-color" vmax="100.0">
+               </VBox.margin>
+            </HBox>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="378.0" styleClass="primary-color" vmax="100.0">
                <content>
                   <FlowPane fx:id="flowPaneAccounts" columnHalignment="CENTER" hgap="6.0" styleClass="primary-color" vgap="6.0">
                      <children>
-                        <Label fx:id="lblNoAccAdded" text="No accounts added" textFill="#f3f3f3">
+                        <Label text="No accounts added" textFill="#f3f3f3">
                            <font>
-                              <Font name="Roboto Condensed Light" size="14.0" />
+                              <Font size="14.0" />
                            </font>
                         </Label>
-                     </children></FlowPane>
+                     </children>
+                  </FlowPane>
                </content>
             </ScrollPane>
-            <FlowPane alignment="BOTTOM_RIGHT" hgap="10.0" rowValignment="TOP">
+            <HBox alignment="CENTER_RIGHT" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" text="REMOVE" textFill="#f3f3f3">
                      <font>
-                        <Font name="Roboto Condensed Medium" size="14.0" />
+                        <Font size="14.0" />
                      </font>
                      <styleClass>
                         <String fx:value="red-color" />
@@ -288,7 +308,7 @@
                   </Button>
                   <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelPressed" text="CANCEL" textFill="#f3f3f3">
                      <font>
-                        <Font name="Roboto Condensed Medium" size="14.0" />
+                        <Font size="14.0" />
                      </font>
                      <styleClass>
                         <String fx:value="secondary-color" />
@@ -303,7 +323,7 @@
                   </Button>
                   <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSavePressed" text="SAVE" textFill="#f3f3f3">
                      <font>
-                        <Font name="Roboto Condensed Medium" size="14.0" />
+                        <Font size="14.0" />
                      </font>
                      <styleClass>
                         <String fx:value="green-color" />
@@ -316,11 +336,23 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdatePressed" text="UPDATE" textFill="#f3f3f3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <styleClass>
+                        <String fx:value="round-border" />
+                        <String fx:value="blue-color" />
+                     </styleClass>
+                  </Button>
                </children>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-            </FlowPane>
+            </HBox>
          </children>
          <GridPane.margin>
             <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />

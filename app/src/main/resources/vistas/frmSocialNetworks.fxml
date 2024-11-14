@@ -9,21 +9,23 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_CENTER" maxHeight="700.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" spacing="15.0" styleClass="primary-color" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SocialNetworkController">
    <children>
-      <VBox alignment="CENTER" spacing="15.0">
+      <VBox alignment="CENTER_LEFT" spacing="15.0">
          <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0">
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label fx:id="txtSeachSocialNetwork" styleClass="text-color" text="Social Networks">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+                  <Pane HBox.hgrow="ALWAYS" />
                   <HBox alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-radius: 100;" styleClass="secondary-color">
                      <children>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -52,19 +54,22 @@
                   </Button>
                </children>
             </HBox>
-            <Line endX="225.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
+            <Line endX="225.0" fill="#f3f3f3" startX="-225.0" stroke="#f3f3f3" />
          </children>
+         <VBox.margin>
+            <Insets left="25.0" right="25.0" />
+         </VBox.margin>
       </VBox>
       <ScrollPane maxHeight="680.0" styleClass="primary-color" VBox.vgrow="ALWAYS">
          <content>
             <VBox fx:id="vBoxScrollBody" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="460.0" spacing="10.0" styleClass="primary-color" />
          </content>
          <VBox.margin>
-            <Insets left="10.0" />
+            <Insets left="25.0" />
          </VBox.margin>
       </ScrollPane>
    </children>
    <padding>
-      <Insets bottom="25.0" left="15.0" top="15.0" />
+      <Insets bottom="25.0" top="15.0" />
    </padding>
 </VBox>

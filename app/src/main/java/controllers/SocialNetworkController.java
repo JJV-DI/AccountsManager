@@ -25,13 +25,12 @@ public class SocialNetworkController implements Initializable {
 
     @FXML
     void addSocialNetworkPressed() {
-
+        
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         socialNetworks = new SocialNetworkDAO().loadSocialNetworks();
-        
         for (SocialNetwork socialNetwork : socialNetworks) {
             try {
                 FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmSN_Card.fxml"));
@@ -43,8 +42,6 @@ public class SocialNetworkController implements Initializable {
             } catch (IOException e) {
                 System.err.println("Error in " + this.getClass().toString() + " failed chargin social networks cards");
             }
-            
         }
     }
-
 }
