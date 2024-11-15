@@ -4,29 +4,31 @@
  */
 package model;
 
+import javafx.scene.image.Image;
+
 /**
  *
  * @author pepea
  */
 public class Account {
     private String email;
-    private int idRed;
     private String nombreCuenta;
     private String passCuenta;
+    private int idRed;
+    private String nombreRed;
+    private Image iconoRed;
 
-    public Account(String email, int idRed, String nombreCuenta, String passCuenta) {
+    public Account(String email, String nombreCuenta, String passCuenta, int idRed, String nombreRed, Image iconoRed) {
         this.email = email;
-        this.idRed = idRed;
         this.nombreCuenta = nombreCuenta;
         this.passCuenta = passCuenta;
+        this.idRed = idRed;
+        this.nombreRed = nombreRed;
+        this.iconoRed = iconoRed;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    public int getIdRed() {
-        return idRed;
     }
 
     public String getNombreCuenta() {
@@ -36,6 +38,18 @@ public class Account {
     public String getPassCuenta() {
         return passCuenta;
     }
-    
+
+    public int getIdRed() {
+        return idRed;
+    }
+
+    public String getNombreRed() {
+        return nombreRed;
+    }
+
+    public Image getIconoRed() {
+        return iconoRed;
+    }
+
     
 }

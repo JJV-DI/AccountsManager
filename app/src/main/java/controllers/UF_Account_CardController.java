@@ -7,11 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import model.Account;
 
-public class PC_Account_CardController implements Initializable{
+public class UF_Account_CardController implements Initializable{
 
     private Account accountOwner;
     
@@ -19,35 +18,38 @@ public class PC_Account_CardController implements Initializable{
     private Button btnRemoveAccount;
 
     @FXML
-    private HBox hbAccountContainer;
+    private ImageView imgSN;
 
     @FXML
-    private Label lblAcc;
-    
+    private Label lblNick;
+
     @FXML
-    private ImageView imgRed;
+    private Label lblPass;
+
+    @FXML
+    private Label lblSN;
 
     @FXML
     void btnRemoveAccountPressed() {
         MainAppController.viewLoader.loadDeletionConfirm("account", accountOwner.getNombreCuenta() + " (" + accountOwner.getNombreRed() + ")");
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Circle clip = new Circle(10, 10, 10);
-        imgRed.setClip(clip);
+        Circle clip = new Circle(25, 25, 25);
+        imgSN.setClip(clip);
     }
     
-    public void setAccountOwner(Account accountOwner){
+    private void initData(){
+        lblNick.setText(accountOwner.getNombreCuenta());
+        lblPass.setText(accountOwner.getPassCuenta());
+        lblSN.setText(accountOwner.getNombreRed());
+        imgSN.setImage(accountOwner.getIconoRed());
+    }
+    
+    public void setAccountOwner(Account accountOwner) {
         this.accountOwner = accountOwner;
-    }
-    
-    public void setName() {
-        lblAcc.setText(accountOwner.getNombreCuenta());
-    }
-    
-    public void setImage() {
-        imgRed.setImage(accountOwner.getIconoRed());
+        initData();
     }
 
 }

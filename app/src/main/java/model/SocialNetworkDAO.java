@@ -14,13 +14,14 @@ public class SocialNetworkDAO implements SN_DAO {
     
     @Override
     public ObservableList<SocialNetwork> loadSocialNetworks() {
-         setConnection();
+        connection = new ConfigProvider().getConnection();
         if (connection != null) {
             try {
                 ResultSet result = connection.createStatement().executeQuery("SELECT * FROM red_social");
                 while (result.next()) {                
-                    socialNetworks.add(new SocialNetwork(result.getInt("idRed"), result.getString("nombreRed"), Tools.clipImageToSquare(Tools.loadImgFromX64(result.getString("iconoRed")))));
+                    socialNetworks.add(new SocialNetwork(result.getInt("idRed"), result.getString("nombreRed"), Tools.loadImgFromX64(result.getString("iconoRed"), "social_network")));
                 }
+                connection.close();
             } catch (SQLException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " requesting data from data base");
                 System.err.println(ex.getMessage());
@@ -28,16 +29,5 @@ public class SocialNetworkDAO implements SN_DAO {
             return socialNetworks;
         }
         return null;
-    }
-    
-    private void setConnection(){
-        try {
-            connection = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3306/account_manager", "root", "root");
-        } catch (SQLException ex) {
-            System.err.println("Error in " + this.getClass().toString() + " connecting to data base");
-            System.err.println(ex.getMessage());
-        }
-    }
-    
-    
+    }    
 }

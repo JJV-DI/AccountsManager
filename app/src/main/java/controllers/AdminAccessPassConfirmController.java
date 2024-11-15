@@ -3,10 +3,10 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ConfirmDelController {
+public class AdminAccessPassConfirmController {
 
     private boolean result;
     
@@ -15,49 +15,46 @@ public class ConfirmDelController {
 
     @FXML
     private Button btnClose;
+    
+    @FXML
+    private Button btnConfirm;
 
     @FXML
-    private Button btnDelete;
+    private Button btnTogglePassVis;
 
     @FXML
-    private Label lblElement;
-
-    @FXML
-    private Label lblType;
+    private TextField txtAdminPass;
 
     @FXML
     void btnCancelPressed(ActionEvent event) {
         result = false;
-        closeWindow();
+        closeWin();
     }
-
+    
     @FXML
     void btnClosePressed(ActionEvent event) {
         result = false;
-        closeWindow();
+        closeWin();
     }
 
     @FXML
-    void btnDeletePressed(ActionEvent event) {
+    void btnConfirmPressed(ActionEvent event) {
         result = true;
-        closeWindow();
+        closeWin();
+    }
+
+    @FXML
+    void btnTogglePassVisPressed(ActionEvent event) {
+        
     }
     
-    private void closeWindow() {
-        Stage stage = (Stage) this.lblType.getScene().getWindow();
+    private void closeWin() {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-    }
-    
-    public void setType(String type) {
-        lblType.setText(type);
-    }
-    
-    public void setElement(String element) {
-        lblElement.setText(element);
     }
 
     public boolean getResult() {
         return result;
     }
-    
+
 }

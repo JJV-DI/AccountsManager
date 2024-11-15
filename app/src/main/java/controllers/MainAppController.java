@@ -6,15 +6,25 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import model.ViewLoader;
+import model.ViewManager;
 import model.ViewStatus;
 
 public class MainAppController implements Initializable{
-
+    
+    public static ViewLoader viewLoader = new ViewLoader();
+    
     @FXML
     private VBox vbBody;
     
-    private ViewStatus viewStatus;
+    @FXML
+    private GridPane paneGridBody;
+    
+    
+    private ViewManager viewManager = new ViewManager();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -23,78 +33,43 @@ public class MainAppController implements Initializable{
     
     @FXML
     void profilesPressed() {
-        if (viewStatus != ViewStatus.PROFILES) {
-            untoggleAllToolbarButtons();
-            viewStatus = ViewStatus.PROFILES;
-            /*CAMBIAR COLOR FONDO -> GRIS CLARO*/
-            vbBody.getChildren().clear();
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmProfileSelect.fxml"));
-                vbBody.getChildren().add(fxmlLoader.load());
-                ProfileSelectController profileSelectController = fxmlLoader.getController();
-                profileSelectController.setVboxBody(vbBody);
-                profileSelectController.showUsers();
-            } catch (IOException ex) {
-                System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
-            }
-            System.out.println("Profiles selected");
-        }
+        loadProfiles();
     }
 
     @FXML
     void socialPressed() {
-        if (viewStatus != ViewStatus.SOCIAL) {
-            untoggleAllToolbarButtons();
-            viewStatus = ViewStatus.SOCIAL;
-            /*CAMBIAR COLOR FONDO -> GRIS CLARO*/
-            vbBody.getChildren().clear();
-            try {
-                vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmSocialNetworks.fxml")));
-            } catch (IOException ex) {
-                System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
-            }
-            System.out.println("Social selected");
-        }
+        loadSocialNetworks();
     }
 
     @FXML
     void settingsPressed() {
-        if (viewStatus != ViewStatus.SETTINGS) {
-            untoggleAllToolbarButtons();
-            viewStatus = ViewStatus.SETTINGS;
-            /*CAMBIAR COLOR FONDO -> GRIS CLARO*/
-            vbBody.getChildren().clear();
-            try {
-                vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmSettings.fxml")));
-            } catch (IOException ex) {
-                System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
-            }
-            System.out.println("Settings selected");
-        }
+        loadSettings();
     }
     
     @FXML
     void powerPressed() {
-
+        Stage stage = (Stage) vbBody.getScene().getWindow();
+        stage.close();
     }
     
-    private void untoggleAllToolbarButtons(){
-        setBtnBcColor("profile", false);
-        setBtnBcColor("social", false);
-        setBtnBcColor("settings", false);
+    private void loadProfiles() {
+        if (viewManager.getViewStatus() != ViewStatus.PROFILES) {
+            viewManager.setStatus(ViewStatus.PROFILES);
+            viewLoader.loadProfileSelect(vbBody, viewManager);
+        }
     }
     
-    private void setBtnBcColor(String typeButton, boolean sel){
-        switch (typeButton) {
-            case "profile" -> {
-                
-            }
-            case "social" -> {
-                
-            }
-            case "settings" -> {
-                
-            }
+    private void loadSocialNetworks() {
+        if (viewManager.getViewStatus() != ViewStatus.SOCIAL) {
+            viewManager.setStatus(ViewStatus.SOCIAL);
+            viewLoader.loadSocialNetworks(vbBody, viewManager);
+        }
+    }
+    
+    private void loadSettings() {
+        if (viewManager.getViewStatus() != ViewStatus.SETTINGS) {
+            viewManager.setStatus(ViewStatus.SETTINGS);
+            viewLoader.loadSettings(vbBody);
         }
     }
 }

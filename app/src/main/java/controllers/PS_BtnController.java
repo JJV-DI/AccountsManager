@@ -1,27 +1,20 @@
 package controllers;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import model.Tools;
 import model.User;
+import model.ViewManager;
 
 public class PS_BtnController implements Initializable{
+    
+    private ViewManager viewManager;
     
     private VBox vboxBody;
     
@@ -57,42 +50,46 @@ public class PS_BtnController implements Initializable{
 
     @FXML
     void btnUserPressed() {
-        
+        if (userOwner.isPrivate()) {
+            if (MainAppController.viewLoader.loadUserPassConfirm()) MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
+        } else {
+            MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
+        }
     }
 
     @FXML
     void ctxtEditPressed() {
-        vboxBody.getChildren().clear();
-        try {
-            FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/vistas/frmProfileCreator.fxml"));
-            vboxBody.getChildren().add(fxmlLoader2.load());
-            ProfileCreatorController profileCreatorController = fxmlLoader2.getController();
-            profileCreatorController.setUserOwner(userOwner);
-            profileCreatorController.setVboxBody(vboxBody);
-            profileCreatorController.initComponents(true);
-        } catch (IOException ex) {
-            System.err.println("Error in " + this.getClass().toString() + " loading profile creator fxml file");
-            System.err.println(ex.getCause());
+        if (userOwner.isPrivate()) {
+            if (MainAppController.viewLoader.loadUserPassConfirm()) MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
+        } else {
+            MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
         }
     }
 
     @FXML
     void ctxtMoveBackPressed() {
-
+        /*Mueve el botón del usuario un puesto anterior en el grid pane*/
     }
 
     @FXML
     void ctxtMoveForPressed() {
-
+        /*Mueve el botón del usuario un puesto posterior en el grid pane*/
     }
 
     @FXML
     void ctxtRemovePressed() {
-
+        if (userOwner.isPrivate()) {
+            if (MainAppController.viewLoader.loadUserPassConfirm()) MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail());
+        } else {
+            MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail());
+        }
     }
     
     public void setVboxBody(VBox vboxBody) {
         this.vboxBody = vboxBody;
     }
 
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
 }

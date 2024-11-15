@@ -22,13 +22,16 @@ public class AccountDAO implements A_DAO {
     
     @Override
     public ObservableList<Account> loadAccountsFromDB(User user) {
-        setConnection();
+        connection = new ConfigProvider().getConnection();
         if (connection != null) {
             try {
-                ResultSet result = connection.createStatement().executeQuery("SELECT * FROM cuenta WHERE email = \"" + user.getEmail() + "\"");
+                ResultSet result = connection.createStatement().executeQuery(
+                        "SELECT c.email AS email, c.nombreCuenta AS nombreCuenta, c.passCuenta AS passCuenta, c.idRed AS idRed, rs.nombreRed AS nombreRed, rs.iconoRed AS iconoRed FROM cuenta AS c JOIN red_social AS rs USING (idRed) WHERE email = \"" + user.getEmail() + "\""
+                );
                 while (result.next()) {                
-                    accounts.add(new Account(result.getString("email"), result.getInt("idRed"), result.getString("nombreCuenta"), result.getString("passCuenta")));
+                    accounts.add(new Account(result.getString("email"), result.getString("nombreCuenta"), result.getString("passCuenta"), result.getInt("idRed"), result.getString("nombreRed"), Tools.loadImgFromX64(result.getString("iconoRed"), "account")));
                 }
+                connection.close();
             } catch (SQLException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " requesting data from data base");
                 System.err.println(ex.getMessage());
@@ -37,14 +40,4 @@ public class AccountDAO implements A_DAO {
         }
         return null;
     }
-    
-    private void setConnection(){
-        try {
-            connection = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3306/account_manager", "root", "root");
-        } catch (SQLException ex) {
-            System.err.println("Error in " + this.getClass().toString() + " connecting to data base");
-            System.err.println(ex.getMessage());
-        }
-    }
-    
 }

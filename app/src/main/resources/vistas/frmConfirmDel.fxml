@@ -11,56 +11,77 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="450.0" spacing="15.0" styleClass="primary-color" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ConfirmDelController">
+<VBox style="-fx-border-color: white;" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ConfirmDelController">
    <children>
-      <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@media/icon/warning.png" />
-         </image>
-      </ImageView>
-      <HBox alignment="CENTER">
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" styleClass="secondary-color">
          <children>
-            <Label styleClass="text-color" text="Confirm the deletion of the ">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblType" layoutX="112.0" layoutY="10.0" styleClass="text-color" text="example type">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <Label fx:id="lblElement" styleClass="text-color" text="Example element">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <HBox alignment="BOTTOM_CENTER" spacing="30.0">
-         <children>
-            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelPressed" prefHeight="35.0" prefWidth="85.0" style="-fx-background-radius: 4;" text="CANCEL">
+            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="25.0" prefWidth="45.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/icon/close_darkMode.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <styleClass>
                   <String fx:value="secondary-color" />
-                  <String fx:value="text-color" />
+                  <String fx:value="saw-border" />
                </styleClass>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnDelete" layoutX="145.0" layoutY="75.0" mnemonicParsing="false" onAction="#btnDeletePressed" prefHeight="35.0" prefWidth="85.0" style="-fx-background-radius: 4;" text="DELETE">
-               <styleClass>
-                  <String fx:value="red-color" />
-                  <String fx:value="text-color" />
-               </styleClass>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
             </Button>
          </children>
-         <padding>
-            <Insets top="35.0" />
-         </padding>
       </HBox>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="450.0" spacing="15.0" styleClass="primary-color">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@media/icon/warning.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label styleClass="text-color" text="Confirm the deletion of the ">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblType" layoutX="112.0" layoutY="10.0" styleClass="text-color" text="example type">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label fx:id="lblElement" styleClass="text-color" text="Example element">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <HBox alignment="BOTTOM_CENTER" spacing="30.0">
+               <children>
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelPressed" prefHeight="35.0" prefWidth="85.0" style="-fx-background-radius: 4;" text="CANCEL">
+                     <styleClass>
+                        <String fx:value="secondary-color" />
+                        <String fx:value="text-color" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDelete" layoutX="145.0" layoutY="75.0" mnemonicParsing="false" onAction="#btnDeletePressed" prefHeight="35.0" prefWidth="85.0" style="-fx-background-radius: 4;" text="DELETE">
+                     <styleClass>
+                        <String fx:value="red-color" />
+                        <String fx:value="text-color" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="35.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </VBox>

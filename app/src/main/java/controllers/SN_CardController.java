@@ -1,13 +1,19 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.SocialNetwork;
 
 public class SN_CardController implements Initializable {
@@ -21,13 +27,13 @@ public class SN_CardController implements Initializable {
     private Label txtSocialNetwork;
 
     @FXML
-    void editSNPressed(ActionEvent event) {
-
+    void editSNPressed() {
+        MainAppController.viewLoader.loadAdminPassConfirm();
     }
 
     @FXML
-    void removeSNPressed(ActionEvent event) {
-
+    void removeSNPressed() {
+        MainAppController.viewLoader.loadAdminPassConfirm();
     }
 
     @Override

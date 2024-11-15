@@ -10,6 +10,11 @@
 
 <HBox fx:id="hbAccountContainer" alignment="CENTER" maxWidth="438.0" spacing="4.0" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PC_Account_CardController">
    <children>
+      <ImageView fx:id="imgRed" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@media/icon/social_darkMode.png" />
+         </image>
+      </ImageView>
       <Label fx:id="lblAcc" text="ExampleAccount" textFill="#f3f3f3" />
       <Button fx:id="btnRemoveAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnRemoveAccountPressed" prefHeight="20.0" prefWidth="20.0" styleClass="secondary-color">
          <graphic>

@@ -1,13 +1,10 @@
 package controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,8 +18,12 @@ import javafx.scene.shape.Circle;
 import model.Account;
 import model.AccountDAO;
 import model.User;
+import model.ViewManager;
+import model.ViewStatus;
 
 public class ProfileCreatorController implements Initializable{
+    
+    private ViewManager viewManager;
     
     private VBox vboxBody;
     
@@ -92,7 +93,8 @@ public class ProfileCreatorController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        Circle clip = new Circle(40, 40, 40);
+        imgUserImage.setClip(clip);
     }
 
     @FXML
@@ -115,9 +117,9 @@ public class ProfileCreatorController implements Initializable{
         
     }
     
-      @FXML
+    @FXML
     void btnAddAccountPressed() {
-
+        MainAppController.viewLoader.loadAccountCreator();
     }
     
     @FXML
@@ -132,7 +134,7 @@ public class ProfileCreatorController implements Initializable{
     
     @FXML
     void btnRemovePressed() {
-        backToProfileSelect();
+        MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail());
     }
 
     @FXML
@@ -140,9 +142,7 @@ public class ProfileCreatorController implements Initializable{
         backToProfileSelect();
     }
     
-    void initComponents(boolean updating){
-        Circle clip = new Circle(40, 40, 40);
-        imgUserImage.setClip(clip);
+    public void initComponents(boolean updating){
         if (updating) {
             accounts = new AccountDAO().loadAccountsFromDB(userOwner);
             txtNick.setText(userOwner.getUserName());
@@ -155,7 +155,7 @@ public class ProfileCreatorController implements Initializable{
             } else {
                 setPublicStatus();
             }
-            loadUserAccounts();
+            loadUserAccountsCards();
             btnSave.setVisible(false);
             btnSave.setManaged(false);
         } else {
@@ -164,10 +164,6 @@ public class ProfileCreatorController implements Initializable{
             btnRemove.setManaged(false);
             btnUpdate.setManaged(false);
         }
-    }
-    
-    void setUserOwner(User userOwner){
-        this.userOwner = userOwner;
     }
     
     void setPrivateStatus(){
@@ -193,38 +189,29 @@ public class ProfileCreatorController implements Initializable{
         imgPassVisEye.setImage(new Image("/vistas/media/icon/eyeCrossed_darkMode.png"));
     }
     
-    void loadUserAccounts(){
-        flowPaneAccounts.getChildren().clear();
+    void loadUserAccountsCards(){
         flowPaneAccounts.getChildren().clear();
         for (Account account : accounts) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmPC_Account_Card.fxml"));
-                flowPaneAccounts.getChildren().add(fxmlLoader.load());
-                PC_Account_CardController pc_Account_CardController = fxmlLoader.getController();
-                pc_Account_CardController.setAccountOwner(account);
-                pc_Account_CardController.setName();
-            } catch (IOException e) {
-                System.err.println("Error in " + this.getClass().toString() + " failed chargin accounts cards");
-            }
+            MainAppController.viewLoader.loadProfileCreatorUserAccountsCards(flowPaneAccounts, account);
         }
         lblAccountsCount.setText(String.valueOf(accounts.size()));
+    }
+
+    private void backToProfileSelect() {
+        vboxBody.getChildren().clear();
+        viewManager.setStatus(ViewStatus.PROFILES);
+        MainAppController.viewLoader.backToProfileSelect(vboxBody, viewManager);
     }
     
     public void setVboxBody(VBox vboxBody) {
         this.vboxBody = vboxBody;
     }
-
-    private void backToProfileSelect() {
-        vboxBody.getChildren().clear();
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmProfileSelect.fxml"));
-            vboxBody.getChildren().add(fxmlLoader.load());
-            ProfileSelectController profileSelectController = fxmlLoader.getController();
-            profileSelectController.setVboxBody(vboxBody);
-            profileSelectController.showUsers();
-        } catch (IOException ex) {
-            System.err.println("Error in " + this.getClass().toString() + " loading fxml file");
-        }
-    }
     
+    public void setUserOwner(User userOwner){
+        this.userOwner = userOwner;
+    }
+
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
 }

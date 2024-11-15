@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox style="-fx-border-color: white;" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PrivPassConfirmController">
+   <children>
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" styleClass="secondary-color">
+         <children>
+            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="25.0" prefWidth="45.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/icon/close_darkMode.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="secondary-color" />
+                  <String fx:value="saw-border" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+      <StackPane styleClass="primary-color">
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="450.0" spacing="15.0" style="-fx-background-radius: 25;" styleClass="secondary-color">
+               <children>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/icon/lock_darkMode.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="132.0" layoutY="128.0" styleClass="text-color" text="PRIVATE USER">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="text-color" text="Please enter your password">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <TextField fx:id="txtUserPass" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="215.0" promptText="User password">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="primary-color" />
+                                    <String fx:value="text-color" />
+                                 </styleClass>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnTogglePassVis" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnTogglePassVisPressed" prefHeight="30.0" prefWidth="30.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@media/icon/eyeCrossed_darkMode.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="secondary-color" />
+                              <String fx:value="round-border" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="primary-color" />
+                        <String fx:value="round-border" />
+                     </styleClass>
+                     <padding>
+                        <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="BOTTOM_CENTER" spacing="30.0">
+                     <children>
+                        <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelPressed" prefHeight="35.0" prefWidth="85.0" style="-fx-background-radius: 4;" text="CANCEL">
+                           <styleClass>
+                              <String fx:value="primary-color" />
+                              <String fx:value="text-color" />
+                           </styleClass>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnConfirm" layoutX="145.0" layoutY="75.0" mnemonicParsing="false" onAction="#btnConfirmPressed" prefHeight="35.0" prefWidth="85.0" style="-fx-background-radius: 4;" text="CONFIRM">
+                           <styleClass>
+                              <String fx:value="primary-color" />
+                              <String fx:value="text-color" />
+                           </styleClass>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </StackPane>
+   </children>
+</VBox>

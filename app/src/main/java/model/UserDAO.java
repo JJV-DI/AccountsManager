@@ -14,13 +14,14 @@ public class UserDAO implements U_DAO{
     
     @Override
     public ObservableList<User> loadUsersFromDB() {
-        setConnection();
+        connection = new ConfigProvider().getConnection();
         if (connection != null) {
             try {
                 ResultSet result = connection.createStatement().executeQuery("SELECT * FROM usuario");
                 while (result.next()) {                
-                    users.add(new User(result.getString("email"), result.getString("nombreUsuario"), result.getString("passUsuario"), result.getString("privacidad"), Tools.loadImgFromX64(result.getString("imgUsuario"))));
+                    users.add(new User(result.getString("email"), result.getString("nombreUsuario"), result.getString("passUsuario"), result.getString("privacidad"), Tools.loadImgFromX64(result.getString("imgUsuario"), "user")));
                 }
+                connection.close();
             } catch (SQLException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " requesting data from data base");
                 System.err.println(ex.getMessage());
@@ -28,15 +29,5 @@ public class UserDAO implements U_DAO{
             return users;
         }
         return null;
-    }
-    
-    private void setConnection(){
-        try {
-            connection = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3306/account_manager", "root", "root");
-        } catch (SQLException ex) {
-            System.err.println("Error in " + this.getClass().toString() + " connecting to data base");
-            System.err.println(ex.getMessage());
-        }
-    }
-    
+    }    
 }
