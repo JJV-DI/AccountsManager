@@ -98,6 +98,10 @@ public class ViewLoader {
         }
     }
     
+    public void loadProfileCreator(VBox vboxBody, ViewManager viewManager) {
+        loadProfileCreator(vboxBody, viewManager, null, false);
+    }
+    
     public void loadProfileCreatorUserAccountsCards(FlowPane flowPaneAccounts, Account account) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmPC_Account_Card.fxml"));
@@ -122,10 +126,6 @@ public class ViewLoader {
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading profile select fxml file");
         }
-    }
-    
-    public void loadProfileCreator(VBox vboxBody, ViewManager viewManager) {
-        loadProfileCreator(vboxBody, viewManager, null, false);
     }
     
     /*USER INFO VIEWS*/

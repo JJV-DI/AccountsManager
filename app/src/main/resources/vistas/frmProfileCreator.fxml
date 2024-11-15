@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -55,6 +56,9 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <tooltip>
+                              <Tooltip text="Select an image" />
+                           </tooltip>
                         </Button>
                         <Button fx:id="btnRemoveImage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnRemoveImagePressed" prefHeight="30.0" prefWidth="30.0" styleClass="primary-color">
                            <graphic>
@@ -67,6 +71,9 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <tooltip>
+                              <Tooltip text="Remove current image" />
+                           </tooltip>
                         </Button>
                      </children>
                   </VBox>
@@ -176,6 +183,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <tooltip>
+                        <Tooltip text="Toggle user privacity" />
+                     </tooltip>
                   </Button>
                   <Label fx:id="lblPrivStatus" text="PUBLIC" textFill="#f3f3f3">
                      <font>
@@ -218,6 +228,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <tooltip>
+                        <Tooltip text="Toggle password visibility" />
+                     </tooltip>
                   </Button>
                </children>
                <GridPane.margin>
@@ -262,7 +275,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAddAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddAccountPressed" prefHeight="20.0" prefWidth="20.0" styleClass="primary-color">
+                  <Button fx:id="btnAddAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddAccountPressed" prefHeight="20.0" prefWidth="20.0">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -270,6 +283,16 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <styleClass>
+                        <String fx:value="secondary-color" />
+                        <String fx:value="round-border" />
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <tooltip>
+                        <Tooltip text="Create a new account" />
+                     </tooltip>
                   </Button>
                </children>
                <VBox.margin>
@@ -305,6 +328,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <tooltip>
+                        <Tooltip text="Remove user" />
+                     </tooltip>
                   </Button>
                   <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelPressed" text="CANCEL" textFill="#f3f3f3">
                      <font>
@@ -320,6 +346,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <tooltip>
+                        <Tooltip text="Cancel action" />
+                     </tooltip>
                   </Button>
                   <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSavePressed" text="SAVE" textFill="#f3f3f3">
                      <font>
@@ -335,6 +364,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <tooltip>
+                        <Tooltip text="Save new user" />
+                     </tooltip>
                   </Button>
                   <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdatePressed" text="UPDATE" textFill="#f3f3f3">
                      <font>
@@ -350,6 +382,9 @@
                         <String fx:value="round-border" />
                         <String fx:value="blue-color" />
                      </styleClass>
+                     <tooltip>
+                        <Tooltip text="Update user with the changes" />
+                     </tooltip>
                   </Button>
                </children>
             </HBox>

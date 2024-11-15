@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -30,6 +31,12 @@
                   <String fx:value="secondary-color" />
                   <String fx:value="saw-border" />
                </styleClass>
+               <tooltip>
+                  <Tooltip text="Close window" />
+               </tooltip>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </HBox>
@@ -100,6 +107,12 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Toggle password visibility" />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                            </children>
                            <HBox.margin>
@@ -127,6 +140,9 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <tooltip>
+                              <Tooltip text="Cancel account creation" />
+                           </tooltip>
                         </Button>
                         <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSavePressed" text="SAVE" textFill="#f3f3f3">
                            <font>
@@ -142,6 +158,9 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <tooltip>
+                              <Tooltip text="Save account" />
+                           </tooltip>
                         </Button>
                      </children>
                      <padding>
@@ -175,6 +194,12 @@
                         <String fx:value="primary-color" />
                         <String fx:value="round-border" />
                      </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <tooltip>
+                        <Tooltip text="Select a social network" />
+                     </tooltip>
                   </Button>
                   <Label fx:id="lblSocialNetworkSelected" layoutX="35.0" layoutY="48.0" styleClass="text-color" text="Unselected">
                      <font>
