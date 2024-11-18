@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -11,7 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import model.User;
 import model.UserDAO;
-import model.ViewLoader;
 import model.ViewManager;
 
 public class ProfileSelectController implements Initializable{

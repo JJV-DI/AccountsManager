@@ -1,12 +1,10 @@
 package controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,7 +16,6 @@ import model.Account;
 import model.AccountDAO;
 import model.User;
 import model.ViewManager;
-import model.ViewStatus;
 
 public class UserInfoController implements Initializable{
     
