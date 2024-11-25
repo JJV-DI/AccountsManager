@@ -16,6 +16,9 @@ public class UF_Account_CardController implements Initializable{
     
     @FXML
     private Button btnRemoveAccount;
+    
+    @FXML
+    private Button btnUpdateAccount;
 
     @FXML
     private ImageView imgSN;
@@ -32,6 +35,11 @@ public class UF_Account_CardController implements Initializable{
     @FXML
     void btnRemoveAccountPressed() {
         MainAppController.viewLoader.loadDeletionConfirm("account", accountOwner.getNombreCuenta() + " (" + accountOwner.getNombreRed() + ")");
+    }
+    
+    @FXML
+    void btnUpdateAccountPressed() {
+        MainAppController.viewLoader.loadAccountCreator(accountOwner);
     }
     
     @Override

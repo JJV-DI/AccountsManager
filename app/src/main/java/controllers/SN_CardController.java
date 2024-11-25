@@ -21,7 +21,9 @@ public class SN_CardController implements Initializable {
 
     @FXML
     void editSNPressed() {
-        MainAppController.viewLoader.loadAdminPassConfirm();
+        if (MainAppController.viewLoader.loadAdminPassConfirm()) {
+            MainAppController.viewLoader.loadSocialNetworkCreator(socialNetworkOwner);
+        }
     }
 
     @FXML

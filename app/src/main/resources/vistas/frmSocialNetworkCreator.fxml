@@ -49,11 +49,20 @@
                               <Image url="@media/icon/world_darkMode.png" />
                            </image>
                         </ImageView>
-                        <Label styleClass="text-color" text="New Social Network">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" spacing="6.0">
+                           <children>
+                              <Label fx:id="lblNewUpdate" styleClass="text-color" text="New">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" styleClass="text-color" text="Social Network">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                   <HBox alignment="CENTER" spacing="10.0">
@@ -110,6 +119,24 @@
                            </cursor>
                            <tooltip>
                               <Tooltip text="Save social network" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="btnUpdate" layoutX="403.0" layoutY="49.0" mnemonicParsing="false" onAction="#btnUpdatePressed" text="UPDATE" textFill="#f3f3f3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="blue-color" />
+                              <String fx:value="round-border" />
+                           </styleClass>
+                           <padding>
+                              <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <tooltip>
+                              <Tooltip text="Update social network" />
                            </tooltip>
                         </Button>
                      </children>

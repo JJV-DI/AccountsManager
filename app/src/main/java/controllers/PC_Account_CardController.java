@@ -28,6 +28,11 @@ public class PC_Account_CardController implements Initializable{
     private ImageView imgRed;
 
     @FXML
+    void btnEditAccountPressed() {
+        MainAppController.viewLoader.loadAccountCreator(accountOwner);
+    }
+    
+    @FXML
     void btnRemoveAccountPressed() {
         MainAppController.viewLoader.loadDeletionConfirm("account", accountOwner.getNombreCuenta() + " (" + accountOwner.getNombreRed() + ")");
     }

@@ -26,25 +26,25 @@ public class AdminAccessPassConfirmController {
     private TextField txtAdminPass;
 
     @FXML
-    void btnCancelPressed(ActionEvent event) {
+    void btnCancelPressed() {
         result = false;
         closeWin();
     }
     
     @FXML
-    void btnClosePressed(ActionEvent event) {
+    void btnClosePressed() {
         result = false;
         closeWin();
     }
 
     @FXML
-    void btnConfirmPressed(ActionEvent event) {
+    void btnConfirmPressed() {
         result = true;
         closeWin();
     }
 
     @FXML
-    void btnTogglePassVisPressed(ActionEvent event) {
+    void btnTogglePassVisPressed() {
         
     }
     

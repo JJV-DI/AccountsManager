@@ -1,6 +1,7 @@
 package model;
 
 import controllers.AC_Tab_BtnController;
+import controllers.AccountCreatorController;
 import controllers.AdminAccessPassConfirmController;
 import controllers.ConfirmDelController;
 import controllers.PC_Account_CardController;
@@ -10,6 +11,7 @@ import controllers.PrivPassConfirmController;
 import controllers.ProfileCreatorController;
 import controllers.ProfileSelectController;
 import controllers.SN_CardController;
+import controllers.SocialNetworkCreatorController;
 import controllers.UF_Account_CardController;
 import controllers.UserInfoController;
 import java.io.IOException;
@@ -160,12 +162,14 @@ public class ViewLoader {
         }
     }
     
-    /*ACCOUNT CREATOR VIEWS*/
-    public void loadAccountCreator() {
+    /*ACCOUNT CREATOR VIEWS*/    
+    public void loadAccountCreator(Account accountOwner) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmAccountCreator.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(fxmlLoader.load()));
+            AccountCreatorController acController = fxmlLoader.getController();
+            acController.setAccountOwner(accountOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
@@ -174,6 +178,10 @@ public class ViewLoader {
             System.err.println("Error in " + this.getClass().toString() + " loading account creator fxml file");
             System.err.println(e.getCause());
         }
+    }
+    
+    public void loadAccountCreator() {
+        loadAccountCreator(null);
     }
     
     public void loadAccountCreatorSocialNetworks(VBox vboxScrollBody, SocialNetwork socialNetwork) {
@@ -212,11 +220,13 @@ public class ViewLoader {
         }
     }
     
-    public void loadSocialNetworkCreator(){
+    public void loadSocialNetworkCreator(SocialNetwork socialNetworkOwner){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmSocialNetworkCreator.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(fxmlLoader.load()));
+            SocialNetworkCreatorController snCreatorController = fxmlLoader.getController();
+            snCreatorController.setSocialNetworkOwner(socialNetworkOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
@@ -225,6 +235,10 @@ public class ViewLoader {
             System.err.println("Error in " + this.getClass().toString() + " loading social network creator fxml file");
             System.err.println(ex.getCause());
         }
+    }
+    
+    public void loadSocialNetworkCreator(){
+        loadSocialNetworkCreator(null);
     }
     
     /*SETTINGS*/
