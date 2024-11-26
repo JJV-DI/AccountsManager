@@ -3,6 +3,8 @@ package model;
 import controllers.AC_Tab_BtnController;
 import controllers.AccountCreatorController;
 import controllers.AdminAccessPassConfirmController;
+import controllers.AdminNewPassConfirmController;
+import controllers.AdminUpdatePassConfirmController;
 import controllers.ConfirmDelController;
 import controllers.PC_Account_CardController;
 import controllers.PS_AddController;
@@ -317,22 +319,25 @@ public class ViewLoader {
         }
     }
     
-    public void loadAdminNewPassConfirm() {
+    public boolean loadAdminNewPassConfirm() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmAdminNewPassConfirm.fxml"));
             Stage stage = new Stage();
-            stage.setScene(new Scene(fxmlLoader.load()));            
+            stage.setScene(new Scene(fxmlLoader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
             stage.showAndWait();
+            AdminNewPassConfirmController adminNewPassController = fxmlLoader.getController();
+            return adminNewPassController.getResult();
         } catch (IOException ex) {
             System.err.println("Error in " + this.getClass().toString() + " loading admin new pass fxml file");
             System.err.println(ex.getCause());
+            return false;
         }
     }
     
-    public void loadAdminUpdatePassConfirm() {
+    public boolean loadAdminUpdatePassConfirm() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmAdminUpdatePassConfirm.fxml"));
             Stage stage = new Stage();
@@ -341,9 +346,12 @@ public class ViewLoader {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
             stage.showAndWait();
+            AdminUpdatePassConfirmController adminUpdatePassController = fxmlLoader.getController();
+            return adminUpdatePassController.getResult();
         } catch (IOException ex) {
             System.err.println("Error in " + this.getClass().toString() + " loading admin update pass fxml file");
             System.err.println(ex.getCause());
+            return false;
         }
     }
 }

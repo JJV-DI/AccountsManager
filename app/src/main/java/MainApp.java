@@ -21,8 +21,7 @@ public class MainApp extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         /*CREACIÓN DEL ARCHIVO config.properties USO EXCLUSIVO DE DEBUG*/
-        //ConfigProvider configProvider = new ConfigProvider();
-        //configProvider.createConfigProperties("root", "root");
+        //new ConfigProvider().createConfigProperties("root", "root", "");
         
         
         Parent root = FXMLLoader.load(getClass().getResource("/vistas/frmMainApp.fxml"));

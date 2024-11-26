@@ -12,7 +12,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -34,7 +33,7 @@
       </Line>
       <VBox spacing="10.0">
          <children>
-            <HBox spacing="5.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,7 +66,7 @@
       <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
       <VBox spacing="10.0">
          <children>
-            <HBox spacing="5.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -123,7 +122,7 @@
       <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
       <VBox spacing="10.0">
          <children>
-            <HBox spacing="5.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -135,23 +134,41 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@media/icon/aboutUs_darkMode.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip maxWidth="200.0" text="The administrator password is used to protect important elements such as social networks or the data directory. " wrapText="true" />
+                     </tooltip>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="5.0">
                <children>
                   <Label styleClass="text-color" text="Status" />
-                  <StackPane prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 5;" styleClass="secondary-color">
-                     <children>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 5;" styleClass="secondary-color">
+                     <graphic>
                         <ImageView fx:id="imgAdminStatus" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@media/icon/keyCrossed_darkMode.png" />
                            </image>
-                           <StackPane.margin>
-                              <Insets bottom="1.0" />
-                           </StackPane.margin>
                         </ImageView>
-                     </children>
-                  </StackPane>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip fx:id="toolTipAdminStatus" text="Unprotected" />
+                     </tooltip>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
@@ -162,7 +179,7 @@
                   <Label styleClass="text-color" text="Admin password" />
                   <HBox alignment="CENTER_LEFT" prefWidth="295.0" styleClass="secondary-color">
                      <children>
-                        <Label fx:id="lblAdminPass" styleClass="text-color" text="No admin exists yet">
+                        <Label fx:id="lblAdminPass" maxWidth="240.0" styleClass="text-color" text="No administrator set">
                            <font>
                               <Font name="System Italic" size="10.0" />
                            </font>
@@ -171,7 +188,7 @@
                         <Line endY="-10.0" startY="14.0" stroke="#f3f3f3" />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setAdminPassPressed" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" styleClass="text-color">
                            <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgAddRefreshPass" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@media/icon/addNotRounded_darkMode.png" />
                                  </image>
@@ -189,6 +206,25 @@
                         <Insets left="10.0" />
                      </padding>
                   </HBox>
+                  <Button fx:id="btnRemoveAdminPass" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnRemoveAdminPassPressed" prefHeight="25.0" prefWidth="25.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@media/icon/removeLine.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="round-border" />
+                        <String fx:value="secondary-color" />
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <tooltip>
+                        <Tooltip text="Delete admin pass" />
+                     </tooltip>
+                  </Button>
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
@@ -199,7 +235,7 @@
       <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
       <VBox spacing="10.0">
          <children>
-            <HBox spacing="5.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -259,7 +295,7 @@
       <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
       <VBox spacing="10.0">
          <children>
-            <HBox spacing="5.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>

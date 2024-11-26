@@ -3,10 +3,17 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import model.ConfigProvider;
+import model.FieldValidator;
+import model.FloatingPopup;
 
 public class AdminNewPassConfirmController {
+    
+    private boolean result;
 
     @FXML
     private Button btnCancel;
@@ -24,22 +31,29 @@ public class AdminNewPassConfirmController {
     private TextField txtAdminPass;
 
     @FXML
-    void btnCancelPressed(ActionEvent event) {
+    void btnCancelPressed() {
+        result = false;
         closeWin();
     }
     
     @FXML
-    void btnClosePressed(ActionEvent event) {
+    void btnClosePressed() {
+        result = false;
         closeWin();
     }
 
     @FXML
-    void btnConfirmPressed(ActionEvent event) {
-        closeWin();
+    void btnConfirmPressed() {
+        if (FieldValidator.emptinessValidate(txtAdminPass.getText())) {
+            new ConfigProvider().saveAdminPass(txtAdminPass.getText());
+            result = true;
+            closeWin();
+        } 
+        else FloatingPopup.showPopup(txtAdminPass, "Password must not be empty");
     }
 
     @FXML
-    void btnTogglePassVisPressed(ActionEvent event) {
+    void btnTogglePassVisPressed() {
 
     }
     
@@ -48,4 +62,7 @@ public class AdminNewPassConfirmController {
         stage.close();
     }
 
+    public boolean getResult() {
+        return result;
+    }
 }

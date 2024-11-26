@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.ConfigProvider;
+import model.FloatingPopup;
 
 public class AdminAccessPassConfirmController {
 
@@ -39,8 +41,12 @@ public class AdminAccessPassConfirmController {
 
     @FXML
     void btnConfirmPressed() {
-        result = true;
-        closeWin();
+        if (new ConfigProvider().loadAdminPass().equals(txtAdminPass.getText())) {
+            result = true;
+            closeWin();
+        } else {
+            FloatingPopup.showPopup(txtAdminPass, "Password does not match\n with current password");
+        }
     }
 
     @FXML
