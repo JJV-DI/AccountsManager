@@ -29,17 +29,19 @@ public class ProfileSelectController implements Initializable{
     }
     
     public void showUsers(){
-        int index = 0;
-        int rows = ((users.size() + 1) + 4 - 1) / 4; 
-        boolean addSetted = false;
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < 4; col++) {
-                if (index < users.size()) {
-                    MainAppController.viewLoader.loadUserButton(gridPane, col, row, users, index, vboxBody, viewManager);
-                    index++;   
-                } else if (!addSetted) {
-                    MainAppController.viewLoader.loadAddButton(gridPane, col, row, vboxBody, viewManager);
-                    addSetted = true;
+        if (users != null) {
+            int index = 0;
+            int rows = ((users.size() + 1) + 4 - 1) / 4; 
+            boolean addSetted = false;
+            for (int row = 0; row < rows; row++) {
+                for (int col = 0; col < 4; col++) {
+                    if (index < users.size()) {
+                        MainAppController.viewLoader.loadUserButton(gridPane, col, row, users, index, vboxBody, viewManager);
+                        index++;   
+                    } else if (!addSetted) {
+                        MainAppController.viewLoader.loadAddButton(gridPane, col, row, vboxBody, viewManager);
+                        addSetted = true;
+                    }
                 }
             }
         }
