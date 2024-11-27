@@ -41,3 +41,7 @@
 .blue-color {
     -fx-background-color: #4B77D1;
 }
+
+.fieldError-color {
+    -fx-background-color: #D16D6A;
+}

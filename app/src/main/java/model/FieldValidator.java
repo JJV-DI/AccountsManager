@@ -16,7 +16,7 @@ public class FieldValidator {
     }
     
     public static boolean passwordValidation(String password) {
-        return Pattern.matches("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]*$", password);
+        return Pattern.matches("^[A-Za-z0-9@$!%*?&._-]*$", password);
     }
     
     public static boolean repeatedUserValidation(String email) {

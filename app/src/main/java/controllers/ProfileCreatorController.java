@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,11 +14,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import model.Account;
 import model.AccountDAO;
@@ -24,10 +28,15 @@ import model.FieldValidator;
 import model.FloatingPopup;
 import model.Tools;
 import model.User;
+import model.UserDAO;
 import model.ViewManager;
 import model.ViewStatus;
 
 public class ProfileCreatorController implements Initializable{
+    
+    private EventHandler<MouseEvent> nickEventHandler = null;
+    private EventHandler<MouseEvent> emailEventHandler = null;
+    private EventHandler<MouseEvent> passEventHandler = null;
     
     private ViewManager viewManager;
     
@@ -103,6 +112,21 @@ public class ProfileCreatorController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         Circle clip = new Circle(40, 40, 40);
         imgUserImage.setClip(clip);
+        txtNick.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                validateUserName();
+            }
+        });
+        txtEmail.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                validateEmail();
+            }
+        });
+        txtPass.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                validatePassword();
+            }
+        });
     }
 
     @FXML
@@ -172,7 +196,25 @@ public class ProfileCreatorController implements Initializable{
     @FXML
     void btnSavePressed() {
         //CRUD INSERT USER
-        backToProfileSelect();
+        /*
+        if (validateFields()) {
+            String privVal;
+            if (privStatus) {
+                privVal = "Y";
+            } else {
+                privVal = "N";
+            }
+            new UserDAO().insertUser(
+                    new User(
+                        txtEmail.getText(),
+                        txtNick.getText(),
+                        txtPass.getText(),
+                        privVal,
+                        imgUserAux
+                    )
+            );
+            backToProfileSelect();
+        }*/
     }
     
     public void initComponents(boolean updating){
@@ -253,11 +295,12 @@ public class ProfileCreatorController implements Initializable{
             nickMatchRegex = FieldValidator.commonNameValidation(txtNick.getText());
             nickInLength = FieldValidator.lengthValidation(30, txtNick.getText());
         } 
-        String validMessage = "";
-        if (!nickNotEmpty) validMessage += "-User name must not be empty\n";
-        if (!nickMatchRegex) validMessage += "-User name can only contain aplhanumeric characters or simple symbols (-_@.)\n";
-        if (!nickInLength) validMessage += "-User name must not be more than 30 characters\n";
-        if (!nickNotEmpty || !nickMatchRegex || !nickInLength) FloatingPopup.showPopup(txtNick, validMessage);
+        StringBuilder validMessage = new StringBuilder("");
+        if (!nickNotEmpty) validMessage.append("-User name must not be empty\n");
+        if (!nickMatchRegex) validMessage.append("-User name can only contain aplhanumeric characters or simple symbols (-_@.)\n");
+        if (!nickInLength) validMessage.append("-User name must not be more than 30 characters\n");
+        
+        toggleTextFieldInError(!nickNotEmpty || !nickMatchRegex || !nickInLength, txtNick, validMessage.toString());
         
         return nickNotEmpty && nickMatchRegex && nickInLength;
     }
@@ -272,12 +315,13 @@ public class ProfileCreatorController implements Initializable{
             emailNotRepited = !FieldValidator.repeatedUserValidation(txtEmail.getText());
             emailInLength = FieldValidator.lengthValidation(50, txtEmail.getText());
         }
-        String validMessage = "";
-        if (!emailNotEmpty) validMessage += "-Email must not be empty\n";
-        if (!emailMatchRegex) validMessage += "-Email must have an email structure\n";
-        if (!emailInLength) validMessage += "-Email must not be more than 30 characters\n";
-        if (!emailNotRepited) validMessage += "-This email already exists\n";
-        if (!emailNotEmpty || !emailMatchRegex || !emailInLength || !emailNotRepited) FloatingPopup.showPopup(txtEmail, validMessage);
+        StringBuilder validMessage = new StringBuilder("");
+        if (!emailNotEmpty) validMessage.append("-Email must not be empty\n");
+        if (!emailMatchRegex) validMessage.append("-Email must have an email structure\n");
+        if (!emailInLength) validMessage.append("-Email must not be more than 30 characters\n");
+        if (!emailNotRepited) validMessage.append("-This email already exists\n");
+        
+        toggleTextFieldInError(!emailNotEmpty || !emailMatchRegex || !emailInLength || !emailNotRepited, txtEmail, validMessage.toString());
         
         return emailNotEmpty && emailMatchRegex && emailNotRepited && emailInLength;
     }
@@ -291,15 +335,34 @@ public class ProfileCreatorController implements Initializable{
                 passMatchRegex = FieldValidator.passwordValidation(txtPass.getText());
                 passInLenght = FieldValidator.lengthValidation(30, txtPass.getText());
             }
-            String validMessage = "";
-            if (!passNotEmpty) validMessage += "-Password must not be empty\n";
-            if (!passMatchRegex) validMessage += "-Password can only contain aplhanumeric characters or simple symbols (-_@.)\n";
-            if (!passInLenght) validMessage += "-Password must not be more than 30 characters\n";
-            if (!passNotEmpty || !passMatchRegex || !passInLenght) FloatingPopup.showPopup(txtPass, validMessage);
+            StringBuilder validMessage = new StringBuilder("");
+            if (!passNotEmpty) validMessage.append("-Password must not be empty\n");
+            if (!passMatchRegex) validMessage.append("-Password can only contain aplhanumeric characters or simple symbols (-_@.)\n");
+            if (!passInLenght) validMessage.append("-Password must not be more than 30 characters\n");
+            
+            toggleTextFieldInError(!passNotEmpty || !passMatchRegex || !passInLenght, txtPass, validMessage.toString());
             
             return passNotEmpty && passMatchRegex && passInLenght;
         } else {
             return true;
+        }
+    }
+    
+    private void toggleTextFieldInError(boolean error, TextField textField, String message) {
+        Popup popup = FloatingPopup.createPopupInstance(textField, message);
+        if (error) {
+            textField.getStyleClass().removeAll("secondary-color");
+            textField.getStyleClass().add("fieldError-color");
+            textField.addEventHandler(MouseEvent.MOUSE_ENTERED,event -> {
+                popup.show(textField.getScene().getWindow());
+            });
+            textField.addEventHandler(MouseEvent.MOUSE_EXITED,event -> {
+                popup.hide();
+            });
+        } else {
+            popup = null;
+            textField.getStyleClass().removeAll("fieldError-color");
+            textField.getStyleClass().add("secondary-color");
         }
     }
     

@@ -49,11 +49,11 @@ public class Tools {
         return loadImgFromX64(x64, "");
     }
     
-    public static String imageToBase64(Image image, String format) {
+    public static String loadX64FromImage(Image image) {
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
-            ImageIO.write(bufferedImage, format, byteArrayOutputStream);
+            ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
         } catch (IOException e) {
             System.err.println("Error in Tools.class loading x64 from Image");
             System.err.println(e.getMessage());

@@ -51,7 +51,11 @@ public class UserDAO implements U_DAO{
                     ps.setString(3, "N");
                     ps.setNull(4, java.sql.Types.VARCHAR);
                 }
-                //insertar imagen
+                if (user.getImgUser() == null) {
+                    ps.setNull(5, java.sql.Types.LONGNVARCHAR);
+                } else {
+                    ps.setString(5, Tools.loadX64FromImage(user.getImgUser()));
+                }
                 connection.close();
             } catch (SQLException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " inserting data to data base");
