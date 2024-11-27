@@ -12,7 +12,7 @@ public class FieldValidator {
     }
     
     public static boolean emailValidation(String email) {
-        return Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$", email);
+        return Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email);
     }
     
     public static boolean passwordValidation(String password) {
@@ -24,6 +24,9 @@ public class FieldValidator {
     }
     
     public static boolean lengthValidation(int maxLength, String string) {
-       return string.length() <= maxLength;
+        if (string != null) {
+            return string.length() <= maxLength;
+        }
+        return true;
     }
 }

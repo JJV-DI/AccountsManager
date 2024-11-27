@@ -10,49 +10,54 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<Button mnemonicParsing="false" onAction="#btnEditAccountPressed" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PC_Account_CardController">
-   <graphic>
-      <HBox fx:id="hbAccountContainer" alignment="CENTER" maxWidth="438.0" spacing="4.0">
-         <children>
-            <ImageView fx:id="imgRed" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@media/icon/social_darkMode.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblAcc" text="ExampleAccount" textFill="#f3f3f3" />
-            <Button fx:id="btnRemoveAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnRemoveAccountPressed" prefHeight="20.0" prefWidth="20.0" styleClass="secondary-color">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+
+<HBox fx:id="hbAccountContainer" alignment="CENTER" maxWidth="438.0" spacing="4.0" stylesheets="@styles/darkMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PC_Account_CardController">
+   <children>
+      <Button mnemonicParsing="false" onAction="#btnEditAccountPressed">
+         <styleClass>
+            <String fx:value="round-border" />
+            <String fx:value="secondary-color" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Edit account" />
+         </tooltip>
+         <graphic>
+            <HBox>
+               <children>
+                  <ImageView fx:id="imgRed" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/removeLine.png" />
+                        <Image url="@media/icon/social_darkMode.png" />
                      </image>
                   </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip text="Delete account" />
-               </tooltip>
-            </Button>
-         </children>
-         <styleClass>
-            <String fx:value="secondary-color" />
-            <String fx:value="round-border" />
-         </styleClass>
-         <padding>
-            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-         </padding>
-      </HBox>
-   </graphic>
+                  <Label fx:id="lblAcc" text="ExampleAccount" textFill="#f3f3f3" />
+               </children>
+            </HBox>
+         </graphic>
+      </Button>
+      <Button fx:id="btnRemoveAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnRemoveAccountPressed" prefHeight="20.0" prefWidth="20.0" styleClass="secondary-color">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@media/icon/removeLine.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Delete account" />
+         </tooltip>
+      </Button>
+   </children>
    <styleClass>
-      <String fx:value="round-border" />
       <String fx:value="secondary-color" />
+      <String fx:value="round-border" />
    </styleClass>
-   <cursor>
-      <Cursor fx:constant="HAND" />
-   </cursor>
-   <tooltip>
-      <Tooltip text="Edit account" />
-   </tooltip>
-</Button>
+   <padding>
+      <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+   </padding>
+</HBox>

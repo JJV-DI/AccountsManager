@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import model.Account;
 import model.AccountDAO;
 import model.FieldValidator;
+import model.FloatingPopup;
 import model.Tools;
 import model.User;
 import model.ViewManager;
@@ -139,19 +140,6 @@ public class ProfileCreatorController implements Initializable{
     }
     
     @FXML
-    void btnUpdatePressed() {
-        //CRUD UPDATE USER
-        System.out.println(
-                "User updating:\n" + 
-                "Name: " + userOwner.getUserName() + " to " + txtNick.getText() + "\n" +
-                "Email: " + userOwner.getEmail() + " to " + txtEmail.getText() + "\n" +
-                "Password: " + userOwner.getUserPass() + " to " + txtPass.getText() + "\n" +
-                "Privacity: " + userOwner.isPrivate()+ " to " + privStatus + "\n" +
-                "Image: " + imgUserImage.getImage() + " to " + imgUserAux
-        );
-    }
-    
-    @FXML
     void btnCancelPressed() {
         backToProfileSelect();
     }
@@ -163,9 +151,27 @@ public class ProfileCreatorController implements Initializable{
             backToProfileSelect();
         }
     }
+    
+    @FXML
+    void btnUpdatePressed() {
+        //CRUD UPDATE USER
+        System.out.println(
+                "User updating:\n" + 
+                "Name: " + userOwner.getUserName() + " to " + txtNick.getText() + "\n" +
+                "Email: " + userOwner.getEmail() + " to " + txtEmail.getText() + "\n" +
+                "Password: " + userOwner.getUserPass() + " to " + txtPass.getText() + "\n" +
+                "Privacity: " + userOwner.isPrivate()+ " to " + privStatus + "\n" +
+                "Image: " + imgUserImage.getImage() + " to " + imgUserAux
+        );
+        
+        if (validateFields()) {
+            
+        }
+    }
 
     @FXML
     void btnSavePressed() {
+        //CRUD INSERT USER
         backToProfileSelect();
     }
     
@@ -175,6 +181,7 @@ public class ProfileCreatorController implements Initializable{
             txtNick.setText(userOwner.getUserName());
             txtEmail.setText(userOwner.getEmail());
             imgUserImage.setImage(userOwner.getImgUser());
+            imgUserAux = userOwner.getImgUser();
             privStatus = userOwner.isPrivate();
             if (privStatus) {
                 setPrivateStatus();
@@ -232,22 +239,45 @@ public class ProfileCreatorController implements Initializable{
     
     
     private boolean validateFields() {
-        return validateUserName() && validateEmail() && validatePassword();
+        boolean nameValid = validateUserName();
+        boolean emailValid = validateEmail();
+        boolean passValid = validatePassword();
+        return nameValid && emailValid && passValid;
     }
     
     private boolean validateUserName() {
-        boolean nickNotEmpty = FieldValidator.emptinessValidation(txtNick.getText());
-        boolean nickMatchRegex = FieldValidator.commonNameValidation(txtNick.getText());
-        boolean nickInLength = FieldValidator.lengthValidation(30, txtNick.getText());
+        boolean nickNotEmpty = FieldValidator.emptinessValidation(txtNick.getText());        
+        boolean nickMatchRegex = true;
+        boolean nickInLength = true;
+        if (nickNotEmpty) {
+            nickMatchRegex = FieldValidator.commonNameValidation(txtNick.getText());
+            nickInLength = FieldValidator.lengthValidation(30, txtNick.getText());
+        } 
+        String validMessage = "";
+        if (!nickNotEmpty) validMessage += "-User name must not be empty\n";
+        if (!nickMatchRegex) validMessage += "-User name can only contain aplhanumeric characters or simple symbols (-_@.)\n";
+        if (!nickInLength) validMessage += "-User name must not be more than 30 characters\n";
+        if (!nickNotEmpty || !nickMatchRegex || !nickInLength) FloatingPopup.showPopup(txtNick, validMessage);
         
         return nickNotEmpty && nickMatchRegex && nickInLength;
     }
     
     private boolean validateEmail() {
         boolean emailNotEmpty = FieldValidator.emptinessValidation(txtEmail.getText());
-        boolean emailMatchRegex = FieldValidator.emailValidation(txtEmail.getText());
-        boolean emailNotRepited = !FieldValidator.repeatedUserValidation(txtEmail.getText());
-        boolean emailInLength = FieldValidator.lengthValidation(50, txtEmail.getText());
+        boolean emailMatchRegex = true;
+        boolean emailNotRepited = true;
+        boolean emailInLength = true;
+        if (emailNotEmpty) {
+            emailMatchRegex = FieldValidator.emailValidation(txtEmail.getText());
+            emailNotRepited = !FieldValidator.repeatedUserValidation(txtEmail.getText());
+            emailInLength = FieldValidator.lengthValidation(50, txtEmail.getText());
+        }
+        String validMessage = "";
+        if (!emailNotEmpty) validMessage += "-Email must not be empty\n";
+        if (!emailMatchRegex) validMessage += "-Email must have an email structure\n";
+        if (!emailInLength) validMessage += "-Email must not be more than 30 characters\n";
+        if (!emailNotRepited) validMessage += "-This email already exists\n";
+        if (!emailNotEmpty || !emailMatchRegex || !emailInLength || !emailNotRepited) FloatingPopup.showPopup(txtEmail, validMessage);
         
         return emailNotEmpty && emailMatchRegex && emailNotRepited && emailInLength;
     }
@@ -255,8 +285,18 @@ public class ProfileCreatorController implements Initializable{
     private boolean validatePassword() {
         if (privStatus) {
             boolean passNotEmpty = FieldValidator.emptinessValidation(txtPass.getText());
-            boolean passMatchRegex = FieldValidator.passwordValidation(txtPass.getText());
-            boolean passInLenght = FieldValidator.lengthValidation(30, txtPass.getText());
+            boolean passMatchRegex = true;
+            boolean passInLenght = true;
+            if (passNotEmpty) {
+                passMatchRegex = FieldValidator.passwordValidation(txtPass.getText());
+                passInLenght = FieldValidator.lengthValidation(30, txtPass.getText());
+            }
+            String validMessage = "";
+            if (!passNotEmpty) validMessage += "-Password must not be empty\n";
+            if (!passMatchRegex) validMessage += "-Password can only contain aplhanumeric characters or simple symbols (-_@.)\n";
+            if (!passInLenght) validMessage += "-Password must not be more than 30 characters\n";
+            if (!passNotEmpty || !passMatchRegex || !passInLenght) FloatingPopup.showPopup(txtPass, validMessage);
+            
             return passNotEmpty && passMatchRegex && passInLenght;
         } else {
             return true;

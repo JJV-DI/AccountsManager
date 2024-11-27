@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
@@ -47,6 +48,21 @@ public class Tools {
     private static Image loadImgFromX64(String x64) {
         return loadImgFromX64(x64, "");
     }
+    
+    public static String imageToBase64(Image image, String format) {
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bufferedImage, format, byteArrayOutputStream);
+        } catch (IOException e) {
+            System.err.println("Error in Tools.class loading x64 from Image");
+            System.err.println(e.getMessage());
+            return null;
+        }
+        byte[] imageBytes = byteArrayOutputStream.toByteArray();
+        return Base64.getEncoder().encodeToString(imageBytes);
+    }
+
     
     public static Image resizeImageToSquare(javafx.scene.image.Image originalImage) {
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(originalImage, null);
