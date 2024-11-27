@@ -51,7 +51,7 @@ public class AdminUpdatePassConfirmController {
     @FXML
     void btnConfirmPressed(ActionEvent event) {
         if (new ConfigProvider().loadAdminPass().equals(txtCurAdminPass.getText())) {
-            if (FieldValidator.emptinessValidate(txtNewAdminPass.getText())) {
+            if (FieldValidator.emptinessValidation(txtNewAdminPass.getText())) {
                 new ConfigProvider().saveAdminPass(txtNewAdminPass.getText());
                 result = true;
                 closeWin();

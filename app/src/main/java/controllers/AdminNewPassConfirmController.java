@@ -44,7 +44,7 @@ public class AdminNewPassConfirmController {
 
     @FXML
     void btnConfirmPressed() {
-        if (FieldValidator.emptinessValidate(txtAdminPass.getText())) {
+        if (FieldValidator.emptinessValidation(txtAdminPass.getText())) {
             new ConfigProvider().saveAdminPass(txtAdminPass.getText());
             result = true;
             closeWin();

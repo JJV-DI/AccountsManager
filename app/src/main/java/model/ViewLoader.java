@@ -165,7 +165,7 @@ public class ViewLoader {
     }
     
     /*ACCOUNT CREATOR VIEWS*/    
-    public void loadAccountCreator(Account accountOwner) {
+    public boolean loadAccountCreator(Account accountOwner) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmAccountCreator.fxml"));
             Stage stage = new Stage();
@@ -176,14 +176,16 @@ public class ViewLoader {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
             stage.showAndWait();
+            return acController.getResult();
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading account creator fxml file");
             System.err.println(e.getCause());
+            return false;
         }
     }
     
-    public void loadAccountCreator() {
-        loadAccountCreator(null);
+    public boolean loadAccountCreator() {
+        return loadAccountCreator(null);
     }
     
     public void loadAccountCreatorSocialNetworks(VBox vboxScrollBody, SocialNetwork socialNetwork) {
@@ -267,7 +269,6 @@ public class ViewLoader {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
             stage.showAndWait();
-            
             return passConfirmController.getResult();
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading private pass confirmation fxml file");
@@ -282,7 +283,6 @@ public class ViewLoader {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmConfirmDel.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(fxmlLoader.load()));
-            
             ConfirmDelController confirmDelController = fxmlLoader.getController();
             confirmDelController.setType(type);
             confirmDelController.setElement(element);            
@@ -290,7 +290,6 @@ public class ViewLoader {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
             stage.showAndWait();
-            
             return confirmDelController.getResult();
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading deletion confirmation fxml file");
@@ -310,7 +309,6 @@ public class ViewLoader {
             stage.setAlwaysOnTop(true);
             stage.showAndWait();
             AdminAccessPassConfirmController adminAccessPassConfirmController = fxmlLoader.getController();
-            
             return adminAccessPassConfirmController.getResult();
         } catch (IOException ex) {
             System.err.println("Error in " + this.getClass().toString() + " loading admin access pass fxml file");

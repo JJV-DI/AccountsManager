@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
@@ -28,5 +29,24 @@ public class UserDAO implements U_DAO{
             return users;
         }
         return null;
-    }    
+    }
+
+    public boolean checkRepeatedUser(String email) {
+        connection = new ConfigProvider().getConnection();
+        if (connection != null) {
+            try(PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usuario WHERE email = ?");) {
+                preparedStatement.setString(1, email);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    connection.close();
+                    resultSet.last();
+                    return resultSet.getRow() != 0;
+                }
+            } catch (SQLException ex) {
+                System.err.println("Error in " + this.getClass().toString() + " requesting data from data base for validation");
+                System.err.println(ex.getMessage());
+                return false;
+            }
+        }
+        return false;
+    }
 }

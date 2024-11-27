@@ -2,7 +2,6 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -54,36 +53,36 @@ public class SocialNetworkCreatorController implements Initializable{
     }
 
     @FXML
-    void btnCancelPressed(ActionEvent event) {
+    void btnCancelPressed() {
         result = false;
         closeWin();
     }
 
     @FXML
-    void btnClosePressed(ActionEvent event) {
+    void btnClosePressed() {
         result = false;
         closeWin();
     }
     
     @FXML
-    void btnSavePressed(ActionEvent event) {
+    void btnSavePressed() {
         result = true;
         closeWin();
     }
     
     @FXML
-    void btnUpdatePressed(ActionEvent event) {
+    void btnUpdatePressed() {
         result = true;
         closeWin();
     }
 
     @FXML
-    void btnEditImgPressed(ActionEvent event) {
+    void btnEditImgPressed() {
 
     }
 
     @FXML
-    void btnRemoveImgPressed(ActionEvent event) {
+    void btnRemoveImgPressed() {
 
     }
     

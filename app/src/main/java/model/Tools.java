@@ -48,17 +48,29 @@ public class Tools {
         return loadImgFromX64(x64, "");
     }
     
+    public static Image resizeImageToSquare(javafx.scene.image.Image originalImage) {
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(originalImage, null);
+        int width = bufferedImage.getWidth();
+        int height = bufferedImage.getHeight();
+        int size = Math.min(width, height);
+        BufferedImage squareImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = squareImage.createGraphics();
+        int x = (width - size) / 2;
+        int y = (height - size) / 2;
+        g2d.drawImage(bufferedImage.getSubimage(x, y, size, size), 0, 0, null);
+        g2d.dispose();
+        return SwingFXUtils.toFXImage(squareImage, null);
+    }
+    
     public static Image clipImageToSquare(Image oldImage){
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(oldImage, null);
         int width = bufferedImage.getWidth();
         int height = bufferedImage.getHeight();
-        int size = Math.max(width, height);
+        int size = Math.min(width, height);
         BufferedImage squareImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics2D = squareImage.createGraphics();
         graphics2D.fillRect(0, 0, size, size);
-        int x = (size - width) / 2;
-        int y = (size - height) / 2;
-        graphics2D.drawImage(bufferedImage, x, y, null);
+        graphics2D.drawImage(bufferedImage, size, size, null);
         graphics2D.dispose();
         return SwingFXUtils.toFXImage(squareImage, null);
     }

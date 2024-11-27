@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -15,8 +16,12 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import model.Account;
 import model.AccountDAO;
+import model.FieldValidator;
+import model.Tools;
 import model.User;
 import model.ViewManager;
 import model.ViewStatus;
@@ -32,6 +37,8 @@ public class ProfileCreatorController implements Initializable{
     private User userOwner;
     
     private boolean privStatus = false;
+    
+    private Image imgUserAux;
 
     @FXML
     private Button btnAddAccount;
@@ -99,17 +106,26 @@ public class ProfileCreatorController implements Initializable{
 
     @FXML
     void btnEditImagePressed() {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an image file");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.jpg"));
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+        if (selectedFile != null) {
+            imgUserAux = Tools.resizeImageToSquare(new Image(selectedFile.toURI().toString()));
+            imgUserImage.setImage(imgUserAux);
+        }
+    }
+    
+    @FXML
+    void btnRemoveImagePressed() {
+        imgUserAux = null;
+        imgUserImage.setImage(Tools.loadImgFromX64(null, "user"));
     }
 
     @FXML
     void btnPrivStatusPressed() {
-
-    }
-
-    @FXML
-    void btnRemoveImagePressed() {
-
+        if (privStatus) setPublicStatus();
+        else setPrivateStatus();
     }
 
     @FXML
@@ -119,12 +135,20 @@ public class ProfileCreatorController implements Initializable{
     
     @FXML
     void btnAddAccountPressed() {
-        MainAppController.viewLoader.loadAccountCreator();
+        if (MainAppController.viewLoader.loadAccountCreator()) loadUserAccountsCards();
     }
     
     @FXML
     void btnUpdatePressed() {
-        backToProfileSelect();
+        //CRUD UPDATE USER
+        System.out.println(
+                "User updating:\n" + 
+                "Name: " + userOwner.getUserName() + " to " + txtNick.getText() + "\n" +
+                "Email: " + userOwner.getEmail() + " to " + txtEmail.getText() + "\n" +
+                "Password: " + userOwner.getUserPass() + " to " + txtPass.getText() + "\n" +
+                "Privacity: " + userOwner.isPrivate()+ " to " + privStatus + "\n" +
+                "Image: " + imgUserImage.getImage() + " to " + imgUserAux
+        );
     }
     
     @FXML
@@ -134,7 +158,10 @@ public class ProfileCreatorController implements Initializable{
     
     @FXML
     void btnRemovePressed() {
-        MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail());
+        if (MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail())) {
+            //CRUD DELETE USER
+            backToProfileSelect();
+        }
     }
 
     @FXML
@@ -201,6 +228,39 @@ public class ProfileCreatorController implements Initializable{
         vboxBody.getChildren().clear();
         viewManager.setStatus(ViewStatus.PROFILES);
         MainAppController.viewLoader.backToProfileSelect(vboxBody, viewManager);
+    }
+    
+    
+    private boolean validateFields() {
+        return validateUserName() && validateEmail() && validatePassword();
+    }
+    
+    private boolean validateUserName() {
+        boolean nickNotEmpty = FieldValidator.emptinessValidation(txtNick.getText());
+        boolean nickMatchRegex = FieldValidator.commonNameValidation(txtNick.getText());
+        boolean nickInLength = FieldValidator.lengthValidation(30, txtNick.getText());
+        
+        return nickNotEmpty && nickMatchRegex && nickInLength;
+    }
+    
+    private boolean validateEmail() {
+        boolean emailNotEmpty = FieldValidator.emptinessValidation(txtEmail.getText());
+        boolean emailMatchRegex = FieldValidator.emailValidation(txtEmail.getText());
+        boolean emailNotRepited = !FieldValidator.repeatedUserValidation(txtEmail.getText());
+        boolean emailInLength = FieldValidator.lengthValidation(50, txtEmail.getText());
+        
+        return emailNotEmpty && emailMatchRegex && emailNotRepited && emailInLength;
+    }
+    
+    private boolean validatePassword() {
+        if (privStatus) {
+            boolean passNotEmpty = FieldValidator.emptinessValidation(txtPass.getText());
+            boolean passMatchRegex = FieldValidator.passwordValidation(txtPass.getText());
+            boolean passInLenght = FieldValidator.lengthValidation(30, txtPass.getText());
+            return passNotEmpty && passMatchRegex && passInLenght;
+        } else {
+            return true;
+        }
     }
     
     public void setVboxBody(VBox vboxBody) {
