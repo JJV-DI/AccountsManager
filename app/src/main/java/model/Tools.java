@@ -60,7 +60,8 @@ public class Tools {
             return null;
         }
         byte[] imageBytes = byteArrayOutputStream.toByteArray();
-        return Base64.getEncoder().encodeToString(imageBytes);
+        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+        return "data:image/png;base64," + base64Image;
     }
 
     

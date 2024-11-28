@@ -13,6 +13,7 @@ import controllers.PrivPassConfirmController;
 import controllers.ProfileCreatorController;
 import controllers.ProfileSelectController;
 import controllers.SN_CardController;
+import controllers.SocialNetworkController;
 import controllers.SocialNetworkCreatorController;
 import controllers.UF_Account_CardController;
 import controllers.UserInfoController;
@@ -46,7 +47,7 @@ public class ViewLoader {
         }
     }
     
-    public void loadUserButton(GridPane gridPane, int col, int row, List<User> users, int index, VBox vboxBody, ViewManager viewManager) {
+    public void loadUserButton(GridPane gridPane, int col, int row, List<User> users, int index, VBox vboxBody, ViewManager viewManager, ProfileSelectController psController) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmPS_Btn.fxml"));
             gridPane.add((Node) fxmlLoader.load(), col, row);
@@ -56,6 +57,7 @@ public class ViewLoader {
             ps_BtnController.setImage();
             ps_BtnController.setVboxBody(vboxBody);
             ps_BtnController.setViewManager(viewManager);
+            ps_BtnController.setPsController(psController);
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading user button fxml file");
             System.err.println(e.getMessage());
@@ -211,7 +213,7 @@ public class ViewLoader {
         }
     }
     
-    public void loadSocialNetworksAccounts(VBox vBoxScrollBody, SocialNetwork socialNetwork) {
+    public void loadSocialNetworksCard(VBox vBoxScrollBody, SocialNetwork socialNetwork, SocialNetworkController snController) {
         try {
             FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmSN_Card.fxml"));
             vBoxScrollBody.getChildren().add(fXMLLoader.load());
@@ -219,12 +221,13 @@ public class ViewLoader {
             sN_CardController.setSocialNetworkOwner(socialNetwork);
             sN_CardController.setText();
             sN_CardController.setImage();
+            sN_CardController.setSocialNetworkController(snController);
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " failed chargin social networks cards");
         }
     }
     
-    public void loadSocialNetworkCreator(SocialNetwork socialNetworkOwner){
+    public boolean loadSocialNetworkCreator(SocialNetwork socialNetworkOwner){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmSocialNetworkCreator.fxml"));
             Stage stage = new Stage();
@@ -235,14 +238,17 @@ public class ViewLoader {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);
             stage.showAndWait();
+            
+            return snCreatorController.getResult();
         } catch (IOException ex) {
             System.err.println("Error in " + this.getClass().toString() + " loading social network creator fxml file");
             System.err.println(ex.getCause());
+            return false;
         }
     }
     
-    public void loadSocialNetworkCreator(){
-        loadSocialNetworkCreator(null);
+    public boolean loadSocialNetworkCreator(){
+        return loadSocialNetworkCreator(null);
     }
     
     /*SETTINGS*/
@@ -259,12 +265,13 @@ public class ViewLoader {
     //CONFIRMATION WINDOWS
     
     /*USER PRIVATE PASS*/
-    public boolean loadUserPassConfirm() {
+    public boolean loadUserPassConfirm(User userOwner) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmPrivPassConfirm.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(fxmlLoader.load()));
             PrivPassConfirmController passConfirmController = fxmlLoader.getController();
+            passConfirmController.setUserOwner(userOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setAlwaysOnTop(true);

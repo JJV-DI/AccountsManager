@@ -10,9 +10,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import model.User;
+import model.UserDAO;
 import model.ViewManager;
 
 public class PS_BtnController implements Initializable{
+    
+    private ProfileSelectController psController;
     
     private ViewManager viewManager;
     
@@ -51,7 +54,7 @@ public class PS_BtnController implements Initializable{
     @FXML
     void btnUserPressed() {
         if (userOwner.isPrivate()) {
-            if (MainAppController.viewLoader.loadUserPassConfirm()) MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
+            if (MainAppController.viewLoader.loadUserPassConfirm(userOwner)) MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
         } else {
             MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
         }
@@ -60,7 +63,7 @@ public class PS_BtnController implements Initializable{
     @FXML
     void ctxtEditPressed() {
         if (userOwner.isPrivate()) {
-            if (MainAppController.viewLoader.loadUserPassConfirm()) MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
+            if (MainAppController.viewLoader.loadUserPassConfirm(userOwner)) MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
         } else {
             MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
         }
@@ -79,9 +82,15 @@ public class PS_BtnController implements Initializable{
     @FXML
     void ctxtRemovePressed() {
         if (userOwner.isPrivate()) {
-            if (MainAppController.viewLoader.loadUserPassConfirm()) MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail());
-        } else {
-            MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail());
+            if (MainAppController.viewLoader.loadUserPassConfirm(userOwner) && MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail())) {
+                new UserDAO().deleteUser(userOwner);
+                psController.loadUsers();
+                psController.showUsers();
+            }
+        } else if (MainAppController.viewLoader.loadDeletionConfirm("user", userOwner.getEmail())) {
+            new UserDAO().deleteUser(userOwner);
+            psController.loadUsers();
+            psController.showUsers();
         }
     }
     
@@ -91,5 +100,9 @@ public class PS_BtnController implements Initializable{
 
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
+    }
+
+    public void setPsController(ProfileSelectController psController) {
+        this.psController = psController;
     }
 }

@@ -25,10 +25,15 @@ public class ProfileSelectController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        loadUsers();
+    }
+    
+    public void loadUsers() {
         users = new UserDAO().loadUsersFromDB();
     }
     
     public void showUsers(){
+        gridPane.getChildren().clear();
         if (users != null) {
             int index = 0;
             int rows = ((users.size() + 1) + 4 - 1) / 4; 
@@ -36,7 +41,7 @@ public class ProfileSelectController implements Initializable{
             for (int row = 0; row < rows; row++) {
                 for (int col = 0; col < 4; col++) {
                     if (index < users.size()) {
-                        MainAppController.viewLoader.loadUserButton(gridPane, col, row, users, index, vboxBody, viewManager);
+                        MainAppController.viewLoader.loadUserButton(gridPane, col, row, users, index, vboxBody, viewManager, this);
                         index++;   
                     } else if (!addSetted) {
                         MainAppController.viewLoader.loadAddButton(gridPane, col, row, vboxBody, viewManager);
@@ -53,6 +58,5 @@ public class ProfileSelectController implements Initializable{
 
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
-        System.out.println(viewManager.getViewStatus());
     }
 }

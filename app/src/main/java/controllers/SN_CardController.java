@@ -7,10 +7,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import model.ConfigProvider;
 import model.SocialNetwork;
+import model.SocialNetworkDAO;
 
 public class SN_CardController implements Initializable {
 
+    private boolean adminExist;
+    
+    private SocialNetworkController socialNetworkController;
+    
     private SocialNetwork socialNetworkOwner;
     
     @FXML
@@ -21,21 +27,38 @@ public class SN_CardController implements Initializable {
 
     @FXML
     void editSNPressed() {
-        if (MainAppController.viewLoader.loadAdminPassConfirm()) {
-            MainAppController.viewLoader.loadSocialNetworkCreator(socialNetworkOwner);
+        if (adminExist) {
+            if (MainAppController.viewLoader.loadAdminPassConfirm() && MainAppController.viewLoader.loadSocialNetworkCreator(socialNetworkOwner)) {
+                socialNetworkController.clearBody();
+                socialNetworkController.loadSocialNetworks();
+            }
+        } else if (MainAppController.viewLoader.loadSocialNetworkCreator(socialNetworkOwner)) {
+            socialNetworkController.clearBody();
+            socialNetworkController.loadSocialNetworks();
         }
     }
 
     @FXML
     void removeSNPressed() {
-        MainAppController.viewLoader.loadAdminPassConfirm();
+        if (adminExist) {
+            if (MainAppController.viewLoader.loadAdminPassConfirm() && MainAppController.viewLoader.loadDeletionConfirm("Social Network", socialNetworkOwner.getNombreRed())) {
+                new SocialNetworkDAO().deleteSocialNetwork(socialNetworkOwner);
+                socialNetworkController.clearBody();
+                socialNetworkController.loadSocialNetworks();
+            }
+        } else if (MainAppController.viewLoader.loadDeletionConfirm("Social Network", socialNetworkOwner.getNombreRed())) {
+            new SocialNetworkDAO().deleteSocialNetwork(socialNetworkOwner);
+            socialNetworkController.clearBody();
+            socialNetworkController.loadSocialNetworks();
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Circle circleShape = new Circle(22.5,22.5,22.5);
         imgSocialNetwork.setClip(circleShape);
-        
+        String adminPass = new ConfigProvider().loadAdminPass();
+        adminExist = !adminPass.isEmpty();
     }
     
     public void setSocialNetworkOwner(SocialNetwork socialNetwork) {
@@ -48,6 +71,10 @@ public class SN_CardController implements Initializable {
     
     public void setImage(){
         imgSocialNetwork.setImage(socialNetworkOwner.getIconoRed());
+    }
+    
+    public void setSocialNetworkController (SocialNetworkController snController) {
+        this.socialNetworkController = snController;
     }
 
 }

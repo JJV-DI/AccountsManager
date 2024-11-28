@@ -5,8 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.FloatingPopup;
+import model.User;
 
 public class PrivPassConfirmController {
+    
+    private User userOwner;
 
     private boolean result;
     
@@ -41,8 +45,12 @@ public class PrivPassConfirmController {
     
     @FXML
     void btnConfirmPressed() {
-        result = true;
-        closeWin();
+        if (userOwner.getUserPass().equals(txtUserPass.getText())) {
+            result = true;
+            closeWin();
+        } else {
+            FloatingPopup.showPopup(txtUserPass, "Incorrect password");
+        }
     }
 
     @FXML
@@ -57,6 +65,10 @@ public class PrivPassConfirmController {
     private void closeWin(){
         Stage stage = (Stage) this.btnConfirm.getScene().getWindow();
         stage.close();
+    }
+    
+    public void setUserOwner(User userOwner) {
+        this.userOwner = userOwner;
     }
 
 }
