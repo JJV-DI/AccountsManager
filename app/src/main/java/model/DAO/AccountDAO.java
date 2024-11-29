@@ -71,7 +71,7 @@ public class AccountDAO implements A_DAO {
                 ps.setString(2, newAccount.getNombreCuenta());
                 ps.setString(3, newAccount.getPassCuenta());
                 ps.setString(4, user.getEmail());
-                ps.setInt(2, oldAccount.getIdRed());
+                ps.setInt(5, oldAccount.getIdRed());
                 ps.executeUpdate();
                 connection.close();
             } catch (SQLException ex) {

@@ -9,9 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import model.Account;
+import model.DAO.AccountDAO;
 import model.User;
 
 public class UF_Account_CardController implements Initializable{
+    
+    private UserInfoController userInfoController;
 
     private User userOwner;
     
@@ -37,12 +40,15 @@ public class UF_Account_CardController implements Initializable{
 
     @FXML
     void btnRemoveAccountPressed() {
-        MainAppController.viewLoader.loadDeletionConfirm("account", accountOwner.getNombreCuenta() + " (" + accountOwner.getNombreRed() + ")");
+        if (MainAppController.viewLoader.loadDeletionConfirm("account", accountOwner.getNombreCuenta() + " (" + accountOwner.getNombreRed() + ")")) {
+            new AccountDAO().deleteAccount(accountOwner, userOwner);
+            userInfoController.showAccountCards();
+        }
     }
     
     @FXML
     void btnUpdateAccountPressed() {
-        MainAppController.viewLoader.loadAccountCreator(accountOwner, userOwner);
+        if (MainAppController.viewLoader.loadAccountCreator(accountOwner, userOwner)) userInfoController.showAccountCards();
     }
     
     @Override
@@ -65,6 +71,10 @@ public class UF_Account_CardController implements Initializable{
     public void setAccountOwner(Account accountOwner) {
         this.accountOwner = accountOwner;
         initData();
+    }
+
+    public void setUserInfoController(UserInfoController userInfoController) {
+        this.userInfoController = userInfoController;
     }
 
 }

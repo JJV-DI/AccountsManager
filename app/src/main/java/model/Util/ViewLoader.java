@@ -104,11 +104,12 @@ public class ViewLoader {
         loadProfileCreator(vboxBody, viewManager, null, false);
     }
     
-    public void loadProfileCreatorUserAccountsCards(FlowPane flowPaneAccounts, Account account, User userOwner) {
+    public void loadProfileCreatorUserAccountsCards(FlowPane flowPaneAccounts, Account account, User userOwner, ProfileCreatorController profileCreatorController) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmPC_Account_Card.fxml"));
             flowPaneAccounts.getChildren().add(fxmlLoader.load());
             PC_Account_CardController pc_Account_CardController = fxmlLoader.getController();
+            pc_Account_CardController.setPcController(profileCreatorController);
             pc_Account_CardController.setAccountOwner(account);
             pc_Account_CardController.setUserOwner(userOwner);
             pc_Account_CardController.setName();
@@ -149,11 +150,12 @@ public class ViewLoader {
         }
     }
     
-    public void loadUserInfoAccountCards(VBox vboxScrollBody, Account account, User userOwner) {
+    public void loadUserInfoAccountCards(VBox vboxScrollBody, Account account, User userOwner, UserInfoController userInfoController) {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmUF_Account_Card.fxml"));
             vboxScrollBody.getChildren().add(fxmlLoader.load());
             UF_Account_CardController uf_Account_CardController = fxmlLoader.getController();
+            uf_Account_CardController.setUserInfoController(userInfoController);
             uf_Account_CardController.setUserOwner(userOwner);
             uf_Account_CardController.setAccountOwner(account);
         } catch (IOException e) {
@@ -162,12 +164,13 @@ public class ViewLoader {
         }
     }
     
-    public void loadUserInfoAccountAddButton(VBox vboxScrollBody, User userOwner) {
+    public void loadUserInfoAccountAddButton(VBox vboxScrollBody, User userOwner, UserInfoController userInfoController) {
         try{
             FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmUF_Account_AddBtn.fxml"));
             vboxScrollBody.getChildren().add(fXMLLoader.load());
             UF_Account_AddBtnController uf_A_AddBntController = fXMLLoader.getController();
             uf_A_AddBntController.setUserOwner(userOwner);
+            uf_A_AddBntController.setUfController(userInfoController);
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading account add button fxml file");
             System.err.println(e.getCause());
@@ -185,7 +188,7 @@ public class ViewLoader {
             acController.setAccountOwner(accountOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setAlwaysOnTop(true);
+            //stage.setAlwaysOnTop(true);
             stage.showAndWait();
             return acController.getResult();
         } catch (IOException e) {
@@ -247,7 +250,7 @@ public class ViewLoader {
             snCreatorController.setSocialNetworkOwner(socialNetworkOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setAlwaysOnTop(true);
+            //stage.setAlwaysOnTop(true);
             stage.showAndWait();
             
             return snCreatorController.getResult();
@@ -285,7 +288,7 @@ public class ViewLoader {
             passConfirmController.setUserOwner(userOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setAlwaysOnTop(true);
+            //stage.setAlwaysOnTop(true);
             stage.showAndWait();
             return passConfirmController.getResult();
         } catch (IOException e) {
@@ -306,7 +309,7 @@ public class ViewLoader {
             confirmDelController.setElement(element);            
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setAlwaysOnTop(true);
+            //stage.setAlwaysOnTop(true);
             stage.showAndWait();
             return confirmDelController.getResult();
         } catch (IOException e) {
@@ -324,7 +327,7 @@ public class ViewLoader {
             stage.setScene(new Scene(fxmlLoader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setAlwaysOnTop(true);
+            //stage.setAlwaysOnTop(true);
             stage.showAndWait();
             AdminAccessPassConfirmController adminAccessPassConfirmController = fxmlLoader.getController();
             return adminAccessPassConfirmController.getResult();
@@ -342,7 +345,7 @@ public class ViewLoader {
             stage.setScene(new Scene(fxmlLoader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setAlwaysOnTop(true);
+            //stage.setAlwaysOnTop(true);
             stage.showAndWait();
             AdminNewPassConfirmController adminNewPassController = fxmlLoader.getController();
             return adminNewPassController.getResult();
@@ -360,7 +363,7 @@ public class ViewLoader {
             stage.setScene(new Scene(fxmlLoader.load()));            
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setAlwaysOnTop(true);
+            //stage.setAlwaysOnTop(true);
             stage.showAndWait();
             AdminUpdatePassConfirmController adminUpdatePassController = fxmlLoader.getController();
             return adminUpdatePassController.getResult();

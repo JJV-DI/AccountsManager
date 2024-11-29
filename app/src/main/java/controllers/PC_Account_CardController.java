@@ -10,10 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import model.Account;
+import model.DAO.AccountDAO;
 import model.User;
 
 public class PC_Account_CardController implements Initializable{
 
+    private ProfileCreatorController pcController;
+    
     private User userOwner;
     
     private Account accountOwner;
@@ -32,12 +35,15 @@ public class PC_Account_CardController implements Initializable{
 
     @FXML
     void btnEditAccountPressed() {
-        MainAppController.viewLoader.loadAccountCreator(accountOwner, userOwner);
+        if(MainAppController.viewLoader.loadAccountCreator(accountOwner, userOwner)) pcController.loadUserAccountsCards();
     }
     
     @FXML
     void btnRemoveAccountPressed() {
-        MainAppController.viewLoader.loadDeletionConfirm("account", accountOwner.getNombreCuenta() + " (" + accountOwner.getNombreRed() + ")");
+        if (MainAppController.viewLoader.loadDeletionConfirm("account", accountOwner.getNombreCuenta() + " (" + accountOwner.getNombreRed() + ")")){
+            new AccountDAO().deleteAccount(accountOwner, userOwner);
+            pcController.loadUserAccountsCards();
+        }
     }
 
     @Override
@@ -60,6 +66,10 @@ public class PC_Account_CardController implements Initializable{
     
     public void setImage() {
         imgRed.setImage(accountOwner.getIconoRed());
+    }
+
+    public void setPcController(ProfileCreatorController pcController) {
+        this.pcController = pcController;
     }
 
 }

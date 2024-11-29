@@ -1,9 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +11,6 @@ import model.DAO.UserDAO;
 import model.SocialNetwork;
 import model.User;
 import model.Util.ConfigProvider;
-import model.Util.ViewLoader;
 
 public class MainApp extends Application{    
     public static void main(String[] args) {
@@ -25,12 +18,7 @@ public class MainApp extends Application{
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        
-        createMassUsers();
-        createMassSocialNetworks();
-        //createMassAccounts();
-        
+    public void start(Stage stage) throws Exception {        
         Parent root = FXMLLoader.load(getClass().getResource("/vistas/frmMainApp.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -57,7 +45,7 @@ public class MainApp extends Application{
     
     //CREACIÓN MASIVA DE USUARIOS ¡USO EXCLUSIVO DE DEBUG!
     private void createMassSocialNetworks(){
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 20; i++) {
             new SocialNetworkDAO().insertSocialNetwork(new SocialNetwork(-1, "sn"+i, null));
         }
     }
@@ -66,7 +54,7 @@ public class MainApp extends Application{
     private void createMassAccounts(){
         User user = new User("emailExample@email.com", "exampleUser", null, "N", null);
         new UserDAO().insertUser(user);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 1; i < 20; i++) {
             new AccountDAO().insertAccount(new Account("emailExample@email.com", "account"+i, "1234", i, null, null), user);
         }
     }

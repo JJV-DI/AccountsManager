@@ -68,18 +68,24 @@ public class UserInfoController implements Initializable{
     }
     
     public void initComponents() {
-        accounts = new AccountDAO().loadAccountsFromDB(userOwner);
+        loadAccountsFromDB();
         lblUserName.setText(userOwner.getUserName());
         lblUserEmail.setText(userOwner.getEmail());
         imgUserImage.setImage(userOwner.getImgUser());
         showAccountCards();
     }
     
+    private void loadAccountsFromDB() {
+        accounts = new AccountDAO().loadAccountsFromDB(userOwner);
+    }
+    
     public void showAccountCards(){
+        loadAccountsFromDB();
+        vboxScrollBody.getChildren().clear();
         for (Account account : accounts){
-            MainAppController.viewLoader.loadUserInfoAccountCards(vboxScrollBody, account, userOwner);
+            MainAppController.viewLoader.loadUserInfoAccountCards(vboxScrollBody, account, userOwner, this);
         }
-        MainAppController.viewLoader.loadUserInfoAccountAddButton(vboxScrollBody, userOwner);
+        MainAppController.viewLoader.loadUserInfoAccountAddButton(vboxScrollBody, userOwner, this);
     }
     
     public void setVboxBody(VBox vboxBody) {

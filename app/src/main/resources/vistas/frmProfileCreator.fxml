@@ -299,7 +299,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </HBox>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="378.0" styleClass="primary-color" vmax="100.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" prefHeight="378.0" vmax="100.0">
                <content>
                   <FlowPane fx:id="flowPaneAccounts" columnHalignment="CENTER" hgap="6.0" styleClass="primary-color" vgap="6.0">
                      <children>
@@ -311,6 +311,10 @@
                      </children>
                   </FlowPane>
                </content>
+               <styleClass>
+                  <String fx:value="primary-color" />
+                  <String fx:value="scroll-pane-DarkOverLight" />
+               </styleClass>
             </ScrollPane>
             <HBox alignment="CENTER_RIGHT" spacing="5.0" VBox.vgrow="ALWAYS">
                <children>

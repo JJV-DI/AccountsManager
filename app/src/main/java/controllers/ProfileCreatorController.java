@@ -184,7 +184,7 @@ public class ProfileCreatorController implements Initializable {
     
     public void initComponents(boolean updating){
         if (updating) {
-            accounts = new AccountDAO().loadAccountsFromDB(userOwner);
+            loadAccountsFromDB();
             txtNick.setText(userOwner.getUserName());
             txtEmail.setText(userOwner.getEmail());
             imgUserImage.setImage(userOwner.getImgUser());
@@ -205,6 +205,10 @@ public class ProfileCreatorController implements Initializable {
             btnRemove.setManaged(false);
             btnUpdate.setManaged(false);
         }
+    }
+    
+    public void loadAccountsFromDB() {
+        accounts = new AccountDAO().loadAccountsFromDB(userOwner);
     }
     
     void setPrivateStatus(){
@@ -231,9 +235,10 @@ public class ProfileCreatorController implements Initializable {
     }
     
     void loadUserAccountsCards(){
+        loadAccountsFromDB();
         flowPaneAccounts.getChildren().clear();
         for (Account account : accounts) {
-            MainAppController.viewLoader.loadProfileCreatorUserAccountsCards(flowPaneAccounts, account, userOwner);
+            MainAppController.viewLoader.loadProfileCreatorUserAccountsCards(flowPaneAccounts, account, userOwner, this);
         }
         lblAccountsCount.setText(String.valueOf(accounts.size()));
     }

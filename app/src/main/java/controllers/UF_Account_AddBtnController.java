@@ -8,16 +8,24 @@ public class UF_Account_AddBtnController {
 
     private User userOwner;
     
+    private UserInfoController ufController;
+    
     @FXML
     private Button btnAddAccount;
 
     @FXML
     void btnAddAccountPressed() {
-        MainAppController.viewLoader.loadAccountCreator(userOwner);
+        if (MainAppController.viewLoader.loadAccountCreator(userOwner)) {
+            ufController.showAccountCards();
+        }
     }
 
     public void setUserOwner(User userOwner) {
         this.userOwner = userOwner;
+    }
+
+    public void setUfController(UserInfoController ufController) {
+        this.ufController = ufController;
     }
 
 }
