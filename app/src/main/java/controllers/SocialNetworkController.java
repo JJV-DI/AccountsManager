@@ -8,9 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import model.ConfigProvider;
+import model.Util.ConfigProvider;
 import model.SocialNetwork;
-import model.SocialNetworkDAO;
+import model.DAO.SocialNetworkDAO;
 
 public class SocialNetworkController implements Initializable {
     

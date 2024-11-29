@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import model.ConfigProvider;
-import model.FieldValidator;
-import model.FloatingPopup;
+import model.Util.ConfigProvider;
+import model.Util.FieldValidator;
+import model.Util.FloatingPopup;
 
 public class AdminNewPassConfirmController {
     
@@ -49,7 +49,7 @@ public class AdminNewPassConfirmController {
             result = true;
             closeWin();
         } 
-        else FloatingPopup.showPopup(txtAdminPass, "Password must not be empty");
+        else FloatingPopup.showTextFieldPopup(txtAdminPass, "Password must not be empty");
     }
 
     @FXML

@@ -10,8 +10,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import model.ConfigProvider;
-import model.ViewLoader;
+import model.Account;
+import model.DAO.AccountDAO;
+import model.DAO.SocialNetworkDAO;
+import model.DAO.UserDAO;
+import model.SocialNetwork;
+import model.User;
+import model.Util.ConfigProvider;
+import model.Util.ViewLoader;
 
 public class MainApp extends Application{    
     public static void main(String[] args) {
@@ -20,9 +26,10 @@ public class MainApp extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        /*CREACIÓN DEL ARCHIVO config.properties USO EXCLUSIVO DE DEBUG*/
-        //new ConfigProvider().createConfigProperties("root", "root", "");
         
+        createMassUsers();
+        createMassSocialNetworks();
+        //createMassAccounts();
         
         Parent root = FXMLLoader.load(getClass().getResource("/vistas/frmMainApp.fxml"));
         Scene scene = new Scene(root);
@@ -31,5 +38,36 @@ public class MainApp extends Application{
         stage.setTitle("Accounts Manager");
         stage.getIcons().add(new Image("/vistas/media/app/appIcon_lightMode.png"));
         stage.show();
+    }
+    
+    
+    //CREACIÓN DEL ARCHIVO config.properties ¡USO EXCLUSIVO DE DEBUG!
+    private void createConfigFile() {
+        new ConfigProvider().createConfigProperties("root", "root", "");
+    }
+    
+    
+    //CREACIÓN MASIVA DE USUARIOS ¡USO EXCLUSIVO DE DEBUG!
+    private void createMassUsers(){
+        for (int i = 0; i < 100; i++) {
+            new UserDAO().insertUser(new User("email"+i+"@email.com", "autoUser"+i, null, "N", null));
+        }
+    }
+    
+    
+    //CREACIÓN MASIVA DE USUARIOS ¡USO EXCLUSIVO DE DEBUG!
+    private void createMassSocialNetworks(){
+        for (int i = 0; i < 100; i++) {
+            new SocialNetworkDAO().insertSocialNetwork(new SocialNetwork(-1, "sn"+i, null));
+        }
+    }
+    
+    //CREACIÓN MASIVA DE USUARIOS ¡USO EXCLUSIVO DE DEBUG!
+    private void createMassAccounts(){
+        User user = new User("emailExample@email.com", "exampleUser", null, "N", null);
+        new UserDAO().insertUser(user);
+        for (int i = 0; i < 100; i++) {
+            new AccountDAO().insertAccount(new Account("emailExample@email.com", "account"+i, "1234", i, null, null), user);
+        }
     }
 }

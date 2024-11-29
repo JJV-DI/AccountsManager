@@ -1,6 +1,7 @@
-package model;
+package model.DAO;
 
 import javafx.collections.ObservableList;
+import model.User;
 
 public interface U_DAO {
     public ObservableList<User> loadUsersFromDB();

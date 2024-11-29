@@ -14,23 +14,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import model.Account;
-import model.AccountDAO;
-import model.FieldValidator;
-import model.FloatingPopup;
-import model.Tools;
+import model.DAO.AccountDAO;
+import model.Util.FieldValidator;
+import model.Util.Tools;
 import model.User;
-import model.UserDAO;
-import model.ViewManager;
-import model.ViewStatus;
+import model.DAO.UserDAO;
+import model.Util.ViewManager;
+import model.Util.ViewStatus;
 
 public class ProfileCreatorController implements Initializable {
     
@@ -141,7 +138,7 @@ public class ProfileCreatorController implements Initializable {
     
     @FXML
     void btnAddAccountPressed() {
-        if (MainAppController.viewLoader.loadAccountCreator()) loadUserAccountsCards();
+        if (MainAppController.viewLoader.loadAccountCreator(userOwner)) loadUserAccountsCards();
     }
     
     @FXML
@@ -236,7 +233,7 @@ public class ProfileCreatorController implements Initializable {
     void loadUserAccountsCards(){
         flowPaneAccounts.getChildren().clear();
         for (Account account : accounts) {
-            MainAppController.viewLoader.loadProfileCreatorUserAccountsCards(flowPaneAccounts, account);
+            MainAppController.viewLoader.loadProfileCreatorUserAccountsCards(flowPaneAccounts, account, userOwner);
         }
         lblAccountsCount.setText(String.valueOf(accounts.size()));
     }

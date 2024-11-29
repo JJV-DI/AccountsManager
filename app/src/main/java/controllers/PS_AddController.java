@@ -3,7 +3,7 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import model.ViewManager;
+import model.Util.ViewManager;
 
 public class PS_AddController {
     

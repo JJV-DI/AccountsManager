@@ -1,4 +1,4 @@
-package model;
+package model.Util;
 
 public class ViewManager {
     private ViewStatus viewStatus;

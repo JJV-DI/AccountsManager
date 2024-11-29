@@ -13,9 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import model.Account;
-import model.AccountDAO;
+import model.DAO.AccountDAO;
 import model.User;
-import model.ViewManager;
+import model.Util.ViewManager;
 
 public class UserInfoController implements Initializable{
     
@@ -77,9 +77,9 @@ public class UserInfoController implements Initializable{
     
     public void showAccountCards(){
         for (Account account : accounts){
-            MainAppController.viewLoader.loadUserInfoAccountCards(vboxScrollBody, account);
+            MainAppController.viewLoader.loadUserInfoAccountCards(vboxScrollBody, account, userOwner);
         }
-        MainAppController.viewLoader.loadUserInfoAccountAddButton(vboxScrollBody);
+        MainAppController.viewLoader.loadUserInfoAccountAddButton(vboxScrollBody, userOwner);
     }
     
     public void setVboxBody(VBox vboxBody) {

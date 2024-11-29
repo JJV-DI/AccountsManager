@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.FloatingPopup;
+import model.Util.FloatingPopup;
 import model.User;
 
 public class PrivPassConfirmController {
@@ -49,7 +49,7 @@ public class PrivPassConfirmController {
             result = true;
             closeWin();
         } else {
-            FloatingPopup.showPopup(txtUserPass, "Incorrect password");
+            FloatingPopup.showTextFieldPopup(txtUserPass, "Incorrect password");
         }
     }
 

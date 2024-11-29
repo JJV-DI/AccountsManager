@@ -10,9 +10,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import model.Account;
+import model.User;
 
 public class PC_Account_CardController implements Initializable{
 
+    private User userOwner;
+    
     private Account accountOwner;
     
     @FXML
@@ -29,7 +32,7 @@ public class PC_Account_CardController implements Initializable{
 
     @FXML
     void btnEditAccountPressed() {
-        MainAppController.viewLoader.loadAccountCreator(accountOwner);
+        MainAppController.viewLoader.loadAccountCreator(accountOwner, userOwner);
     }
     
     @FXML
@@ -41,6 +44,10 @@ public class PC_Account_CardController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         Circle clip = new Circle(10, 10, 10);
         imgRed.setClip(clip);
+    }
+
+    public void setUserOwner(User userOwner) {
+        this.userOwner = userOwner;
     }
     
     public void setAccountOwner(Account accountOwner){

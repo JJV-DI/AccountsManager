@@ -1,6 +1,7 @@
-package model;
+package model.DAO;
 
 import javafx.collections.ObservableList;
+import model.SocialNetwork;
 
 public interface SN_DAO {
     public ObservableList<SocialNetwork> loadSocialNetworks();

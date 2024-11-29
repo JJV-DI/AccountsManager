@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import model.ConfigProvider;
-import model.FieldValidator;
-import model.FloatingPopup;
+import model.Util.ConfigProvider;
+import model.Util.FieldValidator;
+import model.Util.FloatingPopup;
 
 public class AdminUpdatePassConfirmController {
 
@@ -56,10 +56,10 @@ public class AdminUpdatePassConfirmController {
                 result = true;
                 closeWin();
             } else {
-                FloatingPopup.showPopup(txtNewAdminPass, "Password must not be empty");
+                FloatingPopup.showTextFieldPopup(txtNewAdminPass, "Password must not be empty");
             }
         } else {
-            FloatingPopup.showPopup(txtCurAdminPass, "Password does not match\n with current password");
+            FloatingPopup.showTextFieldPopup(txtCurAdminPass, "Password does not match\n with current password");
         }
     }
 

@@ -1,7 +1,12 @@
-package model;
+package model.Util;
 
+import model.DAO.SocialNetworkDAO;
+import model.DAO.UserDAO;
 import java.util.regex.Pattern;
+import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 
 public class FieldValidator {
     public static boolean emptinessValidation(String string) {
@@ -39,10 +44,31 @@ public class FieldValidator {
         if (error) {
             textField.getStyleClass().removeAll("secondary-color");
             textField.getStyleClass().add("fieldError-color");
-            FloatingPopup.showPopup(textField, message);
+            FloatingPopup.showTextFieldPopup(textField, message);
         } else {
             textField.getStyleClass().removeAll("fieldError-color");
             textField.getStyleClass().add("secondary-color");
+        }
+    }
+    
+    public static void toggleHBoxInError(boolean error, HBox hBox) {
+        if (error) {
+            hBox.getStyleClass().removeAll("secondary-color");
+            hBox.getStyleClass().add("fieldError-color");
+        } else {
+            hBox.getStyleClass().removeAll("fieldError-color");
+            hBox.getStyleClass().add("secondary-color");
+        }
+    }
+    
+    public static void toggleLabelInError(boolean error, Label label) {
+        if (error) {
+            label.getStyleClass().removeAll("text-color");
+            label.getStyleClass().add("error-text-color");
+            //FloatingPopup.showTextFieldPopup(textField, message);
+        } else {
+            label.getStyleClass().removeAll("error-text-color");
+            label.getStyleClass().add("text-color");
         }
     }
 }

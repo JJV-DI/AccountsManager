@@ -1,4 +1,4 @@
-package model;
+package model.Util;
 
 public enum ViewStatus {
     PROFILES,

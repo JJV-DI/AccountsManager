@@ -257,7 +257,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </HBox>
-                  <ScrollPane hbarPolicy="NEVER" maxHeight="230.0" prefHeight="230.0" styleClass="secondary-color" VBox.vgrow="ALWAYS">
+                  <ScrollPane hbarPolicy="NEVER" maxHeight="230.0" prefHeight="230.0" VBox.vgrow="ALWAYS">
                      <content>
                         <VBox fx:id="vboxScrollBody" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0" spacing="10.0" styleClass="secondary-color">
                            <padding>
@@ -265,6 +265,10 @@
                            </padding>
                         </VBox>
                      </content>
+                     <styleClass>
+                        <String fx:value="secondary-color" />
+                        <String fx:value="scroll-pane-LightOverDark" />
+                     </styleClass>
                   </ScrollPane>
                </children>
                <padding>

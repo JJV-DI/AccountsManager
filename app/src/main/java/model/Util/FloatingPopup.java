@@ -1,11 +1,13 @@
-package model;
+package model.Util;
 
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Popup;
 
 public class FloatingPopup {
-    public static void showPopup(TextField textField, String message){
+    public static void showTextFieldPopup(TextField textField, String message){
         Popup popup = new Popup();
         Label warningLabel = new Label(message);
         warningLabel.setStyle("-fx-background-color: #D16D6A; -fx-padding: 5; -fx-border-color: #F3F3F3; -fx-border-width: 1px; -fx-border-style: solid; -fx-font-size: 10px; -fx-text-fill: #F3F3F3;");

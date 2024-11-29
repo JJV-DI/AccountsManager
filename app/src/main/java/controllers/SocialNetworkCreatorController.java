@@ -14,10 +14,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.FieldValidator;
+import model.Util.FieldValidator;
 import model.SocialNetwork;
-import model.SocialNetworkDAO;
-import model.Tools;
+import model.DAO.SocialNetworkDAO;
+import model.Util.Tools;
 
 public class SocialNetworkCreatorController implements Initializable{
 
@@ -116,8 +116,14 @@ public class SocialNetworkCreatorController implements Initializable{
         boolean nameInLenght = true;
         if (nameNotEmpty) {
             nameMatchRegex = FieldValidator.commonNameValidation(txtSNName.getText());
-            nameNotRepited = !FieldValidator.repeatedSocialNetworkValidation(txtSNName.getText());
             nameInLenght = FieldValidator.lengthValidation(50, txtSNName.getText());
+            if (socialNetworkOwner != null) {
+                if (!txtSNName.getText().equals(socialNetworkOwner.getNombreRed())) {
+                    nameNotRepited = !FieldValidator.repeatedSocialNetworkValidation(txtSNName.getText());
+                }
+            } else {
+                nameNotRepited = !FieldValidator.repeatedSocialNetworkValidation(txtSNName.getText());
+            }
         }
         StringBuilder validMessage = new StringBuilder("");
         if (!nameNotEmpty) validMessage.append("-Name must not be empty\n");

@@ -1,60 +1,49 @@
-package model;
+package model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.Util.ConfigProvider;
+import model.SocialNetwork;
+import model.Util.Tools;
 import org.mariadb.jdbc.Connection;
 
-public class UserDAO implements U_DAO{
+public class SocialNetworkDAO implements SN_DAO {
     
     private Connection connection;
-    private ObservableList<User> users = FXCollections.observableArrayList();
+    private ObservableList<SocialNetwork> socialNetworks = FXCollections.observableArrayList();
     
     @Override
-    public ObservableList<User> loadUsersFromDB() {
+    public ObservableList<SocialNetwork> loadSocialNetworks() {
         connection = new ConfigProvider().getConnection();
         if (connection != null) {
             try {
-                ResultSet result = connection.createStatement().executeQuery("SELECT * FROM usuario");
+                ResultSet result = connection.createStatement().executeQuery("SELECT * FROM red_social ORDER BY nombreRed");
                 while (result.next()) {                
-                    users.add(new User(result.getString("email"), result.getString("nombreUsuario"), result.getString("passUsuario"), result.getString("privacidad"), Tools.loadImgFromX64(result.getString("imgUsuario"), "user")));
+                    socialNetworks.add(new SocialNetwork(result.getInt("idRed"), result.getString("nombreRed"), Tools.loadImgFromX64(result.getString("iconoRed"), "social_network")));
                 }
                 connection.close();
             } catch (SQLException ex) {
                 System.err.println("Error in " + this.getClass().toString() + " requesting data from data base");
                 System.err.println(ex.getMessage());
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.err.println("Error in " + this.getClass().toString() + " closing connection");
-                    System.err.println(ex.getMessage());
-                }
             }
-            return users;
+            return socialNetworks;
         }
         return null;
     }
     
     @Override
-    public void insertUser(User user) {
+    public void insertSocialNetwork(SocialNetwork socialNetwork) {
         connection = new ConfigProvider().getConnection();
         if (connection != null) {
-            try (PreparedStatement ps = connection.prepareStatement("INSERT INTO usuario VALUES (?,?,?,?,?)")) {
-                ps.setString(1, user.getEmail());
-                ps.setString(2, user.getUserName());
-                if (user.isPrivate()) {
-                    ps.setString(3, user.getUserPass());
-                    ps.setString(4, "Y");
+            try (PreparedStatement ps = connection.prepareStatement("INSERT INTO red_social (nombreRed, iconoRed) VALUES (?,?)")) {
+                ps.setString(1, socialNetwork.getNombreRed());
+                if (socialNetwork.getIconoRed() == null) {
+                    ps.setNull(2, java.sql.Types.LONGNVARCHAR);
                 } else {
-                    ps.setNull(3, java.sql.Types.VARCHAR);
-                    ps.setString(4, "N");
-                }
-                if (user.getImgUser() == null) {
-                    ps.setNull(5, java.sql.Types.LONGNVARCHAR);
-                } else {
-                    ps.setString(5, Tools.loadX64FromImage(user.getImgUser()));
+                    ps.setString(2, Tools.loadX64FromImage(socialNetwork.getIconoRed()));
                 }
                 ps.executeUpdate();
                 connection.close();
@@ -72,25 +61,17 @@ public class UserDAO implements U_DAO{
     }
     
     @Override
-    public void updateUser(User newUser, User oldUser) {
+    public void updateSocialNetwork(SocialNetwork socialNetwork) {
         connection = new ConfigProvider().getConnection();
         if (connection != null) {
-            try (PreparedStatement ps = connection.prepareStatement("UPDATE usuario SET email = ?, nombreUsuario = ?, passUsuario = ?, privacidad = ?, imgUsuario = ? WHERE email = ?")) {
-                ps.setString(1, newUser.getEmail());
-                ps.setString(2, newUser.getUserName());
-                if (newUser.isPrivate()) {
-                    ps.setString(3, newUser.getUserPass());
-                    ps.setString(4, "Y");
+            try (PreparedStatement ps = connection.prepareStatement("UPDATE red_social SET nombreRed = ?, iconoRed = ? WHERE idRed = ?")) {
+                ps.setString(1, socialNetwork.getNombreRed());
+                if (socialNetwork.getIconoRed() == null) {
+                    ps.setNull(2, java.sql.Types.LONGNVARCHAR);
                 } else {
-                    ps.setNull(3, java.sql.Types.VARCHAR);
-                    ps.setString(4, "N");
+                    ps.setString(2, Tools.loadX64FromImage(socialNetwork.getIconoRed()));
                 }
-                if (newUser.getImgUser() == null) {
-                    ps.setNull(5, java.sql.Types.LONGNVARCHAR);
-                } else {
-                    ps.setString(5, Tools.loadX64FromImage(newUser.getImgUser()));
-                }
-                ps.setString(6, oldUser.getEmail());
+                ps.setInt(3, socialNetwork.getIdRed());
                 ps.executeUpdate();
                 connection.close();
             } catch (SQLException ex) {
@@ -107,11 +88,11 @@ public class UserDAO implements U_DAO{
     }
     
     @Override
-    public void deleteUser(User user) {
+    public void deleteSocialNetwork(SocialNetwork socialNetwork) {
         connection = new ConfigProvider().getConnection();
         if (connection != null) {
-            try (PreparedStatement ps = connection.prepareStatement("DELETE FROM usuario WHERE email = ?")) {
-                ps.setString(1, user.getEmail());
+            try (PreparedStatement ps = connection.prepareStatement("DELETE FROM red_social WHERE idRed = ?")) {
+                ps.setInt(1, socialNetwork.getIdRed());
                 ps.executeUpdate();
                 connection.close();
             } catch (SQLException ex) {
@@ -126,12 +107,12 @@ public class UserDAO implements U_DAO{
             }
         }
     }
-
-    public boolean checkRepeatedUser(String email) {
+    
+    public boolean checkRepeatedSocialNetwork(String name) {
         connection = new ConfigProvider().getConnection();
         if (connection != null) {
-            try(PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usuario WHERE email = ?");) {
-                preparedStatement.setString(1, email);
+            try(PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM red_social WHERE nombreRed = ?");) {
+                preparedStatement.setString(1, name);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     connection.close();
                     resultSet.last();

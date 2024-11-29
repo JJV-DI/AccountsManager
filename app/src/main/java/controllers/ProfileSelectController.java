@@ -9,8 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import model.User;
-import model.UserDAO;
-import model.ViewManager;
+import model.DAO.UserDAO;
+import model.Util.ViewManager;
 
 public class ProfileSelectController implements Initializable{
     

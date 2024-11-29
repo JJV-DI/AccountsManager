@@ -1,4 +1,4 @@
-package model;
+package model.Util;
 
 import controllers.AC_Tab_BtnController;
 import controllers.AccountCreatorController;
@@ -15,6 +15,7 @@ import controllers.ProfileSelectController;
 import controllers.SN_CardController;
 import controllers.SocialNetworkController;
 import controllers.SocialNetworkCreatorController;
+import controllers.UF_Account_AddBtnController;
 import controllers.UF_Account_CardController;
 import controllers.UserInfoController;
 import java.io.IOException;
@@ -28,6 +29,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Account;
+import model.SocialNetwork;
+import model.User;
 
 public class ViewLoader {
     
@@ -100,12 +104,13 @@ public class ViewLoader {
         loadProfileCreator(vboxBody, viewManager, null, false);
     }
     
-    public void loadProfileCreatorUserAccountsCards(FlowPane flowPaneAccounts, Account account) {
+    public void loadProfileCreatorUserAccountsCards(FlowPane flowPaneAccounts, Account account, User userOwner) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmPC_Account_Card.fxml"));
             flowPaneAccounts.getChildren().add(fxmlLoader.load());
             PC_Account_CardController pc_Account_CardController = fxmlLoader.getController();
             pc_Account_CardController.setAccountOwner(account);
+            pc_Account_CardController.setUserOwner(userOwner);
             pc_Account_CardController.setName();
             pc_Account_CardController.setImage();
         } catch (IOException e) {
@@ -144,11 +149,12 @@ public class ViewLoader {
         }
     }
     
-    public void loadUserInfoAccountCards(VBox vboxScrollBody, Account account) {
+    public void loadUserInfoAccountCards(VBox vboxScrollBody, Account account, User userOwner) {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmUF_Account_Card.fxml"));
             vboxScrollBody.getChildren().add(fxmlLoader.load());
             UF_Account_CardController uf_Account_CardController = fxmlLoader.getController();
+            uf_Account_CardController.setUserOwner(userOwner);
             uf_Account_CardController.setAccountOwner(account);
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading user info card fxml file");
@@ -156,10 +162,12 @@ public class ViewLoader {
         }
     }
     
-    public void loadUserInfoAccountAddButton(VBox vboxScrollBody) {
+    public void loadUserInfoAccountAddButton(VBox vboxScrollBody, User userOwner) {
         try{
             FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmUF_Account_AddBtn.fxml"));
             vboxScrollBody.getChildren().add(fXMLLoader.load());
+            UF_Account_AddBtnController uf_A_AddBntController = fXMLLoader.getController();
+            uf_A_AddBntController.setUserOwner(userOwner);
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading account add button fxml file");
             System.err.println(e.getCause());
@@ -167,12 +175,13 @@ public class ViewLoader {
     }
     
     /*ACCOUNT CREATOR VIEWS*/    
-    public boolean loadAccountCreator(Account accountOwner) {
+    public boolean loadAccountCreator(Account accountOwner, User userOwner) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmAccountCreator.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(fxmlLoader.load()));
             AccountCreatorController acController = fxmlLoader.getController();
+            acController.setUserOwner(userOwner);
             acController.setAccountOwner(accountOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
@@ -186,19 +195,21 @@ public class ViewLoader {
         }
     }
     
-    public boolean loadAccountCreator() {
-        return loadAccountCreator(null);
+    public boolean loadAccountCreator(User userOwner) {
+        return loadAccountCreator(null, userOwner);
     }
     
-    public void loadAccountCreatorSocialNetworks(VBox vboxScrollBody, SocialNetwork socialNetwork) {
+    public AC_Tab_BtnController loadAccountCreatorSocialNetworkCard(VBox vboxScrollBody, SocialNetwork socialNetwork) {
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmAC_Tab_Btn.fxml"));
         try {
             vboxScrollBody.getChildren().add(fXMLLoader.load());
             AC_Tab_BtnController ac_Tab_BtnController = fXMLLoader.getController();
             ac_Tab_BtnController.setSocialNetworkOwner(socialNetwork);
+            return ac_Tab_BtnController;
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading social network card fxml file");
             System.err.println(e.getCause());
+            return null;
         }
     }
     

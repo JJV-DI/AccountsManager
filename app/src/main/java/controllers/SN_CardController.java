@@ -7,9 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
-import model.ConfigProvider;
+import model.Util.ConfigProvider;
 import model.SocialNetwork;
-import model.SocialNetworkDAO;
+import model.DAO.SocialNetworkDAO;
 
 public class SN_CardController implements Initializable {
 

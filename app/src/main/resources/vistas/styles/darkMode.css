@@ -18,6 +18,10 @@
     -fx-text-fill: #F3F3F3;
 }
 
+.error-text-color {
+    -fx-text-fill: #D16D6A;
+}
+
 .white-color {
     -fx-background-color: #F3F3F3;
 }
@@ -44,4 +48,60 @@
 
 .fieldError-color {
     -fx-background-color: #D16D6A;
+}
+
+/*Scroll Custom 1*/
+.scroll-pane-DarkOverLight .scroll-bar:vertical {
+    -fx-min-width: 15px;
+    -fx-pref-width: 15px;
+    -fx-max-width: 15px;
+}
+
+.scroll-pane-DarkOverLight .scroll-bar:vertical .track {
+    -fx-background-color: #383838;
+}
+
+.scroll-pane-DarkOverLight .scroll-bar:vertical .thumb {
+    -fx-background-color: #282828;
+    -fx-background-radius: 5;
+}
+
+.scroll-pane-DarkOverLight .scroll-bar:vertical .increment-button,
+.scroll-pane-DarkOverLight .scroll-bar:vertical .decrement-button {
+    -fx-background-color: #383838;
+    -fx-shape: " ";
+    -fx-opacity: 0;
+    -fx-padding: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+    visibility: hidden;
+}
+
+/*Scroll Custom 2*/
+.scroll-pane-LightOverDark .scroll-bar:vertical {
+    -fx-min-width: 15px;
+    -fx-pref-width: 15px;
+    -fx-max-width: 15px;
+}
+
+.scroll-pane-LightOverDark .scroll-bar:vertical .track {
+    -fx-background-color: #282828;
+}
+
+.scroll-pane-LightOverDark .scroll-bar:vertical .thumb {
+    -fx-background-color: #383838;
+    -fx-background-radius: 5;
+}
+
+.scroll-pane-LightOverDark .scroll-bar:vertical .increment-button,
+.scroll-pane-LightOverDark .scroll-bar:vertical .decrement-button {
+    -fx-background-color: #282828;
+    -fx-shape: " ";
+    -fx-opacity: 0;
+    -fx-padding: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+    visibility: hidden;
 }

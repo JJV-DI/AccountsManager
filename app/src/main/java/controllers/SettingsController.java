@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.ConfigProvider;
+import model.Util.ConfigProvider;
 
 public class SettingsController implements Initializable{
 

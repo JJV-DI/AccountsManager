@@ -7,9 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.ViewLoader;
-import model.ViewManager;
-import model.ViewStatus;
+import model.Util.ViewLoader;
+import model.Util.ViewManager;
+import model.Util.ViewStatus;
 
 public class MainAppController implements Initializable{
     

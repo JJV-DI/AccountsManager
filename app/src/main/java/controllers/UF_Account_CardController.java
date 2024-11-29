@@ -9,9 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import model.Account;
+import model.User;
 
 public class UF_Account_CardController implements Initializable{
 
+    private User userOwner;
+    
     private Account accountOwner;
     
     @FXML
@@ -39,7 +42,7 @@ public class UF_Account_CardController implements Initializable{
     
     @FXML
     void btnUpdateAccountPressed() {
-        MainAppController.viewLoader.loadAccountCreator(accountOwner);
+        MainAppController.viewLoader.loadAccountCreator(accountOwner, userOwner);
     }
     
     @Override
@@ -53,6 +56,10 @@ public class UF_Account_CardController implements Initializable{
         lblPass.setText(accountOwner.getPassCuenta());
         lblSN.setText(accountOwner.getNombreRed());
         imgSN.setImage(accountOwner.getIconoRed());
+    }
+
+    public void setUserOwner(User userOwner) {
+        this.userOwner = userOwner;
     }
     
     public void setAccountOwner(Account accountOwner) {

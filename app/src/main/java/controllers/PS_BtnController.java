@@ -10,8 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import model.User;
-import model.UserDAO;
-import model.ViewManager;
+import model.DAO.UserDAO;
+import model.Util.ViewManager;
 
 public class PS_BtnController implements Initializable{
     

@@ -16,7 +16,7 @@ public class AC_Tab_BtnController implements Initializable{
     private SocialNetwork socialNetworkOwner;
     
     @FXML
-    private Button btnSocialNetwork;
+    public Button btnSocialNetwork;
 
     @FXML
     private ImageView imgSocialNetwork;
@@ -32,7 +32,11 @@ public class AC_Tab_BtnController implements Initializable{
     public void setSocialNetworkOwner(SocialNetwork socialNetworkOwner) {
         this.socialNetworkOwner = socialNetworkOwner;
         initComponents();
-    }    
+    }
+
+    public SocialNetwork getSocialNetworkOwner() {
+        return socialNetworkOwner;
+    }
     
 
     private void initComponents() {
