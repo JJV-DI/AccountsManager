@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -34,6 +35,17 @@ import model.SocialNetwork;
 import model.User;
 
 public class ViewLoader {
+    /*MAIN APP*/
+    public Parent loadMainApp() {
+        try {
+            return FXMLLoader.load(getClass().getResource("/vistas/frmMainApp.fxml"));
+        } catch (IOException e) {
+            System.err.println("Error in " + this.getClass().toString() + " loading main app fxml file");
+            System.err.println(e.getCause());
+            return null;
+        }
+    }
+    
     
     /*PROFILE SELECT VIEWS*/
     public void loadProfileSelect(VBox vbBody, ViewManager viewManager) {

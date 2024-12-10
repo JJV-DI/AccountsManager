@@ -1,8 +1,12 @@
+package app;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Account;
 import model.DAO.AccountDAO;
@@ -11,21 +15,35 @@ import model.DAO.UserDAO;
 import model.SocialNetwork;
 import model.User;
 import model.Util.ConfigProvider;
+import model.Util.ViewLoader;
 
-public class MainApp extends Application{    
+public class MainApp extends Application{
+    
+    private static Stage mainStage;
+    
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws Exception {        
-        Parent root = FXMLLoader.load(getClass().getResource("/vistas/frmMainApp.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setTitle("Accounts Manager");
-        stage.getIcons().add(new Image("/vistas/media/app/appIcon_lightMode.png"));
-        stage.show();
+    public void start(Stage stage) {
+        
+        try {
+            this.mainStage = stage;
+        Scene mainScene = new Scene(new ViewLoader().loadMainApp());
+        mainStage.setScene(mainScene);
+        mainStage.setResizable(false);
+        mainStage.setTitle("Accounts Manager");
+        mainStage.getIcons().add(new Image("/vistas/media/app/appIcon_lightMode.png"));
+        mainStage.show();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+    }
+    
+    public static void restartApp() {
+        mainStage.setScene(new Scene(new ViewLoader().loadMainApp()));
     }
     
     

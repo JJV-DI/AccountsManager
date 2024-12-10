@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnUserPressed" styleClass="secondary-color" stylesheets="@styles/darkMode.css" text="Example69" textAlignment="CENTER" textFill="#f3f3f3" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PS_BtnController">
+<Button fx:id="btnUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnUserPressed" styleClass="secondary-color" stylesheets="@styles/mainStyle.css" text="Example69" textAlignment="CENTER" textFill="#f3f3f3" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PS_BtnController">
    <graphic>
       <Pane>
          <children>

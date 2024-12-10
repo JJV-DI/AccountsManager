@@ -1,6 +1,10 @@
 package controllers;
 
+import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,8 +56,20 @@ public class SettingsController implements Initializable{
     private Tooltip toolTipAdminStatus;
     
     @FXML
+    private Button btnApplyTheme;
+    
+    @FXML
     private Button btnRemoveAdminPass;
 
+    @FXML
+    void btnApplyThemePressed(ActionEvent event) {
+        switch (cmbBoxTheme.getValue()) {
+            case "Dark theme" -> {
+            
+            }
+        }
+    }
+    
     @FXML
     void checkUpdatePressed() {
 
@@ -73,7 +89,7 @@ public class SettingsController implements Initializable{
     
     @FXML
     void btnRemoveAdminPassPressed() {
-        if (MainAppController.viewLoader.loadAdminNewPassConfirm()) {
+        if (MainAppController.viewLoader.loadAdminPassConfirm()) {
             new ConfigProvider().saveAdminPass("");
             loadAdminPassGraphics();
         }
@@ -107,6 +123,22 @@ public class SettingsController implements Initializable{
             passExist = false;
             toolTipAdminStatus.setText("Unprotected");
             btnRemoveAdminPass.setDisable(true);
+        }
+    }
+    
+    private void replaceStyleSheet(String mode) {
+        Path mainStyleFile = Paths.get("/vistas/styles/mainStyle.css");
+        
+        switch (mode) {
+            case "Dark theme" -> {
+                Path darkStyleFile = Paths.get("/vistas/styles/darkMode.css");
+                if (Files.deleteIfExists(mainStyleFile)) {
+                    Files.copy(mainStyleFile, darkStyleFile);
+                }
+            }
+            case "Light theme" -> {
+                Path lightStyleFile = Paths.get("/vistas/styles/lightMode.css");
+            }
         }
     }
 

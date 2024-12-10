@@ -18,7 +18,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.16' 
 }
 
-mainClassName = 'MainApp'
+mainClassName = 'app.MainApp'
 
 jar {
  duplicatesStrategy 'exclude' //Excluye duplicados en ficheros de configuración
@@ -28,7 +28,7 @@ jar {
 } 
 
 application {
-    mainClass = 'MainApp'
+    mainClass = 'app.MainApp'
 }
 
 sourceSets {
