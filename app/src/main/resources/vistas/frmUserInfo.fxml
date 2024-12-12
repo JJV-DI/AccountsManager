@@ -16,13 +16,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="800.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserInfoController">
+<VBox maxHeight="800.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserInfoController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" spacing="10.0" styleClass="secondary-color">
          <children>
             <ImageView fx:id="imgUserImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@media/user/userDefaultIcon_darkMode.png" />
+                  <Image url="@media/cur_icons/userDefaultIcon.png" />
                </image>
             </ImageView>
             <VBox alignment="CENTER_LEFT">
@@ -48,7 +48,7 @@
                <children>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/search_darkMode.png" />
+                        <Image url="@media/cur_icons/search.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="txtSearch" promptText="Search by name" styleClass="primary-color" />
@@ -57,7 +57,7 @@
                      <graphic>
                         <ImageView fx:id="imgFilter" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/filter_darkMode.png" />
+                              <Image url="@media/cur_icons/filter.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -80,7 +80,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/edit_darkMode.png" />
+                        <Image url="@media/cur_icons/edit.png" />
                      </image>
                   </ImageView>
                </graphic>

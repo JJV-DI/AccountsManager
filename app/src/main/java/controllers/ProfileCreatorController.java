@@ -216,10 +216,10 @@ public class ProfileCreatorController implements Initializable {
         privStatus = true;
         lblPrivStatus.setText("PRIVATE");
         btnPrivStatus.setStyle("-fx-background-color: #EFB810;");
-        imgKey.setImage(new Image("/vistas/media/icon/key_darkMode.png"));
+        imgKey.setImage(new Image("/vistas/media/cur_icons/key.png"));
         txtPass.setDisable(false);
         btnTogglePass.setDisable(false);
-        imgPassVisEye.setImage(new Image("/vistas/media/icon/eyeCrossed_darkMode.png"));
+        imgPassVisEye.setImage(new Image("/vistas/media/cur_icons/eyeCrossed.png"));
     }
     
     void setPublicStatus(){
@@ -227,11 +227,11 @@ public class ProfileCreatorController implements Initializable {
         privStatus = false;
         lblPrivStatus.setText("PUBLIC");
         btnPrivStatus.setStyle("-fx-background-color: #BEBEBE;");
-        imgKey.setImage(new Image("/vistas/media/icon/keyCrossed_darkMode.png"));
+        imgKey.setImage(new Image("/vistas/media/cur_icons/keyCrossed.png"));
         txtPass.setDisable(true);
         txtPass.clear();
         btnTogglePass.setDisable(true);
-        imgPassVisEye.setImage(new Image("/vistas/media/icon/eyeCrossed_darkMode.png"));
+        imgPassVisEye.setImage(new Image("/vistas/media/cur_icons/eyeCrossed.png"));
     }
     
     void loadUserAccountsCards(){

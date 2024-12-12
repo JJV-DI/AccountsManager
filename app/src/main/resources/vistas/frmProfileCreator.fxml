@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileCreatorController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" stylesheets="@styles/lightMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileCreatorController">
   <columnConstraints>
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -40,7 +40,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@media/user/userDefaultIcon_darkMode.png" />
+                        <Image url="@media/cur_icons/userDefaultIcon.png" />
                      </image>
                   </ImageView>
                   <VBox alignment="CENTER_LEFT" prefWidth="25.0" spacing="10.0">
@@ -49,7 +49,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@media/icon/edit_darkMode.png" />
+                                    <Image url="@media/cur_icons/edit.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -64,7 +64,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@media/icon/delete_darkMode.png" />
+                                    <Image url="@media/cur_icons/delete.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -93,7 +93,7 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="USER INFORMATION" textFill="#f3f3f3" GridPane.columnSpan="2">
+                  <Label styleClass="text-color" text="USER INFORMATION" textFill="#f3f3f3" GridPane.columnSpan="2">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -109,7 +109,7 @@
                   </TextField>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                      <image>
-                        <Image url="@media/user/userDefaultIcon_darkMode.png" />
+                        <Image url="@media/cur_icons/userDefaultIcon.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="txtEmail" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -123,7 +123,7 @@
                   </TextField>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@media/icon/email_darkMode.png" />
+                        <Image url="@media/cur_icons/email.png" />
                      </image>
                   </ImageView>
                </children>
@@ -154,12 +154,12 @@
          <children>
             <VBox GridPane.valignment="CENTER">
                <children>
-                  <Label text="SECURITY SETTINGS" textFill="#f3f3f3">
+                  <Label styleClass="text-color" text="SECURITY SETTINGS" textFill="#f3f3f3">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" text="PRIVACITY STATUS" textFill="#f3f3f3">
+                  <Label alignment="TOP_LEFT" styleClass="text-color" text="PRIVACITY STATUS" textFill="#f3f3f3">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -172,7 +172,7 @@
                      <graphic>
                         <ImageView fx:id="imgKey" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/key_darkMode.png" />
+                              <Image url="@media/cur_icons/key.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -187,7 +187,7 @@
                         <Tooltip text="Toggle user privacity" />
                      </tooltip>
                   </Button>
-                  <Label fx:id="lblPrivStatus" text="PUBLIC" textFill="#f3f3f3">
+                  <Label fx:id="lblPrivStatus" styleClass="text-color" text="PUBLIC" textFill="#f3f3f3">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -201,7 +201,7 @@
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/pass_darkMode.png" />
+                        <Image url="@media/cur_icons/pass.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="txtPass" disable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" promptText="Password" HBox.hgrow="ALWAYS">
@@ -217,7 +217,7 @@
                      <graphic>
                         <ImageView fx:id="imgPassVisEye" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/eyeCrossed_darkMode.png" />
+                              <Image url="@media/cur_icons/eyeCrossed.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -241,10 +241,10 @@
                <children>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/warning.png" />
+                        <Image url="@media/common/warning.png" />
                      </image>
                   </ImageView>
-                  <Label text="The password is not editable" textFill="#eac452" />
+                  <Label styleClass="error-text-color" text="The password is not editable" textFill="#eac452" />
                </children>
             </HBox>
          </children>
@@ -265,12 +265,12 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0">
                <children>
-                  <Label text="ACCOUNTS:" textFill="#f3f3f3">
+                  <Label styleClass="text-color" text="ACCOUNTS:" textFill="#f3f3f3">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblAccountsCount" layoutX="10.0" layoutY="10.0" text="0" textFill="#f3f3f3">
+                  <Label fx:id="lblAccountsCount" layoutX="10.0" layoutY="10.0" styleClass="text-color" text="0" textFill="#f3f3f3">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -279,7 +279,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/add_selected.png" />
+                              <Image url="@media/common/add_selected.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -303,7 +303,7 @@
                <content>
                   <FlowPane fx:id="flowPaneAccounts" columnHalignment="CENTER" hgap="6.0" styleClass="primary-color" vgap="6.0">
                      <children>
-                        <Label text="No accounts added" textFill="#f3f3f3">
+                        <Label styleClass="text-color" text="No accounts added" textFill="#f3f3f3">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -325,6 +325,7 @@
                      <styleClass>
                         <String fx:value="red-color" />
                         <String fx:value="round-border" />
+                        <String fx:value="text-color" />
                      </styleClass>
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
@@ -343,6 +344,7 @@
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="round-border" />
+                        <String fx:value="text-color" />
                      </styleClass>
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
@@ -361,6 +363,7 @@
                      <styleClass>
                         <String fx:value="green-color" />
                         <String fx:value="round-border" />
+                        <String fx:value="text-color" />
                      </styleClass>
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
@@ -385,6 +388,7 @@
                      <styleClass>
                         <String fx:value="round-border" />
                         <String fx:value="blue-color" />
+                        <String fx:value="text-color" />
                      </styleClass>
                      <tooltip>
                         <Tooltip text="Update user with the changes" />

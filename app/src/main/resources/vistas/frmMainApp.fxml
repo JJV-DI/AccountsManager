@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainAppController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainAppController">
    <children>
       <GridPane fx:id="paneGridBody" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="550.0" styleClass="primary-color">
         <columnConstraints>
@@ -28,14 +28,10 @@
             <VBox alignment="TOP_CENTER" styleClass="secondary-color" GridPane.rowSpan="2" GridPane.vgrow="ALWAYS">
                <children>
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#profilesPressed" prefHeight="50.0" prefWidth="50.0">
-                     <styleClass>
-                        <String fx:value="secondary-color" />
-                        <String fx:value="saw-border" />
-                     </styleClass>
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/users_darkMode.png" />
+                              <Image url="@media/cur_icons/users.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -48,6 +44,10 @@
                      <tooltip>
                         <Tooltip text="Users" />
                      </tooltip>
+                     <styleClass>
+                        <String fx:value="saw-border" />
+                        <String fx:value="secondary-color" />
+                     </styleClass>
                   </Button>
                   <Button layoutX="10.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#socialPressed" prefHeight="50.0" prefWidth="50.0">
                      <styleClass>
@@ -57,7 +57,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/social_darkMode.png" />
+                              <Image url="@media/cur_icons/social.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -79,7 +79,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/settings_darkMode.png" />
+                              <Image url="@media/cur_icons/settings.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -98,7 +98,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/power_darkMode.png" />
+                              <Image url="@media/cur_icons/power.png" />
                            </image>
                         </ImageView>
                      </graphic>

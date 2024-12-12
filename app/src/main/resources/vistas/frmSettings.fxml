@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="700.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" spacing="15.0" styleClass="primary-color" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
+<VBox maxHeight="700.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" spacing="15.0" styleClass="primary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
    <padding>
       <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
    </padding>
@@ -37,7 +37,7 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/colorPalette_darkMode.png" />
+                        <Image url="@media/cur_icons/colorPalette.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="text-color" text="Appearance">
@@ -50,31 +50,7 @@
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
                   <Label styleClass="text-color" text="Theme" />
-                  <ComboBox fx:id="cmbBoxTheme" prefWidth="150.0">
-                     <styleClass>
-                        <String fx:value="secondary-color" />
-                        <String fx:value="saw-border" />
-                     </styleClass>
-                  </ComboBox>
-                  <Button fx:id="btnApplyTheme" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnApplyThemePressed" prefHeight="25.0" prefWidth="25.0">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@media/icon/removeLine.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <styleClass>
-                        <String fx:value="round-border" />
-                        <String fx:value="secondary-color" />
-                     </styleClass>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <tooltip>
-                        <Tooltip text="Apply theme" />
-                     </tooltip>
-                  </Button>
+                  <ComboBox fx:id="cmbBoxTheme" prefWidth="150.0" styleClass="saw-border" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
@@ -89,7 +65,7 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/folder_darkMode.png" />
+                        <Image url="@media/cur_icons/folder.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="text-color" text="Data directory">
@@ -115,7 +91,7 @@
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@media/icon/folderManaged_darkMode.png" />
+                                    <Image url="@media/cur_icons/folderManaged.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -145,7 +121,7 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/admin_darkMode.png" />
+                        <Image url="@media/cur_icons/admin.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="text-color" text="Administration">
@@ -157,7 +133,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/aboutUs_darkMode.png" />
+                              <Image url="@media/cur_icons/aboutUs.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -177,7 +153,7 @@
                      <graphic>
                         <ImageView fx:id="imgAdminStatus" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/keyCrossed_darkMode.png" />
+                              <Image url="@media/cur_icons/keyCrossed.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -209,7 +185,7 @@
                            <graphic>
                               <ImageView fx:id="imgAddRefreshPass" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@media/icon/addNotRounded_darkMode.png" />
+                                    <Image url="@media/cur_icons/addNotRounded.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -229,7 +205,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/removeLine.png" />
+                              <Image url="@media/common/removeLine.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -258,7 +234,7 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/update_darkMode.png" />
+                        <Image url="@media/cur_icons/update.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="text-color" text="Updating">
@@ -291,7 +267,7 @@
                            <graphic>
                               <ImageView fx:id="imgCheckUpdateBtnIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@media/icon/checkUpdate_darkMode.png" />
+                                    <Image url="@media/cur_icons/checkUpdate.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -318,7 +294,7 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/aboutUs_darkMode.png" />
+                        <Image url="@media/cur_icons/aboutUs.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="text-color" text="About us">
@@ -335,7 +311,7 @@
                <children>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/officialWeb_darkMode.png" />
+                        <Image url="@media/cur_icons/officialWeb.png" />
                      </image>
                   </ImageView>
                   <Hyperlink fx:id="lnkOfficialWeb" styleClass="text-color" text="AccountsManager Official Website" underline="true">
@@ -355,7 +331,7 @@
                <children>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/support_darkMode.png" />
+                        <Image url="@media/cur_icons/support.png" />
                      </image>
                   </ImageView>
                   <Hyperlink fx:id="lnkSupport" styleClass="text-color" text="Online support" underline="true">

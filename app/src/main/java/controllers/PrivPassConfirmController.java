@@ -39,7 +39,7 @@ public class PrivPassConfirmController {
 
     @FXML
     void btnClosePressed(ActionEvent event) {
-        result = true;
+        result = false;
         closeWin();
     }
     

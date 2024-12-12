@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="700.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" spacing="15.0" styleClass="primary-color" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SocialNetworkController">
+<VBox alignment="TOP_CENTER" maxHeight="700.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" spacing="15.0" styleClass="primary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SocialNetworkController">
    <children>
       <VBox alignment="CENTER_LEFT" spacing="15.0">
          <children>
@@ -32,10 +32,14 @@
                      <children>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/search_darkMode.png" />
+                              <Image url="@media/cur_icons/search.png" />
                            </image>
                         </ImageView>
-                        <TextField promptText="Search a social network" styleClass="secondary-color" />
+                        <TextField promptText="Search a social network">
+                           <styleClass>
+                              <String fx:value="secondary-color" />
+                              <String fx:value="text-color" />
+                           </styleClass></TextField>
                      </children>
                      <padding>
                         <Insets left="10.0" right="10.0" />
@@ -45,7 +49,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/add_selected.png" />
+                              <Image url="@media/common/add_selected.png" />
                            </image>
                         </ImageView>
                      </graphic>

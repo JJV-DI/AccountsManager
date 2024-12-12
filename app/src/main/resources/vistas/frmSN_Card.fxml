@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="450.0" spacing="7.0" style="-fx-background-radius: 14;" styleClass="secondary-color" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SN_CardController">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="450.0" spacing="7.0" style="-fx-background-radius: 14;" styleClass="secondary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SN_CardController">
    <children>
       <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" textAlignment="CENTER">
          <graphic>
             <ImageView fx:id="imgSocialNetwork" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@media/icon/social_darkMode.png" />
+                  <Image url="@media/cur_icons/social.png" />
                </image></ImageView>
          </graphic>
          <styleClass>
@@ -41,7 +41,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/delete_selected.png" />
+                        <Image url="@media/common/delete_selected.png" />
                      </image></ImageView>
                </graphic>
                <styleClass>
@@ -59,7 +59,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/edit_darkMode.png" />
+                        <Image url="@media/cur_icons/edit.png" />
                      </image></ImageView>
                </graphic>
                <styleClass>

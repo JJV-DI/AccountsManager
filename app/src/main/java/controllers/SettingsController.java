@@ -1,6 +1,7 @@
 package controllers;
 
-import java.io.File;
+import app.MainApp;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -60,15 +61,6 @@ public class SettingsController implements Initializable{
     
     @FXML
     private Button btnRemoveAdminPass;
-
-    @FXML
-    void btnApplyThemePressed(ActionEvent event) {
-        switch (cmbBoxTheme.getValue()) {
-            case "Dark theme" -> {
-            
-            }
-        }
-    }
     
     @FXML
     void checkUpdatePressed() {
@@ -99,15 +91,20 @@ public class SettingsController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         cmbBoxTheme.getItems().add("Dark theme");
         cmbBoxTheme.getItems().add("Light theme");
-        cmbBoxTheme.setValue("Dark theme");
+        cmbBoxTheme.setValue(new ConfigProvider().loadTheme());
+        cmbBoxTheme.setStyle("-fx-text-fill: #F3F3F3;");
         loadAdminPassGraphics();
+        cmbBoxTheme.valueProperty().addListener((observable, oldValue, newValue) -> {
+            new ConfigProvider().saveTheme(newValue);
+            MainApp.reloadTheme();
+        });
     }
     
     private void loadAdminPassGraphics() {
         String adminPass = new ConfigProvider().loadAdminPass();
         if (!adminPass.isEmpty()) {
-            imgAdminStatus.setImage(new Image("/vistas/media/icon/key_darkMode.png"));
-            imgAddRefreshPass.setImage(new Image("/vistas/media/icon/refresh_darkMode.png"));
+            imgAdminStatus.setImage(new Image("/vistas/media/cur_icons/key.png"));
+            imgAddRefreshPass.setImage(new Image("/vistas/media/cur_icons/refresh.png"));
             String dotPass = "";
             for (int i = 0; i < adminPass.length(); i++) {
                 dotPass += "●";
@@ -117,29 +114,12 @@ public class SettingsController implements Initializable{
             toolTipAdminStatus.setText("Protected");
             btnRemoveAdminPass.setDisable(false);
         } else {
-            imgAdminStatus.setImage(new Image("/vistas/media/icon/keyCrossed_darkMode.png"));
-            imgAddRefreshPass.setImage(new Image("/vistas/media/icon/addNotRounded_darkMode.png"));            
+            imgAdminStatus.setImage(new Image("/vistas/media/cur_icons/keyCrossed.png"));
+            imgAddRefreshPass.setImage(new Image("/vistas/media/cur_icons/addNotRounded.png"));            
             lblAdminPass.setText("Not administrator set");
             passExist = false;
             toolTipAdminStatus.setText("Unprotected");
             btnRemoveAdminPass.setDisable(true);
         }
     }
-    
-    private void replaceStyleSheet(String mode) {
-        Path mainStyleFile = Paths.get("/vistas/styles/mainStyle.css");
-        
-        switch (mode) {
-            case "Dark theme" -> {
-                Path darkStyleFile = Paths.get("/vistas/styles/darkMode.css");
-                if (Files.deleteIfExists(mainStyleFile)) {
-                    Files.copy(mainStyleFile, darkStyleFile);
-                }
-            }
-            case "Light theme" -> {
-                Path lightStyleFile = Paths.get("/vistas/styles/lightMode.css");
-            }
-        }
-    }
-
 }

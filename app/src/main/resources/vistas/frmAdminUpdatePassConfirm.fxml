@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox style="-fx-border-color: white;" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminUpdatePassConfirmController">
+<VBox style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminUpdatePassConfirmController">
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" styleClass="secondary-color">
          <children>
@@ -22,7 +22,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/close_darkMode.png" />
+                        <Image url="@media/cur_icons/close.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -45,7 +45,7 @@
                <children>
                   <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/admin_darkMode.png" />
+                        <Image url="@media/cur_icons/admin.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="132.0" layoutY="128.0" styleClass="text-color" text="ADMINISTRATOR">
@@ -82,7 +82,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@media/icon/eyeCrossed_darkMode.png" />
+                                          <Image url="@media/cur_icons/eyeCrossed.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -134,7 +134,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@media/icon/eyeCrossed_darkMode.png" />
+                                          <Image url="@media/cur_icons/eyeCrossed.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

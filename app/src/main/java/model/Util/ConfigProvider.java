@@ -59,7 +59,7 @@ public class ConfigProvider {
     }
     
     public void saveAdminPass(String adminPass) {
-        createConfigProperties(loadDBUsername(), loadDBPassword(), adminPass);
+        createConfigProperties(loadDBUsername(), loadDBPassword(), adminPass, loadTheme());
     }
     
     public Connection getConnection(){
@@ -72,13 +72,30 @@ public class ConfigProvider {
         }
     }
     
+    public String loadTheme() {
+        try (FileInputStream fileIS = new FileInputStream("config.properties")) { 
+            Properties properties = new Properties();
+            properties.load(fileIS);
+            return properties.getProperty("theme");
+        } catch (IOException e) { 
+            System.err.println("Error in " + this.getClass().toString() + " loading theme from config.properties");
+            System.err.println(e.getCause());
+            return "";
+        }
+    }
+    
+    public void saveTheme(String theme) {
+        createConfigProperties(loadDBUsername(), loadDBPassword(), loadAdminPass(), theme);
+    }
+    
     /*CREAR ARCHIVO CONFIG (USO EXCLUSIVO DE DEBUG)*/
-    public void createConfigProperties(String user, String pass, String adminPass) {
+    public void createConfigProperties(String user, String pass, String adminPass, String theme) {
         Properties properties = new Properties();
         properties.setProperty("url", "jdbc:mariadb://localhost:3306/account_manager"); 
         properties.setProperty("username", user); 
         properties.setProperty("password", pass);
         properties.setProperty("adminPass", adminPass);
+        properties.setProperty("theme", theme);
         try (FileOutputStream fileOS = new FileOutputStream("config.properties")) { 
             properties.store(fileOS, "DB credentials:");
         } catch (IOException e) { 

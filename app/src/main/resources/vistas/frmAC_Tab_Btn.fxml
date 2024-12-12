@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Button fx:id="btnSocialNetwork" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSocialNetworkPressed" prefHeight="50.0" prefWidth="210.0" style="-fx-background-radius: 8;" styleClass="primary-color" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AC_Tab_BtnController">
+<Button fx:id="btnSocialNetwork" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSocialNetworkPressed" prefHeight="50.0" prefWidth="210.0" style="-fx-background-radius: 8;" styleClass="primary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AC_Tab_BtnController">
    <graphic>
       <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0">
          <children>
@@ -19,7 +19,7 @@
                <children>
                   <ImageView fx:id="imgSocialNetwork" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/social_darkMode.png" />
+                        <Image url="@media/cur_icons/social.png" />
                      </image>
                   </ImageView>
                </children>

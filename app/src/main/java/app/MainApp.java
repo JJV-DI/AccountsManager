@@ -1,5 +1,10 @@
 package app;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,26 +35,43 @@ public class MainApp extends Application{
         
         try {
             this.mainStage = stage;
-        Scene mainScene = new Scene(new ViewLoader().loadMainApp());
-        mainStage.setScene(mainScene);
-        mainStage.setResizable(false);
-        mainStage.setTitle("Accounts Manager");
-        mainStage.getIcons().add(new Image("/vistas/media/app/appIcon_lightMode.png"));
-        mainStage.show();
+            Scene mainScene = new Scene(new ViewLoader().loadMainApp());
+            mainScene.getStylesheets().add(chargeTheme());
+            mainStage.setScene(mainScene);
+            mainStage.setResizable(false);
+            mainStage.setTitle("Accounts Manager");
+            mainStage.getIcons().add(new Image("/vistas/media/cur_icons/appIcon.png"));
+            mainStage.show();
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
         
     }
     
-    public static void restartApp() {
-        mainStage.setScene(new Scene(new ViewLoader().loadMainApp()));
+    public static void reloadTheme() {
+        mainStage.getScene().getStylesheets().clear();
+        mainStage.getScene().getStylesheets().add(chargeTheme());
+    }
+    
+    public static String chargeTheme() {
+        String theme = new ConfigProvider().loadTheme();
+        switch (theme) {
+            case "Dark theme" -> {
+                return "/vistas/styles/darkMode.css";
+            }
+            case "Light theme" -> {
+                return "/vistas/styles/lightMode.css";
+            }
+            default -> {
+                return "/vistas/styles/darkMode.css";
+            }
+        }
     }
     
     
     //CREACIÓN DEL ARCHIVO config.properties ¡USO EXCLUSIVO DE DEBUG!
     private void createConfigFile() {
-        new ConfigProvider().createConfigProperties("root", "root", "");
+        new ConfigProvider().createConfigProperties("root", "root", "", "Dark theme");
     }
     
     

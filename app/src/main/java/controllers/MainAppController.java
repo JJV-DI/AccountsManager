@@ -47,8 +47,7 @@ public class MainAppController implements Initializable{
     
     @FXML
     void powerPressed() {
-        Stage stage = (Stage) vbBody.getScene().getWindow();
-        stage.close();
+        MainApp.reloadTheme();
     }
     
     private void loadProfiles() {

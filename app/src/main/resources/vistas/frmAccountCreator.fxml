@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox style="-fx-border-color: white;" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccountCreatorController">
+<VBox style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccountCreatorController">
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" styleClass="secondary-color">
          <children>
@@ -23,7 +23,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@media/icon/close_darkMode.png" />
+                        <Image url="@media/cur_icons/close.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -48,7 +48,7 @@
                      <children>
                         <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/account_darkMode.png" />
+                              <Image url="@media/cur_icons/account.png" />
                            </image>
                         </ImageView>
                         <HBox alignment="CENTER" spacing="6.0">
@@ -71,7 +71,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/accountBox_darkMode.png" />
+                              <Image url="@media/cur_icons/accountBox.png" />
                            </image>
                         </ImageView>
                         <TextField fx:id="txtAccountName" prefWidth="350.0" promptText="Account name">
@@ -89,7 +89,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/passDots_darkMode.png" />
+                              <Image url="@media/cur_icons/passDots.png" />
                            </image>
                         </ImageView>
                         <HBox alignment="CENTER_LEFT" prefWidth="350.0" styleClass="secondary-color">
@@ -112,7 +112,7 @@
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@media/icon/eyeCrossed_darkMode.png" />
+                                          <Image url="@media/cur_icons/eyeCrossed.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -213,7 +213,7 @@
                      <graphic>
                         <ImageView fx:id="imgSocialNetworkSelected" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/social_darkMode.png" />
+                              <Image url="@media/cur_icons/social.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -241,7 +241,7 @@
                      <children>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/search_darkMode.png" />
+                              <Image url="@media/cur_icons/search.png" />
                            </image>
                         </ImageView>
                         <TextField fx:id="txtSearchSN" promptText="Search a social network" styleClass="primary-color" />

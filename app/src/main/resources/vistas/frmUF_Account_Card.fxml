@@ -16,13 +16,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="470.0" style="-fx-background-radius: 8;" styleClass="secondary-color" stylesheets="@styles/mainStyle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UF_Account_CardController">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="470.0" style="-fx-background-radius: 8;" styleClass="secondary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UF_Account_CardController">
    <children>
       <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
          <graphic>
             <ImageView fx:id="imgSN" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@media/icon/social_darkMode.png" />
+                  <Image url="@media/cur_icons/social.png" />
                </image>
             </ImageView>
          </graphic>
@@ -81,7 +81,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/eyeCrossed_darkMode.png" />
+                              <Image url="@media/cur_icons/eyeCrossed.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -134,7 +134,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/edit_darkMode.png" />
+                              <Image url="@media/cur_icons/edit.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -153,7 +153,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@media/icon/removeLine.png" />
+                              <Image url="@media/common/removeLine.png" />
                            </image>
                         </ImageView>
                      </graphic>
