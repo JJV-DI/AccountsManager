@@ -22,7 +22,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label fx:id="txtSeachSocialNetwork" styleClass="text-color" text="Social Networks">
+                  <Label styleClass="text-color" text="Social Networks">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -35,7 +35,7 @@
                               <Image url="@media/cur_icons/search.png" />
                            </image>
                         </ImageView>
-                        <TextField promptText="Search a social network">
+                        <TextField fx:id="txtSearchSocialNetwork" promptText="Search a social network">
                            <styleClass>
                               <String fx:value="secondary-color" />
                               <String fx:value="text-color" />
@@ -56,6 +56,7 @@
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="round-border" />
+                        <String fx:value="hover-color" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -74,7 +75,7 @@
       </VBox>
       <ScrollPane hbarPolicy="NEVER" maxHeight="680.0" VBox.vgrow="ALWAYS">
          <content>
-            <VBox fx:id="vBoxScrollBody" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="460.0" spacing="10.0" styleClass="primary-color" />
+            <VBox fx:id="vBoxScrollBody" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="475.0" spacing="10.0" styleClass="primary-color" />
          </content>
          <VBox.margin>
             <Insets left="25.0" />

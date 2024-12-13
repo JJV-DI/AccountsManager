@@ -27,7 +27,7 @@
          <children>
             <VBox alignment="TOP_CENTER" styleClass="secondary-color" GridPane.rowSpan="2" GridPane.vgrow="ALWAYS">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#profilesPressed" prefHeight="50.0" prefWidth="50.0">
+                  <Button fx:id="btnProfiles" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#profilesPressed" prefHeight="50.0" prefWidth="50.0">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -47,12 +47,14 @@
                      <styleClass>
                         <String fx:value="saw-border" />
                         <String fx:value="secondary-color" />
+                        <String fx:value="hover-color" />
                      </styleClass>
                   </Button>
-                  <Button layoutX="10.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#socialPressed" prefHeight="50.0" prefWidth="50.0">
+                  <Button fx:id="btnSocial" layoutX="10.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#socialPressed" prefHeight="50.0" prefWidth="50.0">
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="saw-border" />
+                        <String fx:value="hover-color" />
                      </styleClass>
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -71,10 +73,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="10.0" layoutY="759.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#settingsPressed" prefHeight="50.0" prefWidth="50.0">
+                  <Button fx:id="btnSettings" layoutX="10.0" layoutY="759.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#settingsPressed" prefHeight="50.0" prefWidth="50.0">
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="saw-border" />
+                        <String fx:value="hover-color" />
                      </styleClass>
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -94,7 +97,7 @@
                      </tooltip>
                   </Button>
                   <Pane minHeight="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <Button contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#powerPressed" prefHeight="50.0" prefWidth="50.0" textAlignment="CENTER">
+                  <Button fx:id="btnPower" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#powerPressed" prefHeight="50.0" prefWidth="50.0" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,6 +111,7 @@
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="saw-border" />
+                        <String fx:value="hover-color" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />

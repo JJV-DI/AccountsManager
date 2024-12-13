@@ -22,9 +22,6 @@ public class AdminAccessPassConfirmController {
     private Button btnConfirm;
 
     @FXML
-    private Button btnTogglePassVis;
-
-    @FXML
     private TextField txtAdminPass;
 
     @FXML
@@ -47,11 +44,6 @@ public class AdminAccessPassConfirmController {
         } else {
             FloatingPopup.showTextFieldPopup(txtAdminPass, "Password does not match\n with current password");
         }
-    }
-
-    @FXML
-    void btnTogglePassVisPressed() {
-        
     }
     
     private void closeWin() {

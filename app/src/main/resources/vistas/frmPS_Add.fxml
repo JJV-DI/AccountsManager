@@ -24,5 +24,6 @@
    <styleClass>
       <String fx:value="secondary-color" />
       <String fx:value="text-color" />
+      <String fx:value="hover-color" />
    </styleClass>
 </Button>

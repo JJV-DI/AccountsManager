@@ -11,8 +11,12 @@ import javafx.scene.shape.Circle;
 import model.Account;
 import model.DAO.AccountDAO;
 import model.User;
+import model.Util.PassLblToggler;
+import model.Util.TogglerBuilder;
 
 public class UF_Account_CardController implements Initializable{
+    
+    private PassLblToggler passLblToggler;
     
     private UserInfoController userInfoController;
 
@@ -21,11 +25,17 @@ public class UF_Account_CardController implements Initializable{
     private Account accountOwner;
     
     @FXML
+    private Button btnTogglePass;
+    
+    @FXML
     private Button btnRemoveAccount;
     
     @FXML
     private Button btnUpdateAccount;
 
+    @FXML
+    private ImageView imgTogglePass;
+    
     @FXML
     private ImageView imgSN;
 
@@ -62,6 +72,7 @@ public class UF_Account_CardController implements Initializable{
         lblPass.setText(accountOwner.getPassCuenta());
         lblSN.setText(accountOwner.getNombreRed());
         imgSN.setImage(accountOwner.getIconoRed());
+        this.passLblToggler = TogglerBuilder.buildLblToggler(btnTogglePass, lblPass, true, imgTogglePass);
     }
 
     public void setUserOwner(User userOwner) {

@@ -3,7 +3,6 @@ package model.Util;
 import model.DAO.SocialNetworkDAO;
 import model.DAO.UserDAO;
 import java.util.regex.Pattern;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -40,7 +39,7 @@ public class FieldValidator {
         return true;
     }
     
-    public static void toggleTextFieldInError(boolean error, TextField textField, String message) {
+    public static void toggleTextFieldSecondaryInError(boolean error, TextField textField, String message) {
         if (error) {
             textField.getStyleClass().removeAll("secondary-color");
             textField.getStyleClass().add("fieldError-color");
@@ -48,6 +47,17 @@ public class FieldValidator {
         } else {
             textField.getStyleClass().removeAll("fieldError-color");
             textField.getStyleClass().add("secondary-color");
+        }
+    }
+    
+    public static void toggleTextFieldPrimaryInError(boolean error, TextField textField, String message) {
+        if (error) {
+            textField.getStyleClass().removeAll("primary-color");
+            textField.getStyleClass().add("fieldError-color");
+            FloatingPopup.showTextFieldPopup(textField, message);
+        } else {
+            textField.getStyleClass().removeAll("fieldError-color");
+            textField.getStyleClass().add("primary-color");
         }
     }
     

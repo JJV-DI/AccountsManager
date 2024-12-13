@@ -36,9 +36,7 @@ public class MainApp extends Application{
     }
 
     @Override
-    public void start(Stage stage) {
-        createMassUsers();
-        
+    public void start(Stage stage) {        
         try {
             this.mainStage = stage;
             initScene();
@@ -51,19 +49,13 @@ public class MainApp extends Application{
         }
     }
     
-    private static void initScene() {
+    public static void initScene() {
         overrideIcons();
         Scene mainScene = new Scene(new ViewLoader().loadMainApp());
         mainScene.getStylesheets().add(chargeStylesheet());
         mainStage.setScene(mainScene);
         mainStage.getIcons().clear();
         mainStage.getIcons().add(new Image("/vistas/media/cur_icons/appIcon.png"));
-    }
-    
-    public static void restartApp() {
-        //mainStage.close();
-        initScene();
-        //mainStage.show();
     }
     
     public static void closeApp() {
@@ -94,96 +86,63 @@ public class MainApp extends Application{
     }
 
     private static void replaceDirectoryContents(String sourceDirPath, String targetDirPath) {
-        // Obtener la URL del directorio de origen desde los recursos
         URL sourceDirUrl = MainApp.class.getResource(sourceDirPath);
-        if (sourceDirUrl == null) {
-            System.err.println("El directorio de origen no se encontró: " + sourceDirPath);
-            return;
-        }
-
-        // Convertir la URL a un Path
         Path sourceDir;
         try {
             sourceDir = Paths.get(sourceDirUrl.toURI());
         } catch (URISyntaxException e) {
-            System.err.println("Error al convertir la URL a URI: " + e.getMessage());
+            System.err.println("Error in MainApp geting icons source directory");
+            System.err.println(e.getMessage());
             return;
         }
-
-        // Obtener la URL del directorio de destino desde los recursos
+        
         URL targetDirUrl = MainApp.class.getResource(targetDirPath);
-        if (targetDirUrl == null) {
-            System.err.println("El directorio de destino no se encontró: " + targetDirPath);
-            return;
-        }
-
-        // Convertir la URL de destino a un Path
         Path targetDir;
         try {
             targetDir = Paths.get(targetDirUrl.toURI());
         } catch (URISyntaxException e) {
-            System.err.println("Error al convertir la URL de destino a URI: " + e.getMessage());
+            System.err.println("Error in MainApp geting icons target directory");
+            System.err.println(e.getMessage());
             return;
         }
 
-        // Imprimir rutas absolutas para depuración
-        System.out.println("Ruta absoluta del directorio de origen: " + sourceDir.toAbsolutePath());
-        System.out.println("Ruta absoluta del directorio de destino: " + targetDir.toAbsolutePath());
-
         try {
-            // Verificar si el directorio de origen existe y es un directorio
-            if (!Files.exists(sourceDir) || !Files.isDirectory(sourceDir)) {
-                System.err.println("El directorio de origen no existe o no es un directorio: " + sourceDir);
-                return; // Salir del método si no es un directorio
-            }
-
-            // Borrar el contenido del directorio de destino si existe
             if (Files.exists(targetDir)) {
                 deleteDirectoryContents(targetDir);
             } else {
-                // Crear el directorio de destino si no existe
                 Files.createDirectories(targetDir);
-                System.out.println("Directorio de destino creado: " + targetDir);
             }
-
-            // Copiar el contenido del directorio de origen al directorio de destino
             Files.walk(sourceDir).forEach(source -> {
                 Path destination = targetDir.resolve(sourceDir.relativize(source));
                 try {
                     if (Files.isDirectory(source)) {
-                        // Crear el directorio en el destino
                         Files.createDirectories(destination);
                     } else {
-                        // Copiar el archivo al destino
                         Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
                     }
                 } catch (IOException e) {
-                    System.err.println("Error al copiar el archivo: " + source + " a " + destination);
-                    e.printStackTrace();
+                    System.err.println("Error in MainApp copying to or creating target directory");
+                    System.err.println(e.getMessage());
                 }
             });
-
-            System.out.println("Contenido copiado con éxito de " + sourceDir + " a " + targetDir);
         } catch (IOException e) {
-            System.err.println("Error en MainApp reemplazando el contenido del directorio");
-            e.printStackTrace();
+            System.err.println("Error in MainApp replacing contents into target directory");
+            System.err.println(e.getMessage());
         }
     }
-
-    // Método para eliminar el contenido de un directorio
+    
     private static void deleteDirectoryContents(Path directory) throws IOException {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory)) {
             for (Path entry : stream) {
                 if (Files.isDirectory(entry)) {
-                    deleteDirectoryContents(entry); // Llamada recursiva para eliminar subdirectorios
-                    Files.delete(entry); // Eliminar el directorio vacío
+                    deleteDirectoryContents(entry);
+                    Files.delete(entry);
                 } else {
-                    Files.delete(entry); // Eliminar el archivo
+                    Files.delete(entry);
                 }
             }
         }
     }
-    
     
     //CREACIÓN DEL ARCHIVO config.properties ¡USO EXCLUSIVO DE DEBUG!
     private void createConfigFile() {

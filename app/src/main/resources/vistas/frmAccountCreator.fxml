@@ -19,7 +19,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" styleClass="secondary-color">
          <children>
-            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="25.0" prefWidth="45.0">
+            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="26.0" prefWidth="45.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,6 +30,7 @@
                <styleClass>
                   <String fx:value="secondary-color" />
                   <String fx:value="saw-border" />
+                  <String fx:value="hover-color" />
                </styleClass>
                <tooltip>
                   <Tooltip text="Close window" />
@@ -104,25 +105,6 @@
                                  </font>
                               </TextField>
                               <Pane HBox.hgrow="ALWAYS" />
-                              <Button fx:id="btnTooglePassVis" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0">
-                                 <styleClass>
-                                    <String fx:value="primary-color" />
-                                    <String fx:value="round-border" />
-                                 </styleClass>
-                                 <graphic>
-                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@media/cur_icons/eyeCrossed.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <tooltip>
-                                    <Tooltip text="Toggle password visibility" />
-                                 </tooltip>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
                            </children>
                            <HBox.margin>
                               <Insets />
@@ -142,6 +124,7 @@
                            <styleClass>
                               <String fx:value="secondary-color" />
                               <String fx:value="round-border" />
+                              <String fx:value="hover-color" />
                            </styleClass>
                            <padding>
                               <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
@@ -220,6 +203,7 @@
                      <styleClass>
                         <String fx:value="primary-color" />
                         <String fx:value="round-border" />
+                        <String fx:value="scale-effect" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -244,7 +228,11 @@
                               <Image url="@media/cur_icons/search.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="txtSearchSN" promptText="Search a social network" styleClass="primary-color" />
+                        <TextField fx:id="txtSearchSN" promptText="Search a social network">
+                           <styleClass>
+                              <String fx:value="primary-color" />
+                              <String fx:value="text-color" />
+                           </styleClass></TextField>
                      </children>
                      <styleClass>
                         <String fx:value="primary-color" />
@@ -259,9 +247,9 @@
                   </HBox>
                   <ScrollPane hbarPolicy="NEVER" maxHeight="230.0" prefHeight="230.0" VBox.vgrow="ALWAYS">
                      <content>
-                        <VBox fx:id="vboxScrollBody" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0" spacing="10.0" styleClass="secondary-color">
+                        <VBox fx:id="vboxScrollBody" alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" minHeight="227.0" minWidth="-Infinity" prefWidth="230.0" spacing="10.0" styleClass="secondary-color">
                            <padding>
-                              <Insets right="15.0" />
+                              <Insets bottom="5.0" right="15.0" top="5.0" />
                            </padding>
                         </VBox>
                      </content>

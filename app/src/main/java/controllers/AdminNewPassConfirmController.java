@@ -25,9 +25,6 @@ public class AdminNewPassConfirmController {
     private Button btnConfirm;
 
     @FXML
-    private Button btnTogglePassVis;
-
-    @FXML
     private TextField txtAdminPass;
 
     @FXML
@@ -50,11 +47,6 @@ public class AdminNewPassConfirmController {
             closeWin();
         } 
         else FloatingPopup.showTextFieldPopup(txtAdminPass, "Password must not be empty");
-    }
-
-    @FXML
-    void btnTogglePassVisPressed() {
-
     }
     
     private void closeWin() {

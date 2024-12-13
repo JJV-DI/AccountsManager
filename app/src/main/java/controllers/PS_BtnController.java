@@ -54,8 +54,12 @@ public class PS_BtnController implements Initializable{
     @FXML
     void btnUserPressed() {
         if (userOwner.isPrivate()) {
-            if (MainAppController.viewLoader.loadUserPassConfirm(userOwner)) MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
+            if (MainAppController.viewLoader.loadUserPassConfirm(userOwner)) {
+                MainAppController.resetButtonsStyle();
+                MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
+            }
         } else {
+            MainAppController.resetButtonsStyle();
             MainAppController.viewLoader.loadUserInfo(vboxBody, viewManager, userOwner);
         }
     }
@@ -63,20 +67,14 @@ public class PS_BtnController implements Initializable{
     @FXML
     void ctxtEditPressed() {
         if (userOwner.isPrivate()) {
-            if (MainAppController.viewLoader.loadUserPassConfirm(userOwner)) MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
+            if (MainAppController.viewLoader.loadUserPassConfirm(userOwner)) {
+                MainAppController.resetButtonsStyle();
+                MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
+            }
         } else {
+            MainAppController.resetButtonsStyle();
             MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager, userOwner, true);
         }
-    }
-
-    @FXML
-    void ctxtMoveBackPressed() {
-        /*Mueve el botón del usuario un puesto anterior en el grid pane*/
-    }
-
-    @FXML
-    void ctxtMoveForPressed() {
-        /*Mueve el botón del usuario un puesto posterior en el grid pane*/
     }
 
     @FXML

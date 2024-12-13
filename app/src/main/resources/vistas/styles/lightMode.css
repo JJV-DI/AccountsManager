@@ -6,9 +6,32 @@
     -fx-background-color: #B0B0B0;
 }
 
+.hover-color:hover{
+    -fx-background-color: #d6d6d6;
+}
+
+.scale-effect {
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s;
+}
+
+.scale-effect:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
 .combo-box {
     -fx-text-fill: #333333;
     -fx-background-color: #B0B0B0;
+}
+
+.combo-box .list-view .list-cell:hover {
+    -fx-background-color: #d6d6d6;
+}
+
+.combo-box .list-view .list-cell:selected {
+    -fx-background-color: #d6d6d6;
 }
 
 .combo-box .list-view .list-cell {
@@ -49,16 +72,32 @@
     -fx-background-color: #BB271A;
 }
 
+.red-color:hover{
+    -fx-background-color: #fe3323;
+}
+
 .green-color {
     -fx-background-color: #78A75A;
+}
+
+.green-color:hover {
+    -fx-background-color: #93cd6e;
 }
 
 .blue-color {
     -fx-background-color: #4B77D1;
 }
 
+.blue-color:hover {
+    -fx-background-color: #588cf7;
+}
+
 .fieldError-color {
     -fx-background-color: #D16D6A;
+}
+
+.scroll-pane {
+    -fx-background-color: #E0E0E0;
 }
 
 /*Scroll Custom 1*/
@@ -119,4 +158,17 @@
 
 .line-style {
     -fx-stroke: #333333;
+}
+
+.context-menu {
+    -fx-background-color: #B0B0B0;
+}
+
+.context-menu .menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: #E0E0E0;
 }

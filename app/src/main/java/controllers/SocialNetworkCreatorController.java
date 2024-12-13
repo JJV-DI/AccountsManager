@@ -131,7 +131,7 @@ public class SocialNetworkCreatorController implements Initializable{
         if (!nameInLenght) validMessage.append("-Name must not be more than 50 characters\n");
         if (!nameNotRepited) validMessage.append("-This social network already exists\n");
         
-        FieldValidator.toggleTextFieldInError(!nameNotEmpty || !nameMatchRegex || !nameInLenght || !nameNotRepited, txtSNName, validMessage.toString());
+        FieldValidator.toggleTextFieldSecondaryInError(!nameNotEmpty || !nameMatchRegex || !nameInLenght || !nameNotRepited, txtSNName, validMessage.toString());
         
         return nameNotEmpty && nameMatchRegex && nameInLenght && nameNotRepited;
     }

@@ -35,6 +35,28 @@ public class SocialNetworkDAO implements SN_DAO {
     }
     
     @Override
+    public ObservableList<SocialNetwork> loadSocialNetworksByName(String snName) {
+        connection = new ConfigProvider().getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM red_social WHERE nombreRed LIKE ? ORDER BY nombreRed");
+                ps.setString(1, "%" + snName + "%");
+                ResultSet result = ps.executeQuery();
+                while (result.next()) {                
+                    socialNetworks.add(new SocialNetwork(result.getInt("idRed"), result.getString("nombreRed"), Tools.loadImgFromX64(result.getString("iconoRed"), "social_network")));
+                }
+                connection.close();
+                return socialNetworks;
+            } catch (SQLException ex) {
+                System.err.println("Error in " + this.getClass().toString() + " requesting data filtered from data base");
+                System.err.println(ex.getMessage());
+            }
+            return socialNetworks;
+        }
+        return null;
+    }
+    
+    @Override
     public void insertSocialNetwork(SocialNetwork socialNetwork) {
         connection = new ConfigProvider().getConnection();
         if (connection != null) {

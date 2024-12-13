@@ -18,7 +18,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" styleClass="secondary-color">
          <children>
-            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="25.0" prefWidth="45.0">
+            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="26.0" prefWidth="45.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,6 +29,7 @@
                <styleClass>
                   <String fx:value="secondary-color" />
                   <String fx:value="saw-border" />
+                  <String fx:value="hover-color" />
                </styleClass>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -58,7 +59,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
                      <children>
                         <HBox>
                            <children>
@@ -73,25 +74,6 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <Button fx:id="btnTogglePassVis" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnTogglePassVisPressed" prefHeight="30.0" prefWidth="30.0">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@media/cur_icons/eyeCrossed.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <styleClass>
-                              <String fx:value="secondary-color" />
-                              <String fx:value="round-border" />
-                           </styleClass>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <tooltip>
-                              <Tooltip text="Toggle password visibility" />
-                           </tooltip>
-                        </Button>
                      </children>
                      <styleClass>
                         <String fx:value="primary-color" />
@@ -107,6 +89,7 @@
                            <styleClass>
                               <String fx:value="primary-color" />
                               <String fx:value="text-color" />
+                              <String fx:value="hover-color" />
                            </styleClass>
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -122,6 +105,7 @@
                            <styleClass>
                               <String fx:value="primary-color" />
                               <String fx:value="text-color" />
+                              <String fx:value="hover-color" />
                            </styleClass>
                            <font>
                               <Font name="System Bold" size="14.0" />

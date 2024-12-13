@@ -47,6 +47,8 @@
                <styleClass>
                   <String fx:value="primary-color" />
                   <String fx:value="round-border" />
+                  <String fx:value="hover-color" />
+                  <String fx:value="scale-effect" />
                </styleClass>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -65,6 +67,8 @@
                <styleClass>
                   <String fx:value="primary-color" />
                   <String fx:value="round-border" />
+                  <String fx:value="hover-color" />
+                  <String fx:value="scale-effect" />
                </styleClass>
                <cursor>
                   <Cursor fx:constant="HAND" />

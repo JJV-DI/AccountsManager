@@ -25,12 +25,6 @@ public class AdminUpdatePassConfirmController {
     private Button btnConfirm;
 
     @FXML
-    private Button btnToggleCurPassVis;
-
-    @FXML
-    private Button btnToggleNewPassVis;
-
-    @FXML
     private TextField txtCurAdminPass;
 
     @FXML
@@ -61,16 +55,6 @@ public class AdminUpdatePassConfirmController {
         } else {
             FloatingPopup.showTextFieldPopup(txtCurAdminPass, "Password does not match\n with current password");
         }
-    }
-
-    @FXML
-    void btnToggleCurPassVisPressed(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnToggleNewPassVisPressed(ActionEvent event) {
-
     }
     
     private void closeWin() {

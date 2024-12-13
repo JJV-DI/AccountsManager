@@ -16,7 +16,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" styleClass="secondary-color">
          <children>
-            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="25.0" prefWidth="45.0">
+            <Button fx:id="btnClose" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnClosePressed" prefHeight="26.0" prefWidth="45.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -27,6 +27,7 @@
                <styleClass>
                   <String fx:value="secondary-color" />
                   <String fx:value="saw-border" />
+                  <String fx:value="hover-color" />
                </styleClass>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -69,6 +70,7 @@
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="text-color" />
+                        <String fx:value="hover-color" />
                      </styleClass>
                      <font>
                         <Font name="System Bold" size="14.0" />

@@ -34,7 +34,7 @@ public class ProfileSelectController implements Initializable{
     
     public void showUsers(){
         gridPane.getChildren().clear();
-        if (users != null) {
+        if (users != null && !users.isEmpty()) {
             int index = 0;
             int rows = ((users.size() + 1) + 4 - 1) / 4; 
             boolean addSetted = false;
@@ -49,6 +49,8 @@ public class ProfileSelectController implements Initializable{
                     }
                 }
             }
+        } else {
+            MainAppController.viewLoader.loadUsersNotFoundCard(gridPane);
         }
     }
     

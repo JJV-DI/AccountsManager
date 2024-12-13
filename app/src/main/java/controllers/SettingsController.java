@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import model.Util.ConfigProvider;
 
 public class SettingsController implements Initializable{
@@ -64,7 +66,9 @@ public class SettingsController implements Initializable{
     
     @FXML
     void checkUpdatePressed() {
-
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(2), imgCheckUpdateBtnIcon);
+        rotateTransition.setByAngle(1080);
+        rotateTransition.play();
     }
 
     @FXML
@@ -76,7 +80,7 @@ public class SettingsController implements Initializable{
 
     @FXML
     void updateDataDirPressed() {
-
+        
     }
     
     @FXML
@@ -95,7 +99,7 @@ public class SettingsController implements Initializable{
         loadAdminPassGraphics();
         cmbBoxTheme.valueProperty().addListener((observable, oldValue, newValue) -> {
             new ConfigProvider().saveTheme(newValue);
-            MainApp.restartApp();
+            MainApp.initScene();
         });
     }
     

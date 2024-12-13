@@ -37,6 +37,54 @@ public class AccountDAO implements A_DAO {
         }
         return null;
     }
+    
+    @Override
+    public ObservableList<Account> loadAccountsByName(String accountName, User user) {
+        connection = new ConfigProvider().getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement ps = connection.prepareStatement(
+                        "SELECT c.email AS email, c.nombreCuenta AS nombreCuenta, c.passCuenta AS passCuenta, c.idRed AS idRed, rs.nombreRed AS nombreRed, rs.iconoRed AS iconoRed FROM cuenta AS c JOIN red_social AS rs USING (idRed) WHERE email = ? AND c.nombreCuenta LIKE ? ORDER BY nombreCuenta"
+                );
+                ps.setString(1, user.getEmail());
+                ps.setString(2, "%" + accountName + "%");
+                ResultSet result = ps.executeQuery();
+                while (result.next()) {                
+                    accounts.add(new Account(result.getString("email"), result.getString("nombreCuenta"), result.getString("passCuenta"), result.getInt("idRed"), result.getString("nombreRed"), Tools.loadImgFromX64(result.getString("iconoRed"), "account")));
+                }
+                connection.close();
+            } catch (SQLException ex) {
+                System.err.println("Error in " + this.getClass().toString() + " requesting data by account name from data base");
+                System.err.println(ex.getMessage());
+            }
+            return accounts;
+        }
+        return null;
+    }
+    
+    @Override
+    public ObservableList<Account> loadAccountsBySN(String snName, User user) {
+        connection = new ConfigProvider().getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement ps = connection.prepareStatement(
+                        "SELECT c.email AS email, c.nombreCuenta AS nombreCuenta, c.passCuenta AS passCuenta, c.idRed AS idRed, rs.nombreRed AS nombreRed, rs.iconoRed AS iconoRed FROM cuenta AS c JOIN red_social AS rs USING (idRed) WHERE email = ? AND nombreRed LIKE ? ORDER BY nombreRed"
+                );
+                ps.setString(1, user.getEmail());
+                ps.setString(2, "%" + snName + "%");
+                ResultSet result = ps.executeQuery();
+                while (result.next()) {                
+                    accounts.add(new Account(result.getString("email"), result.getString("nombreCuenta"), result.getString("passCuenta"), result.getInt("idRed"), result.getString("nombreRed"), Tools.loadImgFromX64(result.getString("iconoRed"), "account")));
+                }
+                connection.close();
+            } catch (SQLException ex) {
+                System.err.println("Error in " + this.getClass().toString() + " requesting data by social network from data base");
+                System.err.println(ex.getMessage());
+            }
+            return accounts;
+        }
+        return null;
+    }
 
     @Override
     public void insertAccount(Account account, User user) {

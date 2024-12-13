@@ -16,6 +16,7 @@ public class PS_AddController {
     
     @FXML
     void btnNewUserPressed() {
+        MainAppController.resetButtonsStyle();
         MainAppController.viewLoader.loadProfileCreator(vboxBody, viewManager);
     }
 

@@ -7,6 +7,7 @@ import controllers.AdminAccessPassConfirmController;
 import controllers.AdminNewPassConfirmController;
 import controllers.AdminUpdatePassConfirmController;
 import controllers.ConfirmDelController;
+import controllers.MainAppController;
 import controllers.PC_Account_CardController;
 import controllers.PS_AddController;
 import controllers.PS_BtnController;
@@ -95,6 +96,16 @@ public class ViewLoader {
         }
     }
     
+    public void loadUsersNotFoundCard (GridPane gridPane) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmUserNotFound_Card.fxml"));
+            gridPane.add((Node) fxmlLoader.load(), 0, 0, 4, 1);            
+        } catch (IOException ex) {
+            System.err.println("Error in " + this.getClass().toString() + " loading user not found fxml file");
+            System.err.println(ex.getCause());
+        }
+    }
+    
     /*PROFILE CREATOR*/
     public void loadProfileCreator(VBox vboxBody, ViewManager viewManager, User userOwner, boolean updating) {
         vboxBody.getChildren().clear();
@@ -177,6 +188,16 @@ public class ViewLoader {
         }
     }
     
+    public void loadAccountNotFoundCard(VBox vboxScrollBody) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmAccountNotFound_Card.fxml"));
+            vboxScrollBody.getChildren().add(fxmlLoader.load());
+        } catch (IOException e) {
+            System.err.println("Error in " + this.getClass().toString() + " loading account not found card fxml file");
+            System.err.println(e.getCause());
+        }
+    }
+    
     public void loadUserInfoAccountAddButton(VBox vboxScrollBody, User userOwner, UserInfoController userInfoController) {
         try{
             FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmUF_Account_AddBtn.fxml"));
@@ -251,6 +272,15 @@ public class ViewLoader {
             sN_CardController.setSocialNetworkController(snController);
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " failed chargin social networks cards");
+        }
+    }
+    
+    public void loadSocialNetworksNotFoundCard(VBox vBoxScrollBody) {
+        try {
+            FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmSN_NotFound_Card.fxml"));
+            vBoxScrollBody.getChildren().add(fXMLLoader.load());
+        } catch (IOException e) {
+            System.err.println("Error in " + this.getClass().toString() + " failed chargin social networks not found card");
         }
     }
     

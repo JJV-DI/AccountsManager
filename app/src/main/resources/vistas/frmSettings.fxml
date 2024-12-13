@@ -54,6 +54,7 @@
                      <styleClass>
                         <String fx:value="saw-border" />
                         <String fx:value="text-color" />
+                        <String fx:value="hover-color" />
                      </styleClass></ComboBox>
                </children>
                <padding>
@@ -82,16 +83,20 @@
             <HBox alignment="CENTER_LEFT" spacing="11.0">
                <children>
                   <Label styleClass="text-color" text="Folder" />
-                  <HBox alignment="CENTER_LEFT" prefWidth="350.0" styleClass="secondary-color">
+                  <HBox prefWidth="350.0" styleClass="secondary-color">
                      <children>
-                        <Label fx:id="lblDataDir" styleClass="text-color" text="Default/Folder/Example">
-                           <font>
-                              <Font name="System Italic" size="10.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="lblDataDir" styleClass="text-color" text="Default/Folder/Example">
+                                 <font>
+                                    <Font name="System Italic" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                         <Pane HBox.hgrow="ALWAYS" />
                         <Line endY="-10.0" startY="14.0" stroke="#f3f3f3" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateDataDirPressed" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" styleClass="text-color">
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateDataDirPressed" prefHeight="24.0" prefWidth="25.0">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -105,6 +110,12 @@
                            <tooltip>
                               <Tooltip text="Select data directory" />
                            </tooltip>
+                           <styleClass>
+                              <String fx:value="text-color" />
+                              <String fx:value="saw-border" />
+                              <String fx:value="hover-color" />
+                              <String fx:value="secondary-color" />
+                           </styleClass>
                         </Button>
                      </children>
                      <padding>
@@ -176,16 +187,20 @@
             <HBox alignment="CENTER_LEFT" spacing="11.0">
                <children>
                   <Label styleClass="text-color" text="Admin password" />
-                  <HBox alignment="CENTER_LEFT" prefWidth="295.0" styleClass="secondary-color">
+                  <HBox prefWidth="295.0" styleClass="secondary-color">
                      <children>
-                        <Label fx:id="lblAdminPass" maxWidth="240.0" styleClass="text-color" text="No administrator set">
-                           <font>
-                              <Font name="System Italic" size="10.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="lblAdminPass" maxWidth="240.0" styleClass="text-color" text="No administrator set">
+                                 <font>
+                                    <Font name="System Italic" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                         <Pane HBox.hgrow="ALWAYS" />
                         <Line endY="-10.0" startY="14.0" stroke="#f3f3f3" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setAdminPassPressed" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" styleClass="text-color">
+                        <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setAdminPassPressed" prefHeight="24.0" prefWidth="25.0">
                            <graphic>
                               <ImageView fx:id="imgAddRefreshPass" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -199,6 +214,12 @@
                            <tooltip>
                               <Tooltip text="Create an administrator password" />
                            </tooltip>
+                           <styleClass>
+                              <String fx:value="text-color" />
+                              <String fx:value="secondary-color" />
+                              <String fx:value="hover-color" />
+                              <String fx:value="saw-border" />
+                           </styleClass>
                         </Button>
                      </children>
                      <padding>
@@ -216,6 +237,8 @@
                      <styleClass>
                         <String fx:value="round-border" />
                         <String fx:value="secondary-color" />
+                        <String fx:value="hover-color" />
+                        <String fx:value="scale-effect" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -267,6 +290,7 @@
                            <styleClass>
                               <String fx:value="secondary-color" />
                               <String fx:value="round-border" />
+                              <String fx:value="hover-color" />
                            </styleClass>
                            <graphic>
                               <ImageView fx:id="imgCheckUpdateBtnIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">

@@ -21,8 +21,6 @@
       <ContextMenu fx:id="ctxtMenu">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#ctxtEditPressed" text="Edit" />
-            <MenuItem mnemonicParsing="false" onAction="#ctxtMoveForPressed" text="Move forward" />
-            <MenuItem mnemonicParsing="false" onAction="#ctxtMoveBackPressed" text="Move backward" />
             <MenuItem mnemonicParsing="false" onAction="#ctxtRemovePressed" text="Remove" />
         </items>
       </ContextMenu>
@@ -36,5 +34,6 @@
    <styleClass>
       <String fx:value="secondary-color" />
       <String fx:value="text-color" />
+      <String fx:value="hover-color" />
    </styleClass>
 </Button>

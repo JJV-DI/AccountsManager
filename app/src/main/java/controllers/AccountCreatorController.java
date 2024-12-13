@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Account;
 import model.DAO.AccountDAO;
 import model.SocialNetwork;
@@ -58,9 +60,6 @@ public class AccountCreatorController implements Initializable{
 
     @FXML
     private Button btnSocialNetwork;
-
-    @FXML
-    private Button btnTooglePassVis;
 
     @FXML
     private Label lblSocialNetworkSelected;
@@ -139,6 +138,7 @@ public class AccountCreatorController implements Initializable{
         imgSocialNetworkSelected.setClip(clip);
         socialNetworksUnpurged = new SocialNetworkDAO().loadSocialNetworks();
         socialNetworksPurged = FXCollections.observableArrayList();
+        initSearchAction();
     }
     
     private boolean validateFields() {
@@ -161,7 +161,7 @@ public class AccountCreatorController implements Initializable{
         if (!nameMatchRegex) validMessage.append("-Account name can only contain aplhanumeric characters or simple symbols (-_@.)\n");
         if (!nameInLenght) validMessage.append("-Account name must not be more than 30 characters\n");
         
-        FieldValidator.toggleTextFieldInError(!nameNotEmpty || !nameMatchRegex || !nameInLenght, txtAccountName, validMessage.toString());
+        FieldValidator.toggleTextFieldSecondaryInError(!nameNotEmpty || !nameMatchRegex || !nameInLenght, txtAccountName, validMessage.toString());
         
         return nameNotEmpty && nameMatchRegex && nameInLenght;
     }
@@ -179,7 +179,7 @@ public class AccountCreatorController implements Initializable{
         if (!passMatchRegex) validMessage.append("-Password can only contain aplhanumeric characters or simple symbols (-_@.)\n");
         if (!passInLenght) validMessage.append("-Password must not be more than 30 characters\n");
 
-        FieldValidator.toggleTextFieldInError(!passNotEmpty || !passMatchRegex || !passInLenght, txtAccountPass, validMessage.toString());
+        FieldValidator.toggleTextFieldSecondaryInError(!passNotEmpty || !passMatchRegex || !passInLenght, txtAccountPass, validMessage.toString());
         FieldValidator.toggleHBoxInError(!passNotEmpty || !passMatchRegex || !passInLenght,(HBox) txtAccountPass.getParent());
 
         return passNotEmpty && passMatchRegex && passInLenght;
@@ -196,9 +196,10 @@ public class AccountCreatorController implements Initializable{
         stage.close();
     }
     
-    private void purgeRepeatedSocialNetworks() {
-        socialNetworksPurged.addAll(socialNetworksUnpurged);
-        for (SocialNetwork socialNetwork : socialNetworksUnpurged) {
+    private void purgeRepeatedSocialNetworks(ObservableList<SocialNetwork> socialNetworksUnpurgedParam) {
+        socialNetworksPurged.clear();
+        socialNetworksPurged.addAll(socialNetworksUnpurgedParam);
+        for (SocialNetwork socialNetwork : socialNetworksUnpurgedParam) {
             for (Account accountOfUser : accountsOfUser) {
                 if (socialNetwork.getNombreRed().equals(accountOfUser.getNombreRed())) {
                     if (currentSN != null && !socialNetwork.getNombreRed().equals(currentSN.getNombreRed())) {
@@ -209,6 +210,10 @@ public class AccountCreatorController implements Initializable{
                 }
             }
         }
+    }
+    
+    private void purgeRepeatedSocialNetworks() {
+        purgeRepeatedSocialNetworks(socialNetworksUnpurged);
     }
 
     private void showSocialNetworks(){
@@ -275,5 +280,31 @@ public class AccountCreatorController implements Initializable{
     
     private void reorderSNList() {
         FXCollections.sort(socialNetworksPurged, Comparator.comparing(SocialNetwork::getNombreRed));
+    }
+    
+    private void initSearchAction() {
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        pause.setOnFinished(event -> {
+            if (validateSearch() && !txtSearchSN.getText().isEmpty()) {
+                purgeRepeatedSocialNetworks(new SocialNetworkDAO().loadSocialNetworksByName(txtSearchSN.getText()));
+                showSocialNetworks();
+            } else {
+                purgeRepeatedSocialNetworks();
+                showSocialNetworks();
+            }
+            
+        });
+        txtSearchSN.textProperty().addListener((ObservableList, oldValue, newValue) -> {
+            pause.playFromStart();
+        });
+    }
+    
+    private boolean validateSearch() {
+        boolean searchMatchRegex = true;
+        if (txtSearchSN.getText() != null && !txtSearchSN.getText().isEmpty()) {
+            searchMatchRegex = FieldValidator.commonNameValidation(txtSearchSN.getText());
+        }
+        FieldValidator.toggleTextFieldPrimaryInError(!searchMatchRegex, txtSearchSN, "The search can only contain aplhanumeric characters or simple symbols (-_@.)\n");
+        return searchMatchRegex;
     }
 }

@@ -26,9 +26,6 @@ public class PrivPassConfirmController {
     private Button btnConfirm;
 
     @FXML
-    private Button btnTogglePassVis;
-
-    @FXML
     private TextField txtUserPass;
 
     @FXML
@@ -51,11 +48,6 @@ public class PrivPassConfirmController {
         } else {
             FloatingPopup.showTextFieldPopup(txtUserPass, "Incorrect password");
         }
-    }
-
-    @FXML
-    void btnTogglePassVisPressed() {
-
     }
 
     public boolean getResult() {

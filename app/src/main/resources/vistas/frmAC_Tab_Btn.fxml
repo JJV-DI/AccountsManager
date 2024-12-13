@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Button fx:id="btnSocialNetwork" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSocialNetworkPressed" prefHeight="50.0" prefWidth="210.0" style="-fx-background-radius: 8;" styleClass="primary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AC_Tab_BtnController">
+<Button fx:id="btnSocialNetwork" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSocialNetworkPressed" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 8;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AC_Tab_BtnController">
    <graphic>
       <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0">
          <children>
@@ -28,7 +28,7 @@
                   <String fx:value="secondary-color" />
                </styleClass>
             </StackPane>
-            <Label fx:id="lblSocialNetwork" styleClass="text-color" text="SN Example">
+            <Label fx:id="lblSocialNetwork" maxWidth="130.0" styleClass="text-color" text="SN Example">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -42,4 +42,8 @@
    <tooltip>
       <Tooltip text="Select this social network" />
    </tooltip>
+   <styleClass>
+      <String fx:value="primary-color" />
+      <String fx:value="hover-color" />
+   </styleClass>
 </Button>

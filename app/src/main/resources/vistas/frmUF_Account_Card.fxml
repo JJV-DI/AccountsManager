@@ -77,9 +77,9 @@
                      </font>
                   </Label>
                   <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;" styleClass="saw-border">
+                  <Button fx:id="btnTogglePass" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="imgEye" fx:id="imgTogglePass" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@media/cur_icons/eyeCrossed.png" />
                            </image>
@@ -91,6 +91,10 @@
                      <tooltip>
                         <Tooltip text="Toggle password visibility" />
                      </tooltip>
+                     <styleClass>
+                        <String fx:value="saw-border" />
+                        <String fx:value="scale-effect" />
+                     </styleClass>
                   </Button>
                </children>
                <GridPane.margin>
@@ -141,6 +145,7 @@
                      <styleClass>
                         <String fx:value="round-border" />
                         <String fx:value="primary-color" />
+                        <String fx:value="scale-effect" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -160,6 +165,7 @@
                      <styleClass>
                         <String fx:value="round-border" />
                         <String fx:value="primary-color" />
+                        <String fx:value="scale-effect" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
