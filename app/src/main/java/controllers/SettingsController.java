@@ -92,11 +92,10 @@ public class SettingsController implements Initializable{
         cmbBoxTheme.getItems().add("Dark theme");
         cmbBoxTheme.getItems().add("Light theme");
         cmbBoxTheme.setValue(new ConfigProvider().loadTheme());
-        cmbBoxTheme.setStyle("-fx-text-fill: #F3F3F3;");
         loadAdminPassGraphics();
         cmbBoxTheme.valueProperty().addListener((observable, oldValue, newValue) -> {
             new ConfigProvider().saveTheme(newValue);
-            MainApp.reloadTheme();
+            MainApp.restartApp();
         });
     }
     

@@ -201,7 +201,7 @@ public class ViewLoader {
             acController.setAccountOwner(accountOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getScene().getStylesheets().add(MainApp.chargeTheme());
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
             stage.showAndWait();
             return acController.getResult();
         } catch (IOException e) {
@@ -263,7 +263,7 @@ public class ViewLoader {
             snCreatorController.setSocialNetworkOwner(socialNetworkOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getScene().getStylesheets().add(MainApp.chargeTheme());
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
             stage.showAndWait();
             
             return snCreatorController.getResult();
@@ -301,7 +301,7 @@ public class ViewLoader {
             passConfirmController.setUserOwner(userOwner);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getScene().getStylesheets().add(MainApp.chargeTheme());
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
             stage.showAndWait();
             return passConfirmController.getResult();
         } catch (IOException e) {
@@ -322,7 +322,7 @@ public class ViewLoader {
             confirmDelController.setElement(element);            
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getScene().getStylesheets().add(MainApp.chargeTheme());
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
             stage.showAndWait();
             return confirmDelController.getResult();
         } catch (IOException e) {
@@ -340,7 +340,7 @@ public class ViewLoader {
             stage.setScene(new Scene(fxmlLoader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getScene().getStylesheets().add(MainApp.chargeTheme());
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
             stage.showAndWait();
             AdminAccessPassConfirmController adminAccessPassConfirmController = fxmlLoader.getController();
             return adminAccessPassConfirmController.getResult();
@@ -358,7 +358,7 @@ public class ViewLoader {
             stage.setScene(new Scene(fxmlLoader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getScene().getStylesheets().add(MainApp.chargeTheme());
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
             stage.showAndWait();
             AdminNewPassConfirmController adminNewPassController = fxmlLoader.getController();
             return adminNewPassController.getResult();
@@ -376,7 +376,7 @@ public class ViewLoader {
             stage.setScene(new Scene(fxmlLoader.load()));            
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getScene().getStylesheets().add(MainApp.chargeTheme());
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
             stage.showAndWait();
             AdminUpdatePassConfirmController adminUpdatePassController = fxmlLoader.getController();
             return adminUpdatePassController.getResult();

@@ -26,7 +26,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3">
+      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" styleClass="line-style">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -50,7 +50,11 @@
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
                   <Label styleClass="text-color" text="Theme" />
-                  <ComboBox fx:id="cmbBoxTheme" prefWidth="150.0" styleClass="saw-border" />
+                  <ComboBox fx:id="cmbBoxTheme" prefWidth="150.0">
+                     <styleClass>
+                        <String fx:value="saw-border" />
+                        <String fx:value="text-color" />
+                     </styleClass></ComboBox>
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
@@ -58,7 +62,7 @@
             </HBox>
          </children>
       </VBox>
-      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
+      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" styleClass="line-style" />
       <VBox spacing="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
@@ -114,7 +118,7 @@
             </HBox>
          </children>
       </VBox>
-      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
+      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" styleClass="line-style" />
       <VBox spacing="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
@@ -227,7 +231,7 @@
             </HBox>
          </children>
       </VBox>
-      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
+      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" styleClass="line-style" />
       <VBox spacing="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
@@ -287,7 +291,7 @@
             </HBox>
          </children>
       </VBox>
-      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" />
+      <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" styleClass="line-style" />
       <VBox spacing="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">

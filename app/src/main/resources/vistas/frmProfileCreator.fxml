@@ -17,9 +17,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" stylesheets="@styles/lightMode.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileCreatorController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="primary-color" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileCreatorController">
   <columnConstraints>
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -134,13 +135,12 @@
          </children>
       </HBox>
       <Pane GridPane.rowIndex="1">
-         <styleClass>
-            <String fx:value="white-color" />
-            <String fx:value="round-border" />
-         </styleClass>
          <GridPane.margin>
             <Insets left="15.0" right="15.0" />
          </GridPane.margin>
+         <children>
+            <Line endX="470.0" styleClass="line-style" />
+         </children>
       </Pane>
       <GridPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.rowIndex="2">
          <columnConstraints>
@@ -260,6 +260,9 @@
          <GridPane.margin>
             <Insets left="15.0" right="15.0" />
          </GridPane.margin>
+         <children>
+            <Line endX="470.0" styleClass="line-style" />
+         </children>
       </Pane>
       <VBox GridPane.rowIndex="4">
          <children>
@@ -325,7 +328,6 @@
                      <styleClass>
                         <String fx:value="red-color" />
                         <String fx:value="round-border" />
-                        <String fx:value="text-color" />
                      </styleClass>
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
@@ -344,7 +346,6 @@
                      <styleClass>
                         <String fx:value="secondary-color" />
                         <String fx:value="round-border" />
-                        <String fx:value="text-color" />
                      </styleClass>
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
@@ -363,7 +364,6 @@
                      <styleClass>
                         <String fx:value="green-color" />
                         <String fx:value="round-border" />
-                        <String fx:value="text-color" />
                      </styleClass>
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
@@ -388,7 +388,6 @@
                      <styleClass>
                         <String fx:value="round-border" />
                         <String fx:value="blue-color" />
-                        <String fx:value="text-color" />
                      </styleClass>
                      <tooltip>
                         <Tooltip text="Update user with the changes" />

@@ -47,7 +47,7 @@ public class MainAppController implements Initializable{
     
     @FXML
     void powerPressed() {
-        MainApp.reloadTheme();
+        MainApp.closeApp();
     }
     
     private void loadProfiles() {
