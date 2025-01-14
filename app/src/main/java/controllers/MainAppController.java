@@ -22,6 +22,9 @@ public class MainAppController implements Initializable{
     private static List<Button> buttons = new ArrayList<>();
     
     @FXML
+    private Button btnInform;
+    
+    @FXML
     private Button btnPower;
 
     @FXML
@@ -48,6 +51,7 @@ public class MainAppController implements Initializable{
         buttons.add(btnProfiles);
         buttons.add(btnSocial);
         buttons.add(btnSettings);
+        buttons.add(btnInform);
     }
     
     @FXML
@@ -63,6 +67,11 @@ public class MainAppController implements Initializable{
     @FXML
     void settingsPressed() {
         loadSettings();
+    }
+    
+    @FXML
+    void informPressed() {
+        loadInforms();
     }
     
     @FXML
@@ -90,6 +99,14 @@ public class MainAppController implements Initializable{
         buttonSelected(btnSettings);
         if (viewManager.getViewStatus() != ViewStatus.SETTINGS) {
             viewManager.setStatus(ViewStatus.SETTINGS);
+            viewLoader.loadSettings(vbBody);
+        }
+    }
+    
+    private void loadInforms() {
+        buttonSelected(btnInform);
+        if (viewManager.getViewStatus() != ViewStatus.INFORMS) {
+            viewManager.setStatus(ViewStatus.INFORMS);
             viewLoader.loadSettings(vbBody);
         }
     }

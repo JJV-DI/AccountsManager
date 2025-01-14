@@ -319,6 +319,17 @@ public class ViewLoader {
         }
     }
     
+    /*INFORMS*/
+    public void loadInforms(VBox vbBody) {
+        vbBody.getChildren().clear();
+        try {
+            vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmSettings.fxml")));
+        } catch (IOException e) {
+            System.err.println("Error in " + this.getClass().toString() + " loading informs fxml file");
+            System.err.println(e.getCause());
+        }
+    }
+    
     //CONFIRMATION WINDOWS
     
     /*USER PRIVATE PASS*/
