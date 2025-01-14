@@ -36,7 +36,7 @@ public class MainApp extends Application{
     }
 
     @Override
-    public void start(Stage stage) {        
+    public void start(Stage stage) {
         try {
             this.mainStage = stage;
             initScene();
