@@ -173,6 +173,10 @@
     -fx-background-color: #383838;
 }
 
+.external-border {
+    -fx-border-color: #F3F3F3;
+}
+
 /* Checkbox */
 .check-box .box {
     -fx-background-color: #282828;

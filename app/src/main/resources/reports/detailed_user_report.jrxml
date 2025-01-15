@@ -1,7 +1,7 @@
 <!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
 <jasperReport name="detailed_user_report" language="java" columnCount="1" pageWidth="470" pageHeight="580" orientation="Landscape" columnWidth="470" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e6168521-7ecf-48bb-931a-2430d3ed4cca">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB_AccountManager"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB Data Adapter"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -18,7 +18,7 @@
 FROM usuario AS u 
 LEFT JOIN cuenta AS c USING (email) 
 LEFT JOIN red_social AS r USING (idRed)
-WHERE $P{p_email} IS NOT NULL AND $P{p_email} != '' AND email = $P{p_email}]]></query>
+WHERE $P{p_email} IS NOT NULL AND $P{p_email} != '' AND email = $P{p_email} OR  $P{p_showAll}  = true]]></query>
 	<field name="email" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="email"/>
 		<property name="com.jaspersoft.studio.field.label" value="email"/>
@@ -187,7 +187,7 @@ WHERE $P{p_email} IS NOT NULL AND $P{p_email} != '' AND email = $P{p_email}]]></
 		</element>
 	</background>
 	<title height="66" splitType="Stretch">
-		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="System&#xd;&#xa;" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
+		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="System&#xd;&#xa;" fontSize="24.0" underline="false" bold="true" vTextAlign="Middle">
 			<text><![CDATA[Detailed users report]]></text>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -244,7 +244,6 @@ WHERE $P{p_email} IS NOT NULL AND $P{p_email} != '' AND email = $P{p_email}]]></
 					<text><![CDATA[Nick:]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</element>
 				<element kind="staticText" uuid="34e01839-1e9e-46ba-8104-cac3397842be" x="157" y="13" width="30" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="true" vTextAlign="Middle">
