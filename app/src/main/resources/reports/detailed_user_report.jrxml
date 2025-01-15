@@ -1,0 +1,338 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="detailed_user_report" language="java" columnCount="1" pageWidth="470" pageHeight="580" orientation="Landscape" columnWidth="470" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e6168521-7ecf-48bb-931a-2430d3ed4cca">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB_AccountManager"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<parameter name="p_email" class="java.lang.String"/>
+	<parameter name="p_showAll" class="java.lang.Boolean"/>
+	<query language="SQL"><![CDATA[SELECT u.*, c.*, r.nombreRed AS nombreRed, r.iconoRed AS iconoRed
+FROM usuario AS u 
+LEFT JOIN cuenta AS c USING (email) 
+LEFT JOIN red_social AS r USING (idRed)
+WHERE $P{p_email} IS NOT NULL AND $P{p_email} != '' AND email = $P{p_email}]]></query>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="nombreUsuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombreUsuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreUsuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="passUsuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="passUsuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="passUsuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="privacidad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="privacidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="privacidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="imgUsuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="imgUsuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="imgUsuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="COLUMN_6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cuenta"/>
+	</field>
+	<field name="idRed" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idRed"/>
+		<property name="com.jaspersoft.studio.field.label" value="idRed"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cuenta"/>
+	</field>
+	<field name="nombreCuenta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombreCuenta"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreCuenta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cuenta"/>
+	</field>
+	<field name="passCuenta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="passCuenta"/>
+		<property name="com.jaspersoft.studio.field.label" value="passCuenta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cuenta"/>
+	</field>
+	<field name="nombreRed" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombreRed"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreRed"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="red_social"/>
+	</field>
+	<field name="iconoRed" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="iconoRed"/>
+		<property name="com.jaspersoft.studio.field.label" value="iconoRed"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="red_social"/>
+	</field>
+	<variable name="Cuentas totales" resetType="Group" calculation="Sum" resetGroup="Grupo Usuario" class="java.lang.Integer">
+		<expression><![CDATA[$F{COLUMN_6} != null ? 1 : 0]]></expression>
+	</variable>
+	<group name="Grupo Usuario">
+		<expression><![CDATA[$F{email}]]></expression>
+		<groupHeader>
+			<band height="79">
+				<element kind="rectangle" uuid="92162e25-36a6-4ab6-96ce-27f5cbd0d78a" mode="Opaque" x="28" y="7" width="414" height="60" forecolor="#F3F3F3" backcolor="#282828" radius="8">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<pen lineWidth="0.5"/>
+				</element>
+				<element kind="rectangle" uuid="cebc549c-d6b2-4f8e-b49b-fba15d9e9e6d" x="38" y="15" width="45" height="45" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#383838" radius="4">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="staticText" uuid="5434e93e-3d21-42ac-b504-fa9759532eda" x="94" y="16" width="41" height="18" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+					<text><![CDATA[Email:]]></text>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="staticText" uuid="a3457686-8434-4e81-98ac-5cbb75c49e8b" x="94" y="40" width="41" height="18" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+					<text><![CDATA[Name:]]></text>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="staticText" uuid="7efcd1fe-b803-473a-83e5-b21c92f60f42" x="277" y="16" width="36" height="18" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+					<text><![CDATA[Pass:]]></text>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="staticText" uuid="9a746677-b622-49d8-ba0b-6788929478c3" x="277" y="40" width="56" height="18" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+					<text><![CDATA[Privacity:]]></text>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</element>
+				<element kind="textField" uuid="30a1d8ec-ff51-405f-8679-be746c8a5fb8" x="135" y="16" width="121" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+					<expression><![CDATA[$F{email}]]></expression>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="line" uuid="6362f24a-72aa-43c0-971a-a98a381b5e8a" mode="Transparent" x="260" y="20" width="1" height="35" forecolor="#000000">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<pen lineWidth="1.5" lineColor="#F3F3F3"/>
+				</element>
+				<element kind="textField" uuid="ea3f2e6a-e3f6-4814-a385-92b54d3414e4" x="135" y="40" width="121" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+					<expression><![CDATA[$F{nombreUsuario}]]></expression>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="textField" uuid="1f8ada84-877c-4309-859e-8910ac0ad88b" x="313" y="16" width="124" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+					<expression><![CDATA[$F{passUsuario} == null ? "No password" : $F{passUsuario}]]></expression>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="textField" uuid="9e4161c0-458e-4fdf-bc82-17ce43fb1163" x="333" y="40" width="102" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+					<expression><![CDATA[$F{privacidad} .equals("Y") ? "PRIVATE" : "PUBLIC"]]></expression>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</element>
+				<element kind="image" uuid="0b36f52e-2ce6-4afe-aa92-1c24b845fe2c" x="43" y="20" width="35" height="35" scaleImage="RetainShape" hImageAlign="Center" vImageAlign="Middle">
+					<expression><![CDATA[$F{imgUsuario} == null ? new java.io.ByteArrayInputStream(
+    java.util.Base64.getDecoder().decode("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".getBytes())
+) : java.util.Base64.getDecoder().decode($F{imgUsuario}.substring($F{imgUsuario}.indexOf(",") + 1))]]></expression>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="staticText" uuid="7821a9ea-b186-41dd-b834-3a171e602dc7" x="35" y="67" width="40" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" vTextAlign="Bottom">
+					<text><![CDATA[Accounts:]]></text>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</element>
+				<element kind="textField" uuid="502c0a02-e233-4e44-9123-ec592e43a240" x="81" y="67" width="117" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" evaluationTime="Group" evaluationGroup="Grupo Usuario" bold="false" vTextAlign="Bottom">
+					<expression><![CDATA[$V{Cuentas totales}]]></expression>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</element>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1">
+				<element kind="break" uuid="13647ce2-bc29-44c7-a77d-668b11cb9b68" x="0" y="0" width="470" height="1" printWhenGroupChanges="Grupo Usuario">
+					<printWhenExpression><![CDATA[$V{Cuentas totales} != 0]]></printWhenExpression>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</element>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupFooter>
+	</group>
+	<background height="580" splitType="Stretch">
+		<element kind="frame" uuid="72214865-ba9b-4adc-a202-1889f7d1ba29" mode="Opaque" x="0" y="0" width="470" height="580" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#383838">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+	</background>
+	<title height="66" splitType="Stretch">
+		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="System&#xd;&#xa;" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
+			<text><![CDATA[Detailed users report]]></text>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+		</element>
+		<element kind="ellipse" uuid="0f77cfc6-c9af-40f3-9ea3-39827bc24feb" mode="Opaque" x="29" y="15" width="45" height="45" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#282828">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="image" uuid="861dd41f-557e-4e74-8052-1ff678743973" x="31" y="17" width="40" height="40">
+			<expression><![CDATA[new java.io.ByteArrayInputStream(
+    java.util.Base64.getDecoder().decode("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".getBytes())
+)]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="staticText" uuid="f736fb1e-cdb4-4324-9227-0ccea835ec10" x="82" y="49" width="48" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" vTextAlign="Middle">
+			<text><![CDATA[Total users:]]></text>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="b4b210f9-8639-4394-9072-3edfbb3edc74" x="130" y="49" width="121" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" evaluationTime="Report" bold="false" vTextAlign="Middle">
+			<expression><![CDATA[$V{REPORT_COUNT}]]></expression>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</title>
+	<pageHeader height="15">
+		<element kind="line" uuid="b15517e9-3c65-4697-abd2-811f871db7ad" x="28" y="7" width="414" height="1">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<pen lineWidth="2.0" lineColor="#F3F3F3"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{nombreCuenta} != null]]></printWhenExpression>
+			<element kind="frame" uuid="81f7814a-bcac-43ae-976b-42376044442e" x="33" y="3" width="404" height="44">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<element kind="rectangle" uuid="cded77be-b694-49e0-8c6b-1e91477be143" mode="Opaque" x="0" y="0" width="404" height="44" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#282828" radius="8">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="staticText" uuid="6276529b-a9b7-48cd-b9cf-e67ee85abda3" x="44" y="13" width="28" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="true" vTextAlign="Middle">
+					<text><![CDATA[Nick:]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="staticText" uuid="34e01839-1e9e-46ba-8104-cac3397842be" x="157" y="13" width="30" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="true" vTextAlign="Middle">
+					<text><![CDATA[Pass:]]></text>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="staticText" uuid="47738236-9afe-4cd0-b052-27e199a9ffc1" x="272" y="13" width="55" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="true" vTextAlign="Middle">
+					<text><![CDATA[S.Network:]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="textField" uuid="b7233624-9a58-4be8-a2fe-6346c9713e97" x="72" y="13" width="85" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+					<expression><![CDATA[$F{nombreCuenta}]]></expression>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="textField" uuid="d5b8d6e3-05d0-44dd-9864-ea553d4981c3" x="187" y="13" width="85" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+					<expression><![CDATA[$F{passCuenta}]]></expression>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="textField" uuid="a24de668-2091-4fcd-897f-5731f42ef2f9" x="327" y="13" width="70" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+					<expression><![CDATA[$F{nombreRed}]]></expression>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="frame" uuid="7aa0f55f-d71b-4b96-93ce-46267fd6f7c9" x="7" y="7" width="30" height="30">
+					<element kind="rectangle" uuid="2a7bf801-2028-4299-b354-4bffdb975160" x="0" y="0" width="30" height="30" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#383838" radius="4">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</element>
+					<element kind="image" uuid="83760d7b-a880-43d4-8fb7-2844f7f25a81" x="5" y="5" width="20" height="20" scaleImage="RetainShape" hImageAlign="Center" vImageAlign="Middle">
+						<expression><![CDATA[$F{iconoRed} == null ? new java.io.ByteArrayInputStream(
+    java.util.Base64.getDecoder().decode("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".getBytes())
+) : java.util.Base64.getDecoder().decode($F{iconoRed}.substring($F{iconoRed}.indexOf(",") + 1))]]></expression>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</element>
+				</element>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<pageFooter height="38" splitType="Stretch">
+		<element kind="line" uuid="ba1cb7d7-83e1-415c-a306-d9359a87201b" x="33" y="14" width="414" height="1">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<pen lineWidth="2.0" lineColor="#F3F3F3"/>
+		</element>
+		<element kind="textField" uuid="28cc93ca-0963-425b-bdd1-3a626772cab8" x="33" y="18" width="80" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" pattern="dd / MM / yyyy" bold="true" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="textField" uuid="1a7cb5a5-8f61-445f-9e3a-4f7b6b6f5549" x="333" y="18" width="110" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="staticText" uuid="f6078fe4-0ce4-4939-9ab0-5670a166de45" x="45" y="0" width="176" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" vTextAlign="Middle">
+			<text><![CDATA[Official Account Manager detailed user report]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+		</element>
+		<element kind="image" uuid="85ff21ff-880b-43d7-a7df-abcdc9e52457" x="33" y="0" width="12" height="12">
+			<expression><![CDATA[new java.io.ByteArrayInputStream(
+    java.util.Base64.getDecoder().decode("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".getBytes())
+)]]></expression>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageFooter>
+</jasperReport>

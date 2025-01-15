@@ -172,3 +172,14 @@
 .context-menu .menu-item:hover {
     -fx-background-color: #383838;
 }
+
+/* Checkbox */
+.check-box .box {
+    -fx-background-color: #282828;
+    -fx-border-color: #F3F3F3;
+    -fx-border-radius: 3px; 
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
