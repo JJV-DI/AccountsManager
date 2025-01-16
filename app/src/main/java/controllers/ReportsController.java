@@ -58,7 +58,7 @@ public class ReportsController implements Initializable{
     
     @FXML
     void chkShowAllPressed() {
-        txtSpecificRecord.setText("");
+        resetField();
         txtSpecificRecord.setDisable(chkShowAll.isSelected());
     }
     
@@ -68,8 +68,8 @@ public class ReportsController implements Initializable{
         chkAnalytics.setDisable(!chkDetailed.isSelected());
         chkShowAll.setSelected(false);
         chkShowAll.setDisable(!chkDetailed.isSelected()&&!chkShowAll.isSelected());
-        txtSpecificRecord.setText("");
         txtSpecificRecord.setDisable(!chkDetailed.isSelected());
+        resetField();
     }
 
     @FXML
@@ -106,10 +106,16 @@ public class ReportsController implements Initializable{
         }
     }
     
+    private void resetField() {
+        txtSpecificRecord.setText("");
+        txtSpecificRecord.getStyleClass().removeAll("fieldError-color");
+        txtSpecificRecord.getStyleClass().add("secondary-color");
+    }
+    
     @FXML
     void btnCreateReportPressed() {
         if (validateFields()) {
-            System.out.println("hola");
+            System.out.println("hola"); //****************************
         }
     }
     

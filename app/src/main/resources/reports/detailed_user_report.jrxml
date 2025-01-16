@@ -1,7 +1,7 @@
 <!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
 <jasperReport name="detailed_user_report" language="java" columnCount="1" pageWidth="470" pageHeight="580" orientation="Landscape" columnWidth="470" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e6168521-7ecf-48bb-931a-2430d3ed4cca">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB_AccountManager"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB Data Adapter"/>
 	<property name="com.jaspersoft.studio.report.description" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
@@ -178,13 +178,13 @@ WHERE $P{p_email} IS NOT NULL AND $P{p_email} != '' AND email = $P{p_email} OR  
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</element>
-					<element kind="chart" chartType="bar" uuid="888f9717-3245-4676-afac-c045e645ce3c" key="" x="5" y="7" width="404" height="160" showLegend="false" evaluationTime="Report" titleColor="#F3F3F3" legendColor="#FFFFFF" renderType="svg" theme="default.spring" legendPosition="Top">
-						<titleFont fontName="Arial" fontSize="12.0" underline="false" bold="false"/>
+					<element kind="chart" chartType="bar" uuid="e7b26379-8da7-4e59-a775-463db25bc945" key="" x="5" y="7" width="404" height="160" showLegend="false" evaluationTime="Group" titleColor="#F3F3F3" legendColor="#FFFFFF" renderType="svg" theme="default.spring" legendPosition="Top" evaluationGroup="Grupo Usuario">
+						<titleFont fontName="Arial" fontSize="12.0" bold="false" underline="false"/>
 						<legendFont fontName="System&#xd;&#xa;" fontSize="10.0"/>
-						<titleExpression><![CDATA["Password complexity for user" + $F{email}]]></titleExpression>
-						<dataset kind="category">
+						<titleExpression><![CDATA["Password complexity for user " + $F{email}]]></titleExpression>
+						<dataset kind="category" resetGroup="Grupo Usuario" resetType="Group">
 							<series>
-								<seriesExpression><![CDATA["Password complexity for user " + $F{nombreUsuario}]]></seriesExpression>
+								<seriesExpression><![CDATA[$F{email}]]></seriesExpression>
 								<categoryExpression><![CDATA[$V{Cuentas totales} != 0 ? $F{nombreCuenta} : ""]]></categoryExpression>
 								<valueExpression><![CDATA[$V{Cuentas totales} == 0 ? 0 :
 ($F{passCuenta}.length() < 6 ? 0 :
@@ -228,7 +228,7 @@ $F{passCuenta}.length() <= 12 ? 300 :
 		</element>
 	</background>
 	<title height="66" splitType="Stretch">
-		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="System&#xd;&#xa;" fontSize="24.0" underline="false" bold="true" vTextAlign="Middle">
+		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="System&#xd;&#xa;" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
 			<text><![CDATA[Detailed users report]]></text>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
