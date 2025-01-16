@@ -1,7 +1,8 @@
 <!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
 <jasperReport name="detailed_user_report" language="java" columnCount="1" pageWidth="470" pageHeight="580" orientation="Landscape" columnWidth="470" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e6168521-7ecf-48bb-931a-2430d3ed4cca">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB_AccountManager"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -11,7 +12,6 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="com.jaspersoft.studio.report.description" value=""/>
 	<parameter name="p_email" class="java.lang.String"/>
 	<parameter name="p_showAll" class="java.lang.Boolean"/>
 	<query language="SQL"><![CDATA[SELECT u.*, c.*, r.nombreRed AS nombreRed, r.iconoRed AS iconoRed
@@ -171,6 +171,47 @@ WHERE $P{p_email} IS NOT NULL AND $P{p_email} != '' AND email = $P{p_email} OR  
 			</band>
 		</groupHeader>
 		<groupFooter>
+			<band height="185">
+				<printWhenExpression><![CDATA[$V{Cuentas totales} != 0]]></printWhenExpression>
+				<element kind="frame" uuid="d1a01620-492e-4cbe-9b8f-caf58ad7b5af" x="28" y="5" width="414" height="174">
+					<element kind="rectangle" uuid="57f45f78-3d6b-4095-aeac-b0a8d648a46d" x="0" y="0" width="414" height="174" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#282828" radius="8">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</element>
+					<element kind="chart" chartType="bar" uuid="888f9717-3245-4676-afac-c045e645ce3c" key="" x="5" y="7" width="404" height="160" showLegend="false" evaluationTime="Report" titleColor="#F3F3F3" legendColor="#FFFFFF" renderType="svg" theme="default.spring" legendPosition="Top">
+						<titleFont fontName="Arial" fontSize="12.0" underline="false" bold="false"/>
+						<legendFont fontName="System&#xd;&#xa;" fontSize="10.0"/>
+						<titleExpression><![CDATA["Password complexity for user" + $F{email}]]></titleExpression>
+						<dataset kind="category">
+							<series>
+								<seriesExpression><![CDATA["Password complexity for user " + $F{nombreUsuario}]]></seriesExpression>
+								<categoryExpression><![CDATA[$V{Cuentas totales} != 0 ? $F{nombreCuenta} : ""]]></categoryExpression>
+								<valueExpression><![CDATA[$V{Cuentas totales} == 0 ? 0 :
+($F{passCuenta}.length() < 6 ? 0 :
+$F{passCuenta}.length() <= 8 ? 100 :
+$F{passCuenta}.length() <= 12 ? 300 :
+500 +
+($F{passCuenta}.replaceAll("[^A-Z]", "").length() == 0 ? 0 :
+ $F{passCuenta}.replaceAll("[^A-Z]", "").length() <= 2 ? 50 : 100) +
+($F{passCuenta}.replaceAll("[^a-z]", "").length() == 0 ? 0 :
+ $F{passCuenta}.replaceAll("[^a-z]", "").length() <= 2 ? 50 : 100) +
+($F{passCuenta}.replaceAll("[^0-9]", "").length() == $F{passCuenta}.length() ? 0 :
+ $F{passCuenta}.replaceAll("[^0-9]", "").length() <= 2 ? 50 : 100) +
+($F{passCuenta}.replaceAll("[^!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]", "").length() == 0 ? 0 :
+ $F{passCuenta}.replaceAll("[^!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]", "").length() <= 2 ? 50 : 100))]]></valueExpression>
+							</series>
+						</dataset>
+						<plot orientation="Horizontal" labelRotation="0.0" categoryAxisLabelColor="#000000" categoryAxisTickLabelColor="#FFFFFF" categoryAxisTickLabelMask="" categoryAxisLineColor="#FFFFFF" valueAxisLabelColor="#FFFFFF" valueAxisTickLabelColor="#FFFFFF" valueAxisLineColor="#FFFFFF" categoryAxisTickLabelRotation="0.0">
+							<categoryAxisTickLabelFont fontSize="6.0" bold="false"/>
+							<valueAxisLabelFont fontSize="10.0"/>
+							<valueAxisTickLabelFont fontName="System&#xd;&#xa;"/>
+							<itemLabel/>
+						</plot>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</element>
+				</element>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
 			<band height="1">
 				<element kind="break" uuid="13647ce2-bc29-44c7-a77d-668b11cb9b68" x="0" y="0" width="470" height="1" printWhenGroupChanges="Grupo Usuario">
 					<printWhenExpression><![CDATA[$V{Cuentas totales} != 0]]></printWhenExpression>

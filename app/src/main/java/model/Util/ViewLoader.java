@@ -320,12 +320,12 @@ public class ViewLoader {
     }
     
     /*INFORMS*/
-    public void loadInforms(VBox vbBody) {
+    public void loadReports(VBox vbBody) {
         vbBody.getChildren().clear();
         try {
-            vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmSettings.fxml")));
+            vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmReports.fxml")));
         } catch (IOException e) {
-            System.err.println("Error in " + this.getClass().toString() + " loading informs fxml file");
+            System.err.println("Error in " + this.getClass().toString() + " loading reports fxml file");
             System.err.println(e.getCause());
         }
     }

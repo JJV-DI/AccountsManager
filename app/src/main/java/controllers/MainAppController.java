@@ -107,7 +107,7 @@ public class MainAppController implements Initializable{
         buttonSelected(btnInform);
         if (viewManager.getViewStatus() != ViewStatus.INFORMS) {
             viewManager.setStatus(ViewStatus.INFORMS);
-            viewLoader.loadSettings(vbBody);
+            viewLoader.loadReports(vbBody);
         }
     }
     

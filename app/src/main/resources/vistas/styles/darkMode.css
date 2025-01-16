@@ -175,6 +175,7 @@
 
 .external-border {
     -fx-border-color: #F3F3F3;
+    -fx-border-radius: 6px;
 }
 
 /* Checkbox */
