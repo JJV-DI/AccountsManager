@@ -43,6 +43,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <tooltip>
+                  <Tooltip text="Create the report with the provided configuration" />
+               </tooltip>
             </Button>
          </children>
       </HBox>
@@ -84,6 +87,9 @@
                                     <String fx:value="primary-color" />
                                     <String fx:value="hover-color" />
                                  </styleClass>
+                                 <tooltip>
+                                    <Tooltip text="Select it to generate a report on users" />
+                                 </tooltip>
                               </Button>
                               <Button fx:id="btnSNEntity" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSNEntityPressed" prefWidth="87.0" style="-fx-background-radius: 6;" HBox.hgrow="ALWAYS">
                                  <graphic>
@@ -109,6 +115,9 @@
                                     <String fx:value="primary-color" />
                                     <String fx:value="hover-color" />
                                  </styleClass>
+                                 <tooltip>
+                                    <Tooltip text="Select it to generate a report on social networks" />
+                                 </tooltip>
                               </Button>
                            </children>
                            <HBox.margin>
@@ -160,6 +169,9 @@
                            <font>
                               <Font size="10.0" />
                            </font>
+                           <tooltip>
+                              <Tooltip text="-Enables the detailed options and generates a detailed report" />
+                           </tooltip>
                         </CheckBox>
                      </children>
                   </HBox>
@@ -188,6 +200,9 @@
                                        <font>
                                           <Font size="10.0" />
                                        </font>
+                                       <tooltip>
+                                          <Tooltip text="Show all entities selected in the report" />
+                                       </tooltip>
                                     </CheckBox>
                                     <TextField fx:id="txtSpecificRecord" disable="true" promptText="Specific record" style="-fx-border-radius: 4;">
                                        <styleClass>
@@ -195,6 +210,9 @@
                                           <String fx:value="text-color" />
                                           <String fx:value="external-border" />
                                        </styleClass>
+                                       <tooltip>
+                                          <Tooltip text="Show a specific entity selected on the report (email/social network name)" />
+                                       </tooltip>
                                     </TextField>
                                  </children>
                                  <padding>
@@ -222,6 +240,9 @@
                                        <font>
                                           <Font size="10.0" />
                                        </font>
+                                       <tooltip>
+                                          <Tooltip text="Displays the report in the lower viewer or in a pop-up window." />
+                                       </tooltip>
                                     </CheckBox>
                                     <CheckBox fx:id="chkAnalytics" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 6;" text="Add Analytics" HBox.hgrow="ALWAYS">
                                        <cursor>
@@ -237,6 +258,9 @@
                                        <font>
                                           <Font size="10.0" />
                                        </font>
+                                       <tooltip>
+                                          <Tooltip text="Add data graphs to the report." />
+                                       </tooltip>
                                     </CheckBox>
                                  </children>
                               </HBox>
@@ -278,7 +302,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <tooltip>
-                  <Tooltip text="Close window" />
+                  <Tooltip text="Zoom in" />
                </tooltip>
             </Button>
             <Button layoutX="415.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnZoomOutPressed" prefHeight="26.0" prefWidth="45.0" style="-fx-background-radius: 6;">
@@ -298,7 +322,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <tooltip>
-                  <Tooltip text="Close window" />
+                  <Tooltip text="Zoom out" />
                </tooltip>
             </Button>
             <Button layoutX="415.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnResetZoomPressed" prefHeight="26.0" prefWidth="45.0" style="-fx-background-radius: 6;">
@@ -318,7 +342,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <tooltip>
-                  <Tooltip text="Close window" />
+                  <Tooltip text="Reset zoom" />
                </tooltip>
             </Button>
          </children>

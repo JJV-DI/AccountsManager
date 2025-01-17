@@ -33,7 +33,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <tooltip>
-                  <Tooltip text="Close window" />
+                  <Tooltip text="Zoom in" />
                </tooltip>
             </Button>
             <Button layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnZoomOutPressed" prefHeight="26.0" prefWidth="45.0">
@@ -53,7 +53,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <tooltip>
-                  <Tooltip text="Close window" />
+                  <Tooltip text="Zoom out" />
                </tooltip>
             </Button>
             <Button layoutX="55.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnResetZoomPressed" prefHeight="26.0" prefWidth="45.0">
@@ -73,7 +73,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <tooltip>
-                  <Tooltip text="Close window" />
+                  <Tooltip text="Reset zoom by default" />
                </tooltip>
             </Button>
             <Pane HBox.hgrow="ALWAYS" />
