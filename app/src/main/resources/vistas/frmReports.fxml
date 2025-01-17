@@ -7,6 +7,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -247,15 +248,88 @@
          </children>
       </HBox>
       <Line endX="250.0" fill="#f3f3f3" startX="-200.0" stroke="#f3f3f3" styleClass="line-style" />
-      <HBox>
+      <HBox spacing="10.0">
          <children>
-            <Label styleClass="text-color" text="Result">
+            <Label styleClass="text-color" text="Result:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Label fx:id="txtResult" layoutX="10.0" layoutY="10.0" styleClass="error-text-color">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnZoomInPressed" prefHeight="26.0" prefWidth="45.0" style="-fx-background-radius: 6;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/cur_icons/addNotRounded.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="secondary-color" />
+                  <String fx:value="saw-border" />
+                  <String fx:value="hover-color" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <tooltip>
+                  <Tooltip text="Close window" />
+               </tooltip>
+            </Button>
+            <Button layoutX="415.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnZoomOutPressed" prefHeight="26.0" prefWidth="45.0" style="-fx-background-radius: 6;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/cur_icons/mini.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="secondary-color" />
+                  <String fx:value="saw-border" />
+                  <String fx:value="hover-color" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <tooltip>
+                  <Tooltip text="Close window" />
+               </tooltip>
+            </Button>
+            <Button layoutX="415.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnResetZoomPressed" prefHeight="26.0" prefWidth="45.0" style="-fx-background-radius: 6;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/cur_icons/checkUpdate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="secondary-color" />
+                  <String fx:value="saw-border" />
+                  <String fx:value="hover-color" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <tooltip>
+                  <Tooltip text="Close window" />
+               </tooltip>
+            </Button>
          </children>
       </HBox>
-      <WebView fx:id="wvResult" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+      <StackPane styleClass="external-border" VBox.vgrow="ALWAYS">
+         <children>
+            <WebView fx:id="wvResult" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" />
+         </children>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </StackPane>
    </children>
 </VBox>

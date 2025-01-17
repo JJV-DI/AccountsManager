@@ -1,7 +1,7 @@
 <!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
 <jasperReport name="simple_socialnetwork_report" language="java" columnCount="1" pageWidth="470" pageHeight="580" orientation="Landscape" columnWidth="470" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e6168521-7ecf-48bb-931a-2430d3ed4cca">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB_AccountManager"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -11,7 +11,7 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<query language="SQL"><![CDATA[SELECT red_social.*, aux.total   FROM red_social JOIN (
+	<query language="SQL"><![CDATA[SELECT red_social.*, aux.total   FROM red_social LEFT JOIN (
 		SELECT idRed, COUNT(*) AS total FROM cuenta GROUP BY idRed) AS aux USING (idRed)]]></query>
 	<field name="idRed" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="idRed"/>
@@ -38,7 +38,7 @@
 		</element>
 	</background>
 	<title height="66" splitType="Stretch">
-		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="331" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="System&#xd;&#xa;" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
+		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="331" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="Arial" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
 			<text><![CDATA[Simple social network report]]></text>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -57,13 +57,13 @@
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 		</element>
-		<element kind="staticText" uuid="f736fb1e-cdb4-4324-9227-0ccea835ec10" x="82" y="49" width="85" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" vTextAlign="Middle">
+		<element kind="staticText" uuid="f736fb1e-cdb4-4324-9227-0ccea835ec10" x="82" y="49" width="85" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" bold="true" vTextAlign="Middle">
 			<text><![CDATA[Total social networks:]]></text>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.unit.width" value="px"/>
 		</element>
-		<element kind="textField" uuid="b4b210f9-8639-4394-9072-3edfbb3edc74" x="167" y="49" width="121" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" evaluationTime="Report" bold="false" vTextAlign="Middle">
+		<element kind="textField" uuid="b4b210f9-8639-4394-9072-3edfbb3edc74" x="167" y="49" width="121" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" evaluationTime="Report" bold="false" vTextAlign="Middle">
 			<expression><![CDATA[$V{REPORT_COUNT}]]></expression>
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -95,21 +95,21 @@
 				<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="staticText" uuid="5434e93e-3d21-42ac-b504-fa9759532eda" x="95" y="18" width="18" height="19" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="5434e93e-3d21-42ac-b504-fa9759532eda" x="95" y="18" width="18" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="12.0" bold="true" vTextAlign="Middle">
 				<text><![CDATA[ID:]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			</element>
-			<element kind="staticText" uuid="a3457686-8434-4e81-98ac-5cbb75c49e8b" x="94" y="38" width="42" height="19" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="a3457686-8434-4e81-98ac-5cbb75c49e8b" x="94" y="38" width="42" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="12.0" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Name:]]></text>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			</element>
-			<element kind="staticText" uuid="7efcd1fe-b803-473a-83e5-b21c92f60f42" x="277" y="18" width="90" height="19" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="7efcd1fe-b803-473a-83e5-b21c92f60f42" x="277" y="18" width="90" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="12.0" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Total accounts:]]></text>
 				<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			</element>
-			<element kind="textField" uuid="30a1d8ec-ff51-405f-8679-be746c8a5fb8" x="120" y="18" width="136" height="19" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+			<element kind="textField" uuid="30a1d8ec-ff51-405f-8679-be746c8a5fb8" x="120" y="18" width="136" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="10.0" bold="false" vTextAlign="Middle">
 				<expression><![CDATA[$F{idRed}]]></expression>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -122,12 +122,12 @@
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<pen lineWidth="1.5" lineColor="#F3F3F3"/>
 			</element>
-			<element kind="textField" uuid="ea3f2e6a-e3f6-4814-a385-92b54d3414e4" x="135" y="38" width="121" height="19" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+			<element kind="textField" uuid="ea3f2e6a-e3f6-4814-a385-92b54d3414e4" x="135" y="38" width="121" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="10.0" bold="false" vTextAlign="Middle">
 				<expression><![CDATA[$F{nombreRed}]]></expression>
 				<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="1f8ada84-877c-4309-859e-8910ac0ad88b" x="374" y="18" width="64" height="19" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+			<element kind="textField" uuid="1f8ada84-877c-4309-859e-8910ac0ad88b" x="374" y="18" width="64" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="10.0" bold="false" vTextAlign="Middle">
 				<expression><![CDATA[$F{total}]]></expression>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -153,19 +153,19 @@
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<pen lineWidth="2.0" lineColor="#F3F3F3"/>
 		</element>
-		<element kind="textField" uuid="28cc93ca-0963-425b-bdd1-3a626772cab8" x="33" y="18" width="80" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" pattern="dd / MM / yyyy" bold="true" hTextAlign="Left" vTextAlign="Middle">
+		<element kind="textField" uuid="28cc93ca-0963-425b-bdd1-3a626772cab8" x="33" y="18" width="80" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" pattern="dd / MM / yyyy" bold="true" hTextAlign="Left" vTextAlign="Middle">
 			<expression><![CDATA[new java.util.Date()]]></expression>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 		</element>
-		<element kind="textField" uuid="1a7cb5a5-8f61-445f-9e3a-4f7b6b6f5549" x="333" y="18" width="110" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+		<element kind="textField" uuid="1a7cb5a5-8f61-445f-9e3a-4f7b6b6f5549" x="333" y="18" width="110" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
 			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 		</element>
-		<element kind="staticText" uuid="f6078fe4-0ce4-4939-9ab0-5670a166de45" x="45" y="0" width="211" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" vTextAlign="Middle">
+		<element kind="staticText" uuid="f6078fe4-0ce4-4939-9ab0-5670a166de45" x="45" y="0" width="211" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" bold="true" vTextAlign="Middle">
 			<text><![CDATA[Official Account Manager simple social network report]]></text>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>

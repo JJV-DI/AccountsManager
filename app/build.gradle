@@ -13,9 +13,15 @@ javafx {
 'javafx.fxml', 'javafx.media', 'javafx.web']
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.2'
     implementation 'org.slf4j:slf4j-simple:2.0.16' 
+    implementation 'net.sf.jasperreports:jasperreports:7.0.1'
+    implementation 'net.sf.jasperreports:jasperreports-charts:7.0.1'
 }
 
 mainClassName = 'app.MainApp'
@@ -35,7 +41,7 @@ sourceSets {
     main {
         resources {
             srcDirs = ["src/main/java","src/main/resources"]
-            includes = ["**/*.fxml","**/*.css","**/*.png"]
+            includes = ["**/*.fxml","**/*.css","**/*.png","**/*.properties","**/*.jasper","**/*.html"]
         }
     }
 }

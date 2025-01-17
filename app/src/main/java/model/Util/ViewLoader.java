@@ -14,6 +14,7 @@ import controllers.PS_BtnController;
 import controllers.PrivPassConfirmController;
 import controllers.ProfileCreatorController;
 import controllers.ProfileSelectController;
+import controllers.ReportAuxDisplayController;
 import controllers.SN_CardController;
 import controllers.SocialNetworkController;
 import controllers.SocialNetworkCreatorController;
@@ -319,13 +320,31 @@ public class ViewLoader {
         }
     }
     
-    /*INFORMS*/
+    /*REPORTS*/
     public void loadReports(VBox vbBody) {
         vbBody.getChildren().clear();
         try {
             vbBody.getChildren().add(FXMLLoader.load(getClass().getResource("/vistas/frmReports.fxml")));
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading reports fxml file");
+            System.err.println(e.getCause());
+        }
+    }
+    
+    public void loadReportAuxDisplay(String reportPath, String stylePath) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmReportAuxDisplay.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(fxmlLoader.load()));
+            ReportAuxDisplayController reportADController = fxmlLoader.getController();
+            reportADController.setStylePath(stylePath);
+            reportADController.setReportPath(reportPath);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
+            stage.showAndWait();
+        } catch (IOException e) {
+            System.err.println("Error in " + this.getClass().toString() + " loading aux report display fxml file");
             System.err.println(e.getCause());
         }
     }

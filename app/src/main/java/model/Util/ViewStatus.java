@@ -4,6 +4,6 @@ public enum ViewStatus {
     PROFILES,
     SOCIAL,
     SETTINGS,
-    INFORMS,
+    REPORTS,
     OTHER
 }

@@ -97,7 +97,7 @@
                      </tooltip>
                   </Button>
                   <Pane minHeight="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="btnInform" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="10.0" layoutY="759.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#informPressed" prefHeight="50.0" prefWidth="50.0" textAlignment="CENTER">
+                  <Button fx:id="btnReports" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="10.0" layoutY="759.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#informPressed" prefHeight="50.0" prefWidth="50.0" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>

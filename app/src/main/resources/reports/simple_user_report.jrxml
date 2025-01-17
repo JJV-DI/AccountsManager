@@ -43,7 +43,7 @@
 		</element>
 	</background>
 	<title height="66" splitType="Stretch">
-		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="System&#xd;&#xa;" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
+		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="Arial" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
 			<text><![CDATA[Simple users report]]></text>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -62,12 +62,12 @@
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 		</element>
-		<element kind="staticText" uuid="f736fb1e-cdb4-4324-9227-0ccea835ec10" x="82" y="49" width="48" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" vTextAlign="Middle">
+		<element kind="staticText" uuid="f736fb1e-cdb4-4324-9227-0ccea835ec10" x="82" y="49" width="48" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" bold="true" vTextAlign="Middle">
 			<text><![CDATA[Total users:]]></text>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 		</element>
-		<element kind="textField" uuid="b4b210f9-8639-4394-9072-3edfbb3edc74" x="130" y="49" width="121" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" evaluationTime="Report" bold="false" vTextAlign="Middle">
+		<element kind="textField" uuid="b4b210f9-8639-4394-9072-3edfbb3edc74" x="130" y="49" width="121" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" evaluationTime="Report" bold="false" vTextAlign="Middle">
 			<expression><![CDATA[$V{REPORT_COUNT}]]></expression>
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -99,27 +99,27 @@
 				<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="staticText" uuid="5434e93e-3d21-42ac-b504-fa9759532eda" x="95" y="16" width="41" height="19" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="5434e93e-3d21-42ac-b504-fa9759532eda" x="95" y="16" width="41" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="12.0" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Email:]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			</element>
-			<element kind="staticText" uuid="a3457686-8434-4e81-98ac-5cbb75c49e8b" x="94" y="40" width="42" height="18" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="a3457686-8434-4e81-98ac-5cbb75c49e8b" x="94" y="40" width="42" height="18" forecolor="#F3F3F3" fontName="Arial" fontSize="12.0" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Name:]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="staticText" uuid="7efcd1fe-b803-473a-83e5-b21c92f60f42" x="277" y="16" width="36" height="19" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="7efcd1fe-b803-473a-83e5-b21c92f60f42" x="277" y="16" width="36" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="12.0" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Pass:]]></text>
 				<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			</element>
-			<element kind="staticText" uuid="9a746677-b622-49d8-ba0b-6788929478c3" x="277" y="40" width="56" height="18" forecolor="#F3F3F3" fontName="System" fontSize="12.0" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="9a746677-b622-49d8-ba0b-6788929478c3" x="277" y="40" width="56" height="18" forecolor="#F3F3F3" fontName="Arial" fontSize="12.0" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Privacity:]]></text>
 				<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="30a1d8ec-ff51-405f-8679-be746c8a5fb8" x="135" y="16" width="121" height="19" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+			<element kind="textField" uuid="30a1d8ec-ff51-405f-8679-be746c8a5fb8" x="135" y="16" width="121" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="10.0" bold="false" vTextAlign="Middle">
 				<expression><![CDATA[$F{email}]]></expression>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -132,18 +132,18 @@
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<pen lineWidth="1.5" lineColor="#F3F3F3"/>
 			</element>
-			<element kind="textField" uuid="ea3f2e6a-e3f6-4814-a385-92b54d3414e4" x="135" y="40" width="121" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+			<element kind="textField" uuid="ea3f2e6a-e3f6-4814-a385-92b54d3414e4" x="135" y="40" width="121" height="18" forecolor="#F3F3F3" fontName="Arial" fontSize="10.0" bold="false" vTextAlign="Middle">
 				<expression><![CDATA[$F{nombreUsuario}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="1f8ada84-877c-4309-859e-8910ac0ad88b" x="313" y="16" width="124" height="19" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+			<element kind="textField" uuid="1f8ada84-877c-4309-859e-8910ac0ad88b" x="313" y="16" width="124" height="19" forecolor="#F3F3F3" fontName="Arial" fontSize="10.0" bold="false" vTextAlign="Middle">
 				<expression><![CDATA[$F{passUsuario} == null ? "No password" : $F{passUsuario}]]></expression>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			</element>
-			<element kind="textField" uuid="9e4161c0-458e-4fdf-bc82-17ce43fb1163" x="333" y="40" width="102" height="18" forecolor="#F3F3F3" fontName="System" fontSize="10.0" bold="false" vTextAlign="Middle">
+			<element kind="textField" uuid="9e4161c0-458e-4fdf-bc82-17ce43fb1163" x="333" y="40" width="102" height="18" forecolor="#F3F3F3" fontName="Arial" fontSize="10.0" bold="false" vTextAlign="Middle">
 				<expression><![CDATA[$F{privacidad} .equals("Y") ? "PRIVATE" : "PUBLIC"]]></expression>
 				<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -168,19 +168,19 @@
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<pen lineWidth="2.0" lineColor="#F3F3F3"/>
 		</element>
-		<element kind="textField" uuid="28cc93ca-0963-425b-bdd1-3a626772cab8" x="33" y="18" width="80" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" pattern="dd / MM / yyyy" bold="true" hTextAlign="Left" vTextAlign="Middle">
+		<element kind="textField" uuid="28cc93ca-0963-425b-bdd1-3a626772cab8" x="33" y="18" width="80" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" pattern="dd / MM / yyyy" bold="true" hTextAlign="Left" vTextAlign="Middle">
 			<expression><![CDATA[new java.util.Date()]]></expression>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 		</element>
-		<element kind="textField" uuid="1a7cb5a5-8f61-445f-9e3a-4f7b6b6f5549" x="333" y="18" width="110" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+		<element kind="textField" uuid="1a7cb5a5-8f61-445f-9e3a-4f7b6b6f5549" x="333" y="18" width="110" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
 			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 		</element>
-		<element kind="staticText" uuid="f6078fe4-0ce4-4939-9ab0-5670a166de45" x="45" y="0" width="176" height="12" forecolor="#F3F3F3" fontName="System" fontSize="8.0" bold="true" vTextAlign="Middle">
+		<element kind="staticText" uuid="f6078fe4-0ce4-4939-9ab0-5670a166de45" x="45" y="0" width="176" height="12" forecolor="#F3F3F3" fontName="Arial" fontSize="8.0" bold="true" vTextAlign="Middle">
 			<text><![CDATA[Official Account Manager simple user report]]></text>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>

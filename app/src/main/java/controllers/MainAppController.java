@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Util.ConfigProvider;
 import model.Util.ViewLoader;
 import model.Util.ViewManager;
 import model.Util.ViewStatus;
@@ -22,7 +23,7 @@ public class MainAppController implements Initializable{
     private static List<Button> buttons = new ArrayList<>();
     
     @FXML
-    private Button btnInform;
+    private Button btnReports;
     
     @FXML
     private Button btnPower;
@@ -51,7 +52,7 @@ public class MainAppController implements Initializable{
         buttons.add(btnProfiles);
         buttons.add(btnSocial);
         buttons.add(btnSettings);
-        buttons.add(btnInform);
+        buttons.add(btnReports);
     }
     
     @FXML
@@ -71,7 +72,7 @@ public class MainAppController implements Initializable{
     
     @FXML
     void informPressed() {
-        loadInforms();
+        loadReports();
     }
     
     @FXML
@@ -103,11 +104,19 @@ public class MainAppController implements Initializable{
         }
     }
     
-    private void loadInforms() {
-        buttonSelected(btnInform);
-        if (viewManager.getViewStatus() != ViewStatus.INFORMS) {
-            viewManager.setStatus(ViewStatus.INFORMS);
-            viewLoader.loadReports(vbBody);
+    private void loadReports() {
+        if (viewManager.getViewStatus() != ViewStatus.REPORTS) {
+            if (!new ConfigProvider().loadAdminPass().isEmpty()) {
+                if (MainAppController.viewLoader.loadAdminPassConfirm()) {
+                    viewManager.setStatus(ViewStatus.REPORTS);
+                    viewLoader.loadReports(vbBody);
+                    buttonSelected(btnReports);
+                }
+            } else {
+                viewManager.setStatus(ViewStatus.REPORTS);
+                viewLoader.loadReports(vbBody);
+                buttonSelected(btnReports);
+            }
         }
     }
     
