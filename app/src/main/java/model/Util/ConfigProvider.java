@@ -59,7 +59,7 @@ public class ConfigProvider {
     }
     
     public void saveAdminPass(String adminPass) {
-        createConfigProperties(loadDBUsername(), loadDBPassword(), adminPass, loadTheme());
+        createConfigProperties(loadDBUrl(), loadDBUsername(), loadDBPassword(), adminPass, loadTheme());
     }
     
     public Connection getConnection(){
@@ -85,13 +85,13 @@ public class ConfigProvider {
     }
     
     public void saveTheme(String theme) {
-        createConfigProperties(loadDBUsername(), loadDBPassword(), loadAdminPass(), theme);
+        createConfigProperties(loadDBUrl(), loadDBUsername(), loadDBPassword(), loadAdminPass(), theme);
     }
     
     /*CREAR ARCHIVO CONFIG (USO EXCLUSIVO DE DEBUG)*/
-    public void createConfigProperties(String user, String pass, String adminPass, String theme) {
+    public void createConfigProperties(String url, String user, String pass, String adminPass, String theme) {
         Properties properties = new Properties();
-        properties.setProperty("url", "jdbc:mariadb://localhost:3306/account_manager"); 
+        properties.setProperty("url", url); 
         properties.setProperty("username", user); 
         properties.setProperty("password", pass);
         properties.setProperty("adminPass", adminPass);

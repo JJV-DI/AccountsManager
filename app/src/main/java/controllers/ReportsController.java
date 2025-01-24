@@ -175,6 +175,7 @@ public class ReportsController implements Initializable{
     @FXML
     void btnCreateReportPressed() {
         if (validateFields()) {
+            deleteLastReportFiles(new File("currentHTMLReport.html_files"));
             createReport();
         }
     }
@@ -284,4 +285,18 @@ public class ReportsController implements Initializable{
             }
         }
     }
+    
+    private boolean deleteLastReportFiles(File directory) {
+    if (directory.exists() && directory.isDirectory()) {
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) deleteLastReportFiles(file);
+                else file.delete();
+            }
+        }
+        return directory.delete();
+    }
+    return false;
+}
 }
