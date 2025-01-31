@@ -21,12 +21,14 @@ import controllers.SocialNetworkCreatorController;
 import controllers.UF_Account_AddBtnController;
 import controllers.UF_Account_CardController;
 import controllers.UserInfoController;
+import controllers.UsersGuideDisplayController;
 import java.io.IOException;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -41,7 +43,11 @@ public class ViewLoader {
     /*MAIN APP*/
     public Parent loadMainApp() {
         try {
-            return FXMLLoader.load(getClass().getResource("/vistas/frmMainApp.fxml"));
+            FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/vistas/frmMainApp.fxml"));
+            Parent parent = fXMLLoader.load();
+            MainAppController mainAppController = fXMLLoader.getController();
+            mainAppController.initGuideListener();
+            return parent;
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading main app fxml file");
             System.err.println(e.getCause());
@@ -346,6 +352,41 @@ public class ViewLoader {
         } catch (IOException e) {
             System.err.println("Error in " + this.getClass().toString() + " loading aux report display fxml file");
             System.err.println(e.getCause());
+        }
+    }
+    
+    /*USERS GUIDE*/
+    public Stage loadUsersGuideDisplay() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/frmUsersGuideDisplay.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(fxmlLoader.load()));
+            UsersGuideDisplayController usersGuideDisplayController = fxmlLoader.getController();
+            usersGuideDisplayController.setStylePath(getWebStyle());
+            usersGuideDisplayController.setReportPath("Accounts-Manager-Manual-de-usuario.html");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.getScene().getStylesheets().add(MainApp.chargeStylesheet());
+            stage.getIcons().add(new Image("/vistas/media/cur_icons/appIcon.png"));
+            stage.show();
+            return stage;
+        } catch (IOException e) {
+            System.err.println("Error in " + this.getClass().toString() + " loading aux report display fxml file");
+            System.err.println(e.getCause());
+            return null;
+        }
+    }
+    
+    private String getWebStyle() {
+        switch (new ConfigProvider().loadTheme()) {
+            case "Dark theme" -> {
+                return getClass().getResource("/vistas/styles/web/webdarktheme.css").toString();
+            }
+            case "Light theme" -> {
+                return getClass().getResource("/vistas/styles/web/weblighttheme.css").toString();
+            }
+            default -> {
+                return null;
+            }
         }
     }
     

@@ -51,6 +51,7 @@ public class ProfileSelectController implements Initializable{
             }
         } else {
             MainAppController.viewLoader.loadUsersNotFoundCard(gridPane);
+            MainAppController.viewLoader.loadAddButton(gridPane, 0, 1, vboxBody, viewManager);
         }
     }
     

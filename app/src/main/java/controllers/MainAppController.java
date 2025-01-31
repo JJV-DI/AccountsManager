@@ -8,9 +8,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.Util.ConfigProvider;
 import model.Util.ViewLoader;
 import model.Util.ViewManager;
@@ -21,6 +23,13 @@ public class MainAppController implements Initializable{
     public static ViewLoader viewLoader = new ViewLoader();
     
     private static List<Button> buttons = new ArrayList<>();
+    
+    private Stage guideStage;
+    
+    private boolean guideShown = false;
+    
+    @FXML
+    private Button btnGuide;
     
     @FXML
     private Button btnReports;
@@ -80,6 +89,20 @@ public class MainAppController implements Initializable{
         MainApp.closeApp();
     }
     
+    @FXML
+    void guidePressed() {
+        if (!guideShown) {
+            guideShown = true;            
+            guideStage = new ViewLoader().loadUsersGuideDisplay();
+            guideStage.setOnCloseRequest(event2 -> {
+                guideShown = false;
+                guideStage = null;                
+                styleGuideButton(guideShown);
+            });
+            styleGuideButton(guideShown);
+        }
+    }
+    
     private void loadProfiles() {
         buttonSelected(btnProfiles);
         if (viewManager.getViewStatus() != ViewStatus.PROFILES) {
@@ -135,9 +158,32 @@ public class MainAppController implements Initializable{
             button.getStyleClass().add("hover-color");
         }
     }
+    
+    //Users guide
+    public void initGuideListener() {
+        paneGridBody.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.F1 && !guideShown) {
+                guideShown = true;
+                guideStage = new ViewLoader().loadUsersGuideDisplay();
+                guideStage.setOnCloseRequest(event2 -> {
+                    guideShown = false;
+                    guideStage = null;
+                    styleGuideButton(guideShown);
+                });
+                styleGuideButton(guideShown);
+            }
+        });
+    }
+    
+    private void styleGuideButton(boolean selected) {
+        btnGuide.getStyleClass().clear();
+        if (selected) {
+            btnGuide.getStyleClass().add("primary-color");
+            btnGuide.getStyleClass().add("saw-border");
+        } else {
+            btnGuide.getStyleClass().add("secondary-color");
+            btnGuide.getStyleClass().add("saw-border");
+            btnGuide.getStyleClass().add("hover-color");
+        }
+    }
 }
-
-/*
-    hBox.getStyleClass().removeAll("fieldError-color");
-    hBox.getStyleClass().add("secondary-color");
-*/

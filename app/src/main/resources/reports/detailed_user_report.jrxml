@@ -182,8 +182,8 @@ WHERE $P{p_filter} IS NOT NULL AND $P{p_filter} != '' AND email = $P{p_filter} O
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</element>
-					<element kind="chart" chartType="bar" uuid="e7b26379-8da7-4e59-a775-463db25bc945" key="" x="5" y="7" width="404" height="160" showLegend="false" evaluationTime="Group" titleColor="#F3F3F3" legendColor="#FFFFFF" renderType="svg" theme="default" legendPosition="Top" evaluationGroup="Grupo Usuario">
-						<titleFont fontName="Arial" fontSize="12.0" bold="false" underline="false"/>
+					<element kind="chart" chartType="bar" uuid="e7b26379-8da7-4e59-a775-463db25bc945" key="" x="5" y="7" width="404" height="160" showLegend="false" evaluationTime="Group" titleColor="#F3F3F3" legendColor="#FFFFFF" renderType="image" theme="default" legendPosition="Top" evaluationGroup="Grupo Usuario">
+						<titleFont fontName="Arial" fontSize="12.0" underline="false" bold="false"/>
 						<legendFont fontName="Arial" fontSize="10.0"/>
 						<titleExpression><![CDATA["Password complexity for user " + $F{email}]]></titleExpression>
 						<dataset kind="category" resetGroup="Grupo Usuario" resetType="Group">
@@ -235,7 +235,7 @@ $F{passCuenta}.length() <= 12 ? 300 :
 		</element>
 	</background>
 	<title height="66" splitType="Stretch">
-		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="Arial" fontSize="24.0" bold="true" underline="false" vTextAlign="Middle">
+		<element kind="staticText" uuid="d2b1b419-55b3-4217-8121-a339300af869" x="79" y="16" width="271" height="40" forecolor="#F3F3F3" rotation="None" markup="none" fontName="Arial" fontSize="24.0" underline="false" bold="true" vTextAlign="Middle">
 			<text><![CDATA[Detailed users report]]></text>
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
