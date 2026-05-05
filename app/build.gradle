@@ -24,7 +24,7 @@ dependencies {
     implementation 'commons-logging:commons-logging:1.3.4'
 }
 
-mainClassName = 'app.MainApp'
+mainClassName = 'ProyectoTema3.app.MainApp'
 
 jar {
  duplicatesStrategy 'exclude' //Excluye duplicados en ficheros de configuración
@@ -34,7 +34,7 @@ jar {
 } 
 
 application {
-    mainClass = 'app.MainApp'
+    mainClass = 'ProyectoTema3.app.MainApp'
 }
 
 sourceSets {
